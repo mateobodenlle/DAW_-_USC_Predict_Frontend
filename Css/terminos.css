@@ -1,0 +1,33 @@
+/* Estilo para Términos y Condiciones */
+.terms-section {
+    background-color: #132536;
+    color: #c0d9af;
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+    font-family: 'Inter', sans-serif;
+    line-height: 1.7;
+}
+
+.terms-section h1 {
+    font-size: 28px;
+    margin-bottom: 20px;
+    text-align: center;
+    color: #ffffff;
+}
+
+.terms-section h2 {
+    font-size: 20px;
+    margin-top: 25px;
+    color: #88a368;
+}
+
+.terms-section p {
+    font-size: 15px;
+    margin-bottom: 15px;
+}
+
+.terms-section .intro {
+    font-style: italic;
+    color: #cfdac3;
+}

@@ -162,13 +162,13 @@ nav button:hover {
 }
 /* Espacio principal vacío */
 main {
-    height: 700px;
+    /*height: 700px;*/
     padding: 10px 130px;
 }
 
 footer {
 
-    background: -gradient(to top, #334658, #0c1a2b);
+    background: linear-gradient(to top, #334658, #0c1a2b);
     padding: 5px 0;
     color: #c0d9af;
     font-family: 'Inter', sans-serif;
