@@ -1,0 +1,23 @@
+/* details.css - Estilos para la página de detalles */
+
+h1 {
+    text-align: center;
+    color: #c0d9af;
+}
+
+img {
+    width: 100%;
+    border-radius: 5px;
+}
+
+section {
+    background: #4a6978;
+    padding: 15px;
+    margin: 15px 0;
+    border-radius: 5px;
+}
+
+button {
+    width: 100%;
+    background: #88a368;
+}

@@ -1,0 +1,29 @@
+/* index.css - Estilos para la página de inicio */
+
+h1 {
+    text-align: center;
+    font-size: 30px;
+    color: #c0d9af;
+}
+
+section {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 20px;
+}
+
+article {
+    background: #4a6978;
+    padding: 20px;
+    margin: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    text-align: center;
+    color: #c0d9af;
+}
+
+img {
+    width: 100px;
+    border-radius: 5px;
+}

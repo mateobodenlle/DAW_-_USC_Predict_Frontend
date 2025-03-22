@@ -1,0 +1,25 @@
+/* search.css - Estilos para la página de búsqueda */
+
+h1 {
+    text-align: center;
+    color: #c0d9af;
+}
+
+details {
+    background: #4a6978;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+details summary {
+    font-weight: bold;
+    color: #c0d9af;
+}
+
+iframe {
+    width: 100%;
+    height: 300px;
+    border-radius: 5px;
+}
