@@ -1,166 +1,177 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="es">
 <head>
-    
-<title>USC Predict</title>
-
-<link rel="stylesheet" href="../Css/styles.css">
-<link rel="stylesheet" href="../Css/index.css">
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menú y Footer</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../Css/styles.css">
+    <link rel="stylesheet" href="../Css/index.css">
 </head>
-
 <body>
 
-    <nav>
-        <a href="index.html"><img src="../Resources/Logo.jpg" width="130px"></a>
-        <p><a href="Búsqueda.html">Búsqueda</a></p> 
-        <p><a href="Watchlist.html">Watchlist</a></p> 
-        <p><a href="Resueltos.html">Resueltos</a></p> 
-        <p><a href="About Us.html">About Us</a></p> 
-    </nav>
-
-
-<main>
-
+<!-- Encabezado principal del sitio -->
 <header>
-    <h1>USC PREDICT</h1>
+    <nav>
+        <div class="nav-left">
+            <div class="logo">
+                <a href="index.html">
+                    <img src="../Resources/Logo.png" width="130px" alt="USC Predict Logo">
+                </a>
+            </div>
+        </div>
+        <div class="nav-center">
+            <button onclick="location.href='Búsqueda.html'">Búsqueda</button>
+            <button onclick="location.href='Resueltos.html'">Resueltos</button>
+            <button class="active" onclick="location.href='Watchlist.html'">Watchlist</button>
+        </div>
+        <div class="nav-right">
+            <button onclick="location.href='#'">About us</button>
+        </div>
+    </nav>
 </header>
-<hr>
 
-<section>
-    <p>
-    USC Predictions es una plataforma web diseñada para la comunidad de la Universidad de 
-    Santiago de Compostela (USC), que permite realizar predicciones sobre eventos académicos,
-     administrativos, deportivos y culturales. A diferencia de plataformas como Polymarket,
-      USC Predictions no utiliza tecnologías Web3 ni criptomonedas, sino un sistema basado 
-      en puntos y rankings.
-    </p>
-</section>
+<!-- Contenido principal -->
 
+<main class="container">
 
-<!-- Sección de tarjetas -->
-<section>
-<article>
-    <h2>TARJETA1</h2>
-    <p>Descripción evento 1</p>
-    <img src="../Resources/ImagenEventos/Juez.jpg" width="100px"><br>
-    <button>Votar si</button>  <button>Votar no</button>
-</article>
+    <!-- Título e introducción -->
+    <header class="home-header">
+        <h1>USC PREDICT</h1>
+        <p class="intro">
+            Lorem ipsum, lorem ipsumLorem ipsum, lorem ipsumLorem ipsum, lorem ipsumLorem ipsum.
+        </p>
+    </header>
 
+    <!-- Tarjetas principales -->
+    <section class="card-grid">
+        <article class="card">
+            <img src="../Resources/ImagenEventos/Ajedrez.jpg" alt="Evento" />
+            <div class="info">
+                <h3>Nombre</h3>
+                <p>Categoría</p>
+                <div class="voto">
+                    <button>SI</button>
+                    <button>NO</button>
+                </div>
+            </div>
+        </article>
 
-<article>
-    <h2>TARJETA2</h2>
-    <p>Descripción evento 2</p>
-    <img src="../Resources/ImagenEventos/Examen.jpg" width="100px"><br>
-     <button>Votar si</button>  <button>Votar no</button>
-</article>
+        <!-- Copia esta tarjeta para añadir más -->
+        <article class="card">
+            <img src="../Resources/ImagenEventos/Examen.jpg" alt="Evento" />
+            <div class="info">
+                <h3>Nombre</h3>
+                <p>Categoría</p>
+                <div class="voto">
+                    <button>SI</button>
+                    <button>NO</button>
+                </div>
+            </div>
+        </article>
 
-<article>
-        <h2>TARJETA3</h2>
-        <p>Descripción evento 3</p>
-        <img src="../Resources/ImagenEventos/Juez.jpg" width="100px"><br>
-        <button>Votar si</button>  <button>Votar no</button>
-    </article>
-    
-<article>
-        <h2>TARJETA4</h2>
-        <p>Descripción evento 4</p>
-        <img src="../Resources/ImagenEventos/Examen.jpg" width="100px"><br>
-        <button>Votar si</button>  <button>Votar no</button>
-</article>
-    
-<article>
-        <h2>Proclamación Rector</h2>
-        <p>El 7 de marzo 5</p>
-        <img src="../Resources/ImagenEventos/Juez.jpg" width="100px"><br>
-        <button>Votar si</button>  <button>Votar no</button>
- </article>
-</section>
+        <article class="card">
+            <img src="../Resources/ImagenEventos/Juez.jpg" alt="Evento" />
+            <div class="info">
+                <h3>Nombre</h3>
+                <p>Categoría</p>
+                <div class="voto">
+                    <button>SI</button>
+                    <button>NO</button>
+                </div>
+            </div>
+        </article>
 
-</br>
-<h2>Trending</h2>
-    <ol>
-        <li><article>
-            <h2>Examen de algbra</h2>
-            <p>6 o más de media en álgebra</p>
-            <img src="../Resources/ImagenEventos/Examen.jpg" width="60px"><br>
-            12%
-        </article></li>
-        <li><article>
-            <h2>Juicio de Chema</h2>
-            <p>Libertad para Chema</p>
-            <img src="../Resources/ImagenEventos/Juez.jpg" width="60px"><br>
-            32%
-        </article></li>
-        <li><article>
-            <h2>Examen derecho romano</h2>
-            <p>EXAMEN 5</p>
-            <img src="../Resources/ImagenEventos/Juez.jpg" width="60px"><br>
-            73%
-        </article></li>
-        <li><article>
-            <h2>Torneo Ajedrez</h2>
-            <p>Torneo</p>
-            <img src="../Resources/ImagenEventos/Ajedrez.jpg" width="60px"><br>
-        12%
-        </article></li>
-        <li><article>
-            <h2>Diego Cristóbal</h2>
-            <p>Ejecución</p>
-            <img src="../Resources/ImagenEventos/fotoPerfil.jpeg" width="60px"><br>
-            50%
-        </article></li>
-    </ol>
-</br>
-<h2>Actividad</h2>
-    <ol>
-        <li><article>
-            <h2>Examen de algbra</h2>
-            <p>6 o más de media en álgebra</p>
-            <img src="../Resources/ImagenEventos/Examen.jpg" width="60px"><br>
-            12%
-        </article></li>
-        <li><article>
-            <h2>Juicio de Chema</h2>
-            <p>Libertad para Chema</p>
-            <img src="../Resources/ImagenEventos/Juez.jpg" width="60px"><br>
-            32%
-        </article></li>
-        <li><article>
-            <h2>Examen derecho romano</h2>
-            <p>EXAMEN 5</p>
-            <img src="../Resources/ImagenEventos/Juez.jpg" width="60px"><br>
-            73%
-        </article></li>
-        <li><article>
-            <h2>Torneo Ajedrez</h2>
-            <p>Torneo</p>
-            <img src="../Resources/ImagenEventos/Ajedrez.jpg" width="60px"><br>
-        12%
-        </article></li>
-        <li><article>
-            <h2>Diego Cristóbal</h2>
-            <p>Ejecución</p>
-            <img src="../Resources/ImagenEventos/Ajedrez.jpg" width="60px"><br>
-            50%
-        </article></li>
-    </ol>
+        <article class="card">
+            <img src="../Resources/ImagenEventos/Ajedrez.jpg" alt="Evento" />
+            <div class="info">
+                <h3>Nombre</h3>
+                <p>Categoría</p>
+                <div class="voto">
+                    <button>SI</button>
+                    <button>NO</button>
+                </div>
+            </div>
+        </article>
 
-<footer>
-    <!--LOGO-->
-    <img src="../Resources/Logo.jpg" width="150px">
-    <article>
-    Información en redes sociales
-        <ol>
-            <li>Instgram</li>
-            <li>X</li>
-            <li>Facebook</li>
-            <li>Linkedin</li>
-            <li><a href="https://weshearn.com" target="_blank" rel="noopener noreferrer">Weshearn</a></li>
-        </ol>
-    </article>
-</footer>
+        <article class="card">
+            <img src="../Resources/ImagenEventos/Examen.jpg" alt="Evento" />
+            <div class="info">
+                <h3>Nombre</h3>
+                <p>Categoría</p>
+                <div class="voto">
+                    <button>SI</button>
+                    <button>NO</button>
+                </div>
+            </div>
+        </article>
+
+        <article class="card">
+            <img src="../Resources/ImagenEventos/Juez.jpg" alt="Evento" />
+            <div class="info">
+                <h3>Nombre</h3>
+                <p>Categoría</p>
+                <div class="voto">
+                    <button>SI</button>
+                    <button>NO</button>
+                </div>
+            </div>
+        </article>
+    </section>
+
+    <!-- Sección de listas Trending y Actividad -->
+    <section class="lists-row">
+        <section class="list-block">
+            <h2>Trending 🔥</h2>
+            <ol>
+                <li><span>1.</span> Nombre <p>Categoría</p></li>
+                <li><span>2.</span> Nombre <p>Categoría</p></li>
+                <li><span>3.</span> Nombre <p>Categoría</p></li>
+                <li><span>4.</span> Nombre <p>Categoría</p></li>
+            </ol>
+            <a class="ver-mas" href="#">Ver más...</a>
+        </section>
+
+        <section class="list-block">
+            <h2>Actividad ⏳</h2>
+            <ol>
+                <li><span>1.</span> Nombre <p>Categoría</p></li>
+                <li><span>2.</span> Nombre <p>Categoría</p></li>
+                <li><span>3.</span> Nombre <p>Categoría</p></li>
+                <li><span>4.</span> Nombre <p>Categoría</p></li>
+            </ol>
+            <a class="ver-mas" href="#">Ver más...</a>
+        </section>
+    </section>
+
 </main>
+
+
+<!-- Pie de página -->
+<footer>
+    <section class="footer-container">
+        <section class="footer-column">
+            <h3>Información</h3>
+            <p><a href="About Us.html">Quiénes somos</a></p>
+            <p><a href="About Us.html">Contacto</a></p>
+            <p><a href="TermsAndConditions.html">Política de privacidad</a></p>
+        </section>
+        <section class="footer-column">
+            <h3>Soporte</h3>
+            <p><a href="#">Ayuda</a></p>
+            <p><a href="#">Preguntas frecuentes</a></p>
+        </section>
+        <section class="footer-column">
+            <h3>Comunidad</h3>
+            <p><a href="#">Instagram</a></p>
+            <p><a href="#">X (Twitter)</a></p>
+        </section>
+        <section class="footer-column">
+            <h3>Legal</h3>
+            <p><a href="TermsAndConditions.html">Términos de uso</a></p>
+        </section>
+    </section>
+</footer>
+
 </body>
 </html>

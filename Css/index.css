@@ -1,29 +1,143 @@
-/* index.css - Estilos para la página de inicio */
-
-h1 {
+/* Título principal */
+.home-header {
     text-align: center;
-    font-size: 30px;
+    margin-top: 30px;
+}
+
+.home-header h1 {
+    font-size: 28px;
+    color: #a6c88f;
+}
+
+.home-header .intro {
+    max-width: 700px;
+    margin: 10px auto;
+    font-size: 14px;
     color: #c0d9af;
 }
 
-section {
+
+/* Tarjetas tipo grid */
+.card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 12px;
+    margin: 30px 0;
+}
+
+.card {
+    box-shadow: 4px 4px 10px rgba(100,100,100,0.6);
+    background-color: #7da190;
+    border-radius: 20px;
+    border: 2px solid #c0d9af;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 15px;
+    transition: all 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-8px) scale(1.03);
+    background-color: #88a368;
+    box-shadow: 6px 6px 12px rgba(100, 100, 100, 0.8);
+}
+.card img {
+    width: 80px;
+    height: 80px;
+    border-radius: 10px;
+    object-fit: cover;
+}
+
+.card .info {
+    text-align: center;
+    margin-top: 10px;
+}
+
+.card h3 {
+    margin: 5px 0 2px;
+    font-size: 16px;
+    color: #0c1a2b;
+}
+
+.card p {
+    margin: 0;
+    font-size: 13px;
+    color: #0c1a2b;
+}
+
+.voto {
+    margin-top: 10px;
+}
+
+.voto button {
+    margin: 0 5px;
+    padding: 5px 12px;
+    border-radius: 8px;
+    border: none;
+    background-color: #c0d9af;
+    color: #0c1a2b;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.voto button:hover {
+    background-color: #88a368;
+    transform: scale(1.05);
+}
+
+
+/* Sección Trending y Actividad */
+.lists-row {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    padding: 20px;
+    gap: 30px;
+    margin-bottom: 60px;
 }
 
-article {
-    background: #4a6978;
+.list-block {
+    background-color: #7da190;
+    border-radius: 10px;
     padding: 20px;
-    margin: 15px;
-    border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-    text-align: center;
-    color: #c0d9af;
+    width: 260px;
 }
 
-img {
-    width: 100px;
-    border-radius: 5px;
+.list-block h2 {
+    font-size: 18px;
+    margin-bottom: 15px;
+    color: #0c1a2b;
+}
+
+.list-block ol {
+    list-style: none;
+    padding-left: 0;
+    counter-reset: item;
+}
+
+.list-block li {
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: #0c1a2b;
+}
+
+.list-block li span {
+    font-weight: bold;
+    margin-right: 6px;
+}
+
+.list-block li p {
+    font-size: 12px;
+    color: #0c1a2b;
+    margin: 2px 0 0 20px;
+}
+
+.ver-mas {
+    display: block;
+    margin-top: 10px;
+    text-align: right;
+    font-size: 13px;
+    color: #0c1a2b;
+    text-decoration: underline;
 }

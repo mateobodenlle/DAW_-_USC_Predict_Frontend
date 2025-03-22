@@ -5,79 +5,77 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Menú y Footer</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../Css/styles.css">    
+    <link rel="stylesheet" href="../Css/styles.css">
     <link rel="stylesheet" href="../Css/stylesPlantilla.css">
 </head>
 <body>
 
-    <!-- Navbar -->
+<!-- Encabezado principal del sitio -->
+<header>
     <nav>
         <div class="nav-left">
             <div class="logo">
                 <a href="index.html">
-                    <img src="../Resources/Logo.png" width="130px">
+                    <img src="../Resources/Logo.png" width="130px" alt="USC Predict Logo">
                 </a>
             </div>
         </div>
         <div class="nav-center">
-            <button onclick="location.href='#'">Búsqueda</button>
-            <button onclick="location.href='#'">Resueltos</button>
-            <button class="active" onclick="location.href='#'">Watchlist</button>
+            <button onclick="location.href='Búsqueda.html'">Búsqueda</button>
+            <button onclick="location.href='Resueltos.html'">Resueltos</button>
+            <button class="active" onclick="location.href='Watchlist.html'">Watchlist</button>
         </div>
         <div class="nav-right">
             <button onclick="location.href='#'">About us</button>
         </div>
     </nav>
+</header>
 
-    <!-- Contenido principal con columnas -->
-    <main class="container">
-        <div class="row">
-            <div class="col-3">
-                <section>
-                    <h2>Columna izquierda</h2>
-                    <p>Contenido secundario, menú, filtros, etc.</p>
-                </section>
-            </div>
-            <div class="col-6">
-                <section>
-                    <h2>Contenido principal</h2>
-                    <p>Aquí iría el contenido principal de la página.</p>
-                </section>
-            </div>
-            <div class="col-3">
-                <section>
-                    <h2>Columna derecha</h2>
-                    <p>Publicidad, eventos, etc.</p>
-                </section>
-            </div>
-        </div>
-    </main>
+<!-- Contenido principal -->
+<main class="container" style="height: 700px;">
+    <section class="row">
+        <aside class="col-3">
+            <h2>Columna izquierda</h2>
+            <p>Contenido secundario, menú, filtros, etc.</p>
+        </aside>
 
-    <!-- Footer -->
-    <footer>
-        <div class="footer-container">
-            <div class="footer-column">
-                <h3>Información</h3>
-                <p><a href="About Us.html">Quiénes somos</a></p>
-                <p><a href="About Us.html">Contacto</a></p>
-                <p><a href="#">Política de privacidad</a></p>
-            </div>
-            <div class="footer-column">
-                <h3>Soporte</h3>
-                <p><a href="#">Ayuda</a></p>
-                <p><a href="#">Preguntas frecuentes</a></p>
-            </div>
-            <div class="footer-column">
-                <h3>Comunidad</h3>
-                <p><a href="#">Instagram</a></p>
-                <p><a href="#">X (Twitter)</a></p>
-            </div>
-            <div class="footer-column">
-                <h3>Legal</h3>
-                <p><a href="TermsAndConditions.html">Términos de uso</a></p>
-            </div>
-        </div>
-    </footer>
+        <article class="col-6">
+            <h2>Contenido principal</h2>
+            <p>Aquí iría el contenido principal de la página.</p>
+        </article>
+
+        <aside class="col-3">
+            <h2>Columna derecha</h2>
+            <p>Publicidad, eventos, etc.</p>
+        </aside>
+    </section>
+</main>
+
+<!-- Pie de página -->
+<footer>
+    <section class="footer-container">
+        <section class="footer-column">
+            <h3>Información</h3>
+            <p><a href="About Us.html">Quiénes somos</a></p>
+            <p><a href="About Us.html">Contacto</a></p>
+            <p><a href="TermsAndConditions.html">Política de privacidad</a></p>
+        </section>
+        <section class="footer-column">
+            <h3>Soporte</h3>
+            <p><a href="#">Ayuda</a></p>
+            <p><a href="#">Preguntas frecuentes</a></p>
+        </section>
+        <section class="footer-column">
+            <h3>Comunidad</h3>
+            <p><a href="#">Instagram</a></p>
+            <p><a href="#">X (Twitter)</a></p>
+        </section>
+        <section class="footer-column">
+            <h3>Legal</h3>
+            <p><a href="TermsAndConditions.html">Términos de uso</a></p>
+        </section>
+    </section>
+</footer>
 
 </body>
 </html>

@@ -1,7 +1,8 @@
-/* styles.css - Estilos generales para toda la web */
-/* Sistema de 12 columnas responsivo */
+/* -------------------------- */
+/* Sistema de 12 columnas     */
+/* -------------------------- */
 
-/* Contenedor principal */
+
 .container {
     width: 100%;
     max-width: 1200px;
@@ -10,20 +11,17 @@
     box-sizing: border-box;
 }
 
-/* Fila */
 .row {
     display: flex;
     flex-wrap: wrap;
     margin: 0 -10px;
 }
 
-/* Columnas base */
 [class^="col-"] {
     padding: 10px;
     box-sizing: border-box;
 }
 
-/* Sistema de 12 columnas */
 .col-1  { width: 8.33%; }
 .col-2  { width: 16.66%; }
 .col-3  { width: 25%; }
@@ -37,29 +35,33 @@
 .col-11 { width: 91.66%; }
 .col-12 { width: 100%; }
 
-/* Responsive para pantallas pequeñas */
 @media (max-width: 768px) {
     [class^="col-"] {
         width: 100%;
     }
 }
 
+
+/* -------------------------- */
+/* Estilos base               */
+/* -------------------------- */
+
 body {
     background-color: #0c1a2b;
     color: #c0d9af;
-    font-family: Arial, sans-serif;
+    font-family: 'Inter', Arial, sans-serif;
     margin: 0;
     padding: 0;
 }
 
-nav, footer {
-    font-family: 'Inter', sans-serif;
-}
-nav button, footer {
-    font-weight: 400;
-    letter-spacing: 0.3px;
-}
 
+/* -------------------------- */
+/* Header y Navbar            */
+/* -------------------------- */
+
+header {
+    background-color: #0C1A2B;
+}
 
 nav {
     position: relative;
@@ -67,7 +69,6 @@ nav {
     justify-content: space-between;
     align-items: center;
     padding: 15px 320px 8px 320px;
-    background-color: #0C1A2B;
 }
 
 /* Línea decorativa centrada debajo del nav */
@@ -77,12 +78,11 @@ nav::after {
     bottom: 0;
     left: 50%;
     transform: translateX(-50%);
-    width: 60%; /* Puedes ajustar este valor (60%-90%) */
+    width: 60%;
     height: 2px;
     background-color: #D9D9D9;
     border-radius: 2px;
 }
-
 
 /* Subcontenedores del nav */
 .nav-left,
@@ -92,22 +92,25 @@ nav::after {
     align-items: center;
 }
 
-/* Espaciado horizontal igualado */
+/* Botón USC Predict */
+.logo {
+    transition: all 0.2s ease;
+}
+
+.logo:hover {
+    transform: scale(1.10);
+    opacity: 0.65;
+
+}
+
+/* Centro del nav */
 .nav-center {
     flex: 1;
     justify-content: center;
     gap: 20px;
 }
 
-.logo{
-    transition: all 0.2s ease;  
-}
-
-.logo:hover {
-    transform: scale(1.10);
-}
-
-/* Botones */
+/* Botones del nav */
 nav button {
     margin: 5px;
     background-color: transparent;
@@ -124,13 +127,12 @@ nav button {
 }
 
 nav button.active {
-    background-color: #88a368; /* Color de fondo destacado */
-    color: #0c1a2b;             /* Texto oscuro para contrastar */
+    background-color: #88a368;
+    color: #0c1a2b;
     border-color: #c0d9af;
     font-weight: bold;
     box-shadow: 0 0 10px rgba(136, 163, 104, 0.5);
 }
-
 
 nav button:hover {
     background-color: #4a6978;
@@ -138,15 +140,109 @@ nav button:hover {
     border-color: #c0d9af;
     box-shadow: 0 0 8px rgba(192, 217, 175, 0.3);
     transform: translateY(-2px) scale(1.12);
-
 }
 
-/* Responsive para pantallas pequeñas */
+
+/* -------------------------- */
+/* Main                       */
+/* -------------------------- */
+
+/* Contenido de main */
+main {
+    padding: 30px 0px;
+}
+
+/* Fila central con 3 columnas */
+main .row {
+    border-radius: 10px;
+    padding: 10px 30px 00px 30px;
+    margin-bottom: 00px;
+}
+
+/* Columnas internas (semánticas) */
+main aside,
+main article,
+main section {
+    background: transparent; /* eliminamos el fondo gris que se añadió antes */
+    margin: 0;
+    padding: 0 20px;
+}
+
+/* Títulos de las columnas */
+main h2 {
+    font-size: 18px;
+    color: #a6c88f;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+/* Párrafos dentro del contenido */
+main p {
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 1.5;
+    margin-bottom: 10px;
+}
+
+
+
+/* -------------------------- */
+/* Footer                     */
+/* -------------------------- */
+
+footer {
+    background: linear-gradient(to top, #334658, #0c1a2b);
+    padding: 30px 0;
+    color: #c0d9af;
+}
+
+footer .footer-container {
+    max-width: 1200px;
+    margin: auto;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+footer .footer-column {
+    flex: 1 1 200px;
+    min-width: 150px;
+}
+
+footer .footer-column h3 {
+    font-size: 16px;
+    margin-bottom: 12px;
+    color: #c0d9af;
+    border-bottom: 2px solid #D9D9D9;
+    padding-bottom: 5px;
+}
+
+footer .footer-column a {
+    text-decoration: none;
+    color: #c0d9af;
+    display: block;
+    margin: 6px 0;
+    font-size: 14px;
+    transition: color 0.3s ease;
+}
+
+footer .footer-column a:hover {
+    color: #88a368;
+    text-decoration: underline;
+}
+
+
+/* -------------------------- */
+/* Responsive Footer & Nav    */
+/* -------------------------- */
+
 @media (max-width: 768px) {
     nav {
         flex-direction: column;
         align-items: stretch;
         gap: 10px;
+        padding: 20px;
     }
 
     .nav-center,
@@ -159,72 +255,19 @@ nav button:hover {
     .logo {
         margin-bottom: 10px;
     }
-}
-/* Espacio principal vacío */
-main {
-    /*height: 700px;*/
-    padding: 10px 130px;
-}
 
-footer {
-
-    background: linear-gradient(to top, #334658, #0c1a2b);
-    padding: 5px 0;
-    color: #c0d9af;
-    font-family: 'Inter', sans-serif;
-}
-
-.footer-container {
-    max-width: 1200px;
-    margin: auto;
-    display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
-    gap: 20px;
-}
-
-.footer-column {
-    flex: 1 1 200px;
-    min-width: 150px;
-}
-
-.footer-column h3 {
-    font-size: 16px;
-    margin-bottom: 12px;
-    color: #c0d9af;
-    border-bottom: 2px solid #D9D9D9;
-    padding-bottom: 5px;
-}
-
-.footer-column a {
-    text-decoration: none;
-    color: #c0d9af;
-    display: block;
-    margin: 6px 0;
-    font-size: 14px;
-    transition: color 0.3s ease;
-}
-
-/* Efecto hover minimalista */
-.footer-column a:hover {
-    color: #88a368;
-    text-decoration: underline;
-}
-
-/* Responsive: colapsables opcionales */
-@media (max-width: 768px) {
-    .footer-container {
+    footer .footer-container {
         flex-direction: column;
         align-items: center;
     }
 
-    .footer-column {
+    footer .footer-column {
         text-align: center;
         border-top: 1px solid #4a6978;
         padding-top: 20px;
     }
 
-    .footer-column h3 {
+    footer .footer-column h3 {
         cursor: pointer;
     }
 }

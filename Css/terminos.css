@@ -1,8 +1,8 @@
 /* Estilo para Términos y Condiciones */
 .terms-section {
-    background-color: #132536;
+    background-color: #132536 !important;
     color: #c0d9af;
-    padding: 40px;
+    padding: 10px 40px 30px 40px;
     border-radius: 8px;
     box-shadow: 0 2px 6px rgba(0,0,0,0.3);
     font-family: 'Inter', sans-serif;
