@@ -155,7 +155,7 @@ main {
 /* Fila central con 3 columnas */
 main .row {
     border-radius: 10px;
-    padding: 10px 30px 00px 30px;
+    padding: 10px 10px 00px 10px;
     margin-bottom: 00px;
 }
 
@@ -165,7 +165,7 @@ main article,
 main section {
     background: transparent; /* eliminamos el fondo gris que se añadió antes */
     margin: 0;
-    padding: 0 20px;
+    padding: 0 10px;
 }
 
 /* Títulos de las columnas */

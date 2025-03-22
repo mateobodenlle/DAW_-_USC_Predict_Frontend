@@ -1,0 +1,89 @@
+
+.tarjeta-evento {
+    background-color: #7da190;
+    border-radius: 16px;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    transition: transform 0.2s ease;
+}
+
+.tarjeta-evento:hover {
+    transform: translateY(-4px);
+}
+
+/* Parte superior: imagen + texto */
+.tarjeta-top {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.tarjeta-top img {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 2px solid #c0d9af;
+}
+
+.tarjeta-info h3 {
+    margin: 0;
+    font-size: 16px;
+    color: #c0d9af;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.tarjeta-info .porcentaje {
+    font-size: 14px;
+    font-weight: normal;
+    margin-left: 8px;
+}
+
+.tarjeta-info p {
+    margin: 2px 0 0;
+    font-size: 13px;
+    color: #e5f1db;
+}
+
+/* Parte inferior: botones */
+.tarjeta-bottom {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 14px;
+    gap: 10px;
+}
+
+.tarjeta-bottom button {
+    flex: 1;
+    padding: 8px 0;
+    font-size: 14px;
+    font-weight: bold;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+}
+
+.btn-si {
+    background-color: #c0d9af;
+    color: #0c1a2b;
+}
+
+.btn-no {
+    background-color: #0c1a2b;
+    color: #c0d9af;
+}
+
+.btn-si:hover {
+    background-color: #a9c083;
+}
+
+.btn-no:hover {
+    background-color: #324452;
+}
+
