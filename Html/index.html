@@ -3,11 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name = "description" content = "USC Predict es una plataforma de predicción de eventos">
+    <meta name = "keywords" content = "USC, Predict, Eventos, Predicción">
+    <meta name = "author" content = "Mateo Bodenlle y Diego Cristóbal">
     <title>Menú y Footer</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../Css/styles.css">
     <link rel="stylesheet" href="../Css/index.css">
-    <link rel="stylesheet" href="../Css/card.css">
+    <link rel="stylesheet" href="../Css/Componentes/card.css">
+    <link rel="stylesheet" href="../Css/Componentes/trendingList.css">
 </head>
 <body>
 
@@ -139,29 +143,102 @@
     </section>
 
     <!-- Sección de listas Trending y Actividad -->
-    <section class="lists-row">
-        <section class="list-block">
-            <h2>Trending 🔥</h2>
-            <ol>
-                <li><span>1.</span> Nombre <p>Categoría</p></li>
-                <li><span>2.</span> Nombre <p>Categoría</p></li>
-                <li><span>3.</span> Nombre <p>Categoría</p></li>
-                <li><span>4.</span> Nombre <p>Categoría</p></li>
-            </ol>
-            <a class="ver-mas" href="#">Ver más...</a>
-        </section>
+    <section class="trending-actividad-container">
 
-        <section class="list-block">
-            <h2>Actividad ⏳</h2>
-            <ol>
-                <li><span>1.</span> Nombre <p>Categoría</p></li>
-                <li><span>2.</span> Nombre <p>Categoría</p></li>
-                <li><span>3.</span> Nombre <p>Categoría</p></li>
-                <li><span>4.</span> Nombre <p>Categoría</p></li>
-            </ol>
-            <a class="ver-mas" href="#">Ver más...</a>
-        </section>
+    <section class="trending-box">
+        <div class="trending-header">
+            <span class="icon">📈</span>
+            <h2>Trending 🔥</h2>
+        </div>
+
+        <ol class="trending-list">
+            <li>
+                <img src="../Resources/ImagenEventos/Ajedrez.jpg" alt="Evento">
+                <div>
+                    <strong>Nombre</strong>
+                    <p>Categoría</p>
+                </div>
+                <span class="trending-pct">x%</span>
+            </li>
+            <li>
+                <img src="../Resources/ImagenEventos/Examen.jpg" alt="Evento">
+                <div>
+                    <strong>Nombre</strong>
+                    <p>Categoría</p>
+                </div>
+                <span class="trending-pct">x%</span>
+            </li>
+            <li>
+                <img src="../Resources/ImagenEventos/Ajedrez.jpg" alt="Evento">
+                <div>
+                    <strong>Nombre</strong>
+                    <p>Categoría</p>
+                </div>
+                <span class="trending-pct">x%</span>
+            </li>
+            <li>
+                <img src="../Resources/ImagenEventos/Juez.jpg" alt="Evento">
+                <div>
+                    <strong>Nombre</strong>
+                    <p>Categoría</p>
+                </div>
+                <span class="trending-pct">x%</span>
+            </li>
+        </ol>
+
+        <div class="ver-mas" id="ver-mas-trending">
+            <a>Ver más...</a>
+        </div>
     </section>
+
+
+    <section class="trending-box">
+        <div class="trending-header">
+            <span class="icon">📈</span>
+            <h2>Actividad 🔥</h2>
+        </div>
+
+        <ol class="trending-list">
+            <li>
+                <img src="../Resources/ImagenEventos/Ajedrez.jpg" alt="Evento">
+                <div>
+                    <strong>Nombre</strong>
+                    <p>Categoría</p>
+                </div>
+                <span class="trending-pct">x%</span>
+            </li>
+            <li>
+                <img src="../Resources/ImagenEventos/Examen.jpg" alt="Evento">
+                <div>
+                    <strong>Nombre</strong>
+                    <p>Categoría</p>
+                </div>
+                <span class="trending-pct">x%</span>
+            </li>
+            <li>
+                <img src="../Resources/ImagenEventos/Ajedrez.jpg" alt="Evento">
+                <div>
+                    <strong>Nombre</strong>
+                    <p>Categoría</p>
+                </div>
+                <span class="trending-pct">x%</span>
+            </li>
+            <li>
+                <img src="../Resources/ImagenEventos/Juez.jpg" alt="Evento">
+                <div>
+                    <strong>Nombre</strong>
+                    <p>Categoría</p>
+                </div>
+                <span class="trending-pct">x%</span>
+            </li>
+        </ol>
+
+        <div class="ver-mas">
+            <a href="#">Ver más...</a>
+        </div>
+    </section>
+    </section>
+
 
 </main>
 
@@ -193,4 +270,27 @@
 </footer>
 
 </body>
+
 </html>
+<script>
+    let trendingExtendido = false;
+    // Script de botón de ver más
+    document.getElementById("ver-mas-trending").addEventListener("click",() => {
+        let trendingBox = document.getElementsByClassName("trending-box")[0];
+        if (!trendingExtendido) {
+            trendingBox.style.height = "600px";
+            document.querySelector("#ver-mas-trending a").textContent = "Ver menos...";
+            document.querySelectorAll("ol li").forEach((el) => {
+                el.style.height = `85px`
+            });
+            trendingExtendido = true;
+        } else {
+            trendingExtendido = false;
+            trendingBox.style.height = "360px";
+            document.querySelector("#ver-mas-trending a").textContent = "Ver más...";
+            document.querySelectorAll("ol li").forEach((el) => {
+                el.style.height = `40px`;
+            });
+        }
+    })
+</script>

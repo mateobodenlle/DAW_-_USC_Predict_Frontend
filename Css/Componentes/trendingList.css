@@ -1,0 +1,127 @@
+/* CONTENEDOR GENERAL */
+.trending-box {
+    background-color: #4a6978;
+    border-radius: 12px;
+    padding: 20px;
+    width: 515px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+/* ENCABEZADO */
+.trending-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.trending-header h2 {
+    font-size: 18px;
+    color: #c0d9af;
+    margin: 0;
+}
+
+.trending-header .icon {
+    font-size: 22px;
+    color: #a9c083;
+}
+
+/* LISTA */
+.trending-list {
+    list-style: decimal;
+    list-style-position: inside;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.trending-list li {
+    display: flex;
+    align-items: center;
+    background-color: #7da190;
+    padding: 8px 10px;
+    border-radius: 8px;
+    gap: 10px;
+    position: relative;
+}
+
+/* Imagen circular */
+.trending-list img {
+    width: 40px;
+    height: 40px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 2px solid #c0d9af;
+}
+
+/* Nombre y categoría */
+.trending-list div {
+    flex-grow: 1;
+}
+
+.trending-list strong {
+    display: block;
+    font-size: 14px;
+    color: #0c1a2b;
+}
+
+.trending-list p {
+    font-size: 12px;
+    margin: 0;
+    color: #0c1a2b;
+}
+
+/* Porcentaje alineado a la derecha */
+.trending-pct {
+    font-size: 13px;
+    font-weight: bold;
+    color: #c0d9af;
+}
+
+/* Ver más */
+.ver-mas {
+    margin-top: 15px;
+    text-align: center;
+    border-top: 1px solid #c0d9af50;
+    padding-top: 10px;
+}
+
+.ver-mas a {
+    font-size: 15px;
+    font-weight: 500;
+    color: #c0d9af;
+    text-decoration: none;
+    transition: color 0.3s ease, text-shadow 0.2s ease;
+    display: inline-block;
+    position: relative;
+}
+
+/* Efecto hover */
+.ver-mas a:hover {
+    color: #ffffff;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+}
+
+
+.trending-list li {
+    display: flex;
+    align-items: center;
+    background-color: #7da190;
+    padding: 8px 10px;
+    border-radius: 8px;
+    gap: 10px;
+    position: relative;
+    transition: all 0.2s ease-in-out;
+}
+
+/* EFECTO HOVER */
+.trending-list li:hover {
+    background-color: #90b6a1; /* fondo más claro */
+    opacity: 0.95;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transform: scale(1.015);
+}
