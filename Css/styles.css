@@ -54,7 +54,6 @@ body {
     padding: 0;
 }
 
-
 /* -------------------------- */
 /* Header y Navbar            */
 /* -------------------------- */
@@ -72,6 +71,7 @@ nav {
 }
 
 /* Línea decorativa centrada debajo del nav */
+/*TODO explicar en la memoria*/
 nav::after {
     content: '';
     position: absolute;
@@ -100,7 +100,6 @@ nav::after {
 .logo:hover {
     transform: scale(1.10);
     opacity: 0.65;
-
 }
 
 /* Centro del nav */
@@ -126,6 +125,7 @@ nav button {
     letter-spacing: 0.5px;
 }
 
+/*Indica cual es la página actual*/
 nav button.active {
     background-color: #88a368;
     color: #0c1a2b;
