@@ -11,7 +11,7 @@
     justify-content: space-between;
     transition: height 0.4s ease; /* <-- transicion de altura */
     overflow: hidden; /* para evitar scroll interno */
-    height: 360px;     /* altura por defecto (cerrado) */
+    height: 380px;     /* altura por defecto (cerrado) */
 }
 
 /* Estado expandido */
@@ -43,10 +43,18 @@
     list-style: decimal;
     list-style-position: inside;
     margin: 0;
-    padding: 0;
+    padding: 2px;
     display: flex;
     flex-direction: column;
     gap: 12px;
+    height: 100%;
+    overflow-y: scroll;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+.trending-list::-webkit-scrollbar {
+    display: none;
 }
 
 .trending-list li {
