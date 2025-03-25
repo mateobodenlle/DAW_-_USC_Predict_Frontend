@@ -59,6 +59,19 @@
     position: relative;
 }
 
+/* Animación de entrada para nuevos elementos */
+.trending-list li.nuevo {
+    opacity: 0;
+    transform: translateY(10px);
+    transition: all 0.3s ease;
+}
+
+.trending-list li.nuevo.mostrar {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
 /* Imagen circular */
 .trending-list img {
     width: 40px;
