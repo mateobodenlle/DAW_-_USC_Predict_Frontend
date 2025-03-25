@@ -10,6 +10,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../Css/styles.css">
     <link rel="stylesheet" href="../Css/index.css">
+    <link rel="stylesheet" href="../Css/layoutComun.css">
     <link rel="stylesheet" href="../Css/Componentes/card.css">
     <link rel="stylesheet" href="../Css/Componentes/trendingList.css">
 </head>
@@ -271,25 +272,22 @@
 </body>
 
 </html>
+
 <script>
-    let trendingExtendido = false;
-    // Script de botón de ver más
-    document.getElementById("ver-mas-trending").addEventListener("click",() => {
-        let trendingBox = document.getElementsByClassName("trending-box")[0];
-        if (!trendingExtendido) {
-            trendingBox.style.height = "600px";
-            document.querySelector("#ver-mas-trending a").textContent = "Ver menos...";
-            document.querySelectorAll("ol li").forEach((el) => {
-                el.style.height = `85px`
-            });
-            trendingExtendido = true;
-        } else {
-            trendingExtendido = false;
-            trendingBox.style.height = "360px";
-            document.querySelector("#ver-mas-trending a").textContent = "Ver más...";
-            document.querySelectorAll("ol li").forEach((el) => {
-                el.style.height = `40px`;
-            });
-        }
-    })
+    document.addEventListener("DOMContentLoaded", () => {
+        const trendingBox = document.querySelector(".trending-box");
+        const verMas = document.getElementById("ver-mas-trending");
+        const textoLink = verMas.querySelector("a");
+
+        verMas.addEventListener("click", () => {
+            trendingBox.classList.toggle("expandido");
+
+            // Cambia el texto según el estado
+            if (trendingBox.classList.contains("expandido")) {
+                textoLink.textContent = "Ver menos...";
+            } else {
+                textoLink.textContent = "Ver más...";
+            }
+        });
+    });
 </script>
