@@ -1,4 +1,4 @@
-
+@import "Css/styles.css";
 .tarjeta-evento {
     background-color: #7da190;
     border-radius: 16px;
@@ -72,11 +72,11 @@
 
 .btn-si {
     background-color: #c0d9af;
-    color: #0c1a2b;
+    color: var(--color-background);
 }
 
 .btn-no {
-    background-color: #0c1a2b;
+    background-color: var(--color-background);
     color: #c0d9af;
 }
 
