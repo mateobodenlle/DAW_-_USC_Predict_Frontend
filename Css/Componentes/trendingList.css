@@ -6,7 +6,7 @@
     --color-trending-box: #4a6978; /* var(--color-trending-box) */
     --color-trending-header-icon: #a9c083; /* var(--color-trending-header-icon) */
     --color-trending-list-item: #7da190; /* var(--color-trending-list-item) */
-    --color-trending-list-item-hover: #90b6a1; /* var(--color-trending-list-item-hover) */
+    --color-trending-list-item-hover: #b0d3bf; /* var(--color-trending-list-item-hover) */
 }
 
 .trending-box {
@@ -36,7 +36,7 @@
 }
 
 .trending-header h2 {
-    font-size: 18px;
+    font-size: 25px;
     color: var(--color-text);
     margin: 0;
 }
@@ -234,6 +234,7 @@
 .ver-mas:hover {
     background-color: #c0d9af50;
     transition: background-color 0.25s ease;
+    cursor: pointer;
 }
 
 
@@ -251,7 +252,8 @@
 /* EFECTO HOVER */
 .trending-list li:hover {
     background-color: var(--color-trending-list-item-hover); /* fondo más claro */
-    opacity: 0.95;
+    opacity: 2;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     transform: scale(1.005);
+    cursor: pointer;
 }
