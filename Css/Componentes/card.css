@@ -1,7 +1,7 @@
 @import "Css/styles.css";
 .tarjeta-evento {
     background-color: #7da190;
-    border-radius: 16px;
+    border-radius: 12px;
     padding: 16px;
     display: flex;
     flex-direction: column;
@@ -65,7 +65,7 @@
     font-size: 14px;
     font-weight: bold;
     border: none;
-    border-radius: 12px;
+    border-radius: 8px;
     cursor: pointer;
     transition: all 0.15s ease-in-out;
 }

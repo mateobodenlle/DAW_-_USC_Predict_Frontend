@@ -13,7 +13,7 @@
     background-color: var(--color-trending-box);
     border-radius: 12px;
     padding: 20px;
-    width: 515px;
+    width: 520px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -70,7 +70,7 @@
 .trending-list::before,
 .trending-list::after {
     content: '';
-    width: 516px;
+    width: 522px;
     position: absolute;
     left: 399px;
     right: 0;
@@ -82,12 +82,12 @@
 .trending-list::before {
     /*top: 400px;*/
     z-index: 10;
-    background: linear-gradient(to bottom, rgba(25, 50, 25, 0.35), transparent);
+    background: linear-gradient(to bottom, rgba(255, 50, 25, 0.35), transparent);
 }
 
 .trending-list::after {
-    bottom: -162.5px;
-    background: linear-gradient(to top, rgba(25, 50, 25, 0.35), transparent);/*TODO ARREGLAR*/
+    bottom: -140.5px;
+    background: linear-gradient(to top, rgba(255, 50, 25, 0.35), transparent);/*TODO ARREGLAR*/
 }
 
 /* Sombra superior */
