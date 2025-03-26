@@ -9,7 +9,7 @@
 .home-header h1 {
     font-size: 28px;
     font-weight: 400;
-    color: #a6c88f;
+    color: var(--color-primary);
 }
 
 .home-header .intro {
