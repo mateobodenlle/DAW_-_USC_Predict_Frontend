@@ -46,19 +46,72 @@
     color: var(--color-trending-header-icon);
 }
 
+.trending-list-wrapper {
+    position: relative;
+    height: 90%;
+    display: flex;
+    flex-direction: column;
+}
+
+
+.trending-list-wrapper::before,
+.trending-list-wrapper::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 16px;
+    pointer-events: none;
+    opacity: 0;
+    z-index: 10;
+}
+
+.trending-list-wrapper::before {
+    top: 0;
+    background: linear-gradient(to bottom, rgba(25, 50, 25, 0.35), transparent);
+}
+
+.trending-list-wrapper::after {
+    bottom: 51.5px;
+    background: linear-gradient(to top, rgba(25, 50, 25, 0.35), transparent);
+}
+
+/* Transiciones distintas para mostrar/ocultar */
+.trending-list-wrapper.shadow-top::before {
+    opacity: 1;
+    transition: opacity 0.3s ease-in;
+}
+.trending-list-wrapper:not(.shadow-top)::before {
+    opacity: 0;
+    transition: opacity 0.3s ease-out;
+}
+
+.trending-list-wrapper.shadow-bottom::after {
+    opacity: 1;
+    transition: opacity 0.55s ease-in;
+}
+.trending-list-wrapper:not(.shadow-bottom)::after {
+    opacity: 0;
+    transition: opacity 0.1s ease-out;
+}
+
+
 /* LISTA */
 .trending-list {
+    flex-grow: 1;
     list-style: decimal inside;
     margin: 0;
-    padding: 0px;
+    padding: 0;
     display: flex;
     flex-direction: column;
     gap: 12px;
     height: 100%;
-    overflow-y: scroll;
+    overflow-y: auto;
     scrollbar-width: none;
     -ms-overflow-style: none;
+    position: relative; /* Opcional si necesitas algo relativo dentro */
 }
+
 
 .trending-list::-webkit-scrollbar {
     display: none;
@@ -66,29 +119,10 @@
 
 
 
-
-.trending-list::before,
-.trending-list::after {
-    content: '';
-    width: 522px;
-    position: absolute;
-    left: 399px;
-    right: 0;
-    height: 12px; /* Adjust the height of the shadow */
-    pointer-events: none;
-    opacity: 0;
+.trending-list::-webkit-scrollbar {
+    display: none;
 }
 
-.trending-list::before {
-    /*top: 400px;*/
-    z-index: 10;
-    background: linear-gradient(to bottom, rgba(255, 50, 25, 0.35), transparent);
-}
-
-.trending-list::after {
-    bottom: -140.5px;
-    background: linear-gradient(to top, rgba(255, 50, 25, 0.35), transparent);/*TODO ARREGLAR*/
-}
 
 /* Sombra superior */
 .trending-list.shadow-top::before {
@@ -178,6 +212,7 @@
     border-radius: 8px;
     background-color: #43606e;
     transition: background-color 0.15s ease;
+    z-index: 1;
 }
 
 .ver-mas a {
