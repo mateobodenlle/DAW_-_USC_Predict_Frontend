@@ -5,34 +5,103 @@ h1 {
     color: #c0d9af;
 }
 
-details {
-    background: #4a6978;
-    padding: 10px;
+.acordeon-summary {
+    height: 40px; /* puedes ajustar si quieres más alto */
     margin: 10px 0;
-    border-radius: 5px;
+
+    display: flex;
+    align-items: center;   /* centra verticalmente */
+    gap: 20px;
+    justify-content: flex-start; /* o center si quieres totalmente centrado */
+
+    font-size: 16px;
     cursor: pointer;
+    transition: background 0.3s;
+
+    border: 2px solid #c0d9af; /* verde claro */
+    border-radius: 12px;
+    /*padding: 12px 20px;*/
+    background-color: #0c1a2b; /* mismo fondo o ligeramente más oscuro si quieres contraste */
+    box-shadow: 0 0 55px #c8e38a40; /* opcional: sombra suave verde */
+
 }
 
-details summary {
+.acordeon-summary .titulo {
+
+    background-color: #4a6978;
+    padding: 0px 12px;
+    border-radius: 12px;
     font-weight: bold;
     color: #c0d9af;
+
+    height: 100%;
+
+    display: flex;                /* centrado */
+    align-items: center;
+    justify-content: center;
+
+    flex: 1;
 }
 
-section {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+.acordeon-summary  .bloque {
+    flex: 1;
+}
+
+.acordeon-summary .descripcion {
+
+    opacity: 0.8;
+    font-size: 14px;
+
+    flex: 2;
+}
+
+.acordeon-summary .porcentaje {
+    text-align: right;
+    font-weight: bold;
+    color: #c8e38a;
+    padding: 0px 12px;
+
+    flex: 1;
+}
+
+
+.acordeon-content {
+    overflow: hidden;
+    max-height: 0;
+    opacity: 0;
+    transform: translateX(-10px);
+    transition: max-height 0.5s ease, opacity 0.5s ease, transform 0.5s ease;
+}
+
+.acordeon-content.visible {
+    max-height: 1000px; /* un valor suficientemente grande */
+    opacity: 1;
+    transform: translateY(0);
 }
 
 article {
-    background: #4a6978;
+    background: #0c1a2b;
     padding: 15px;
     margin: 10px;
     border-radius: 5px;
     text-align: center;
     width: 200px;
+    display: flex;
+    flex-direction: row;
 }
 
 button {
     background-color: #88a368;
 }
+
+/* Tarjetas tipo row */
+.card-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px; /* espacio entre artículos */
+    margin-top: 10px;
+}
+
+/* ANIMACIONES */
+
+/*Animación de la aparicion de las tarjetas*/
