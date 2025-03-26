@@ -70,34 +70,46 @@
 .trending-list::before,
 .trending-list::after {
     content: '';
-    width: 515px;
+    width: 516px;
     position: absolute;
-    left: 400px;
+    left: 399px;
     right: 0;
-    height: 20px; /* Adjust the height of the shadow */
+    height: 12px; /* Adjust the height of the shadow */
     pointer-events: none;
-    transition: opacity 0.3s;
     opacity: 0;
 }
 
 .trending-list::before {
     /*top: 400px;*/
     z-index: 10;
-    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.1), transparent);
+    background: linear-gradient(to bottom, rgba(25, 50, 25, 0.35), transparent);
 }
 
 .trending-list::after {
-    bottom: -168px;
-    background: linear-gradient(to top, rgba(0, 0, 0, 0.1), transparent);/*TODO ARREGLAR*/
+    bottom: -162.5px;
+    background: linear-gradient(to top, rgba(25, 50, 25, 0.35), transparent);/*TODO ARREGLAR*/
 }
 
+/* Sombra superior */
 .trending-list.shadow-top::before {
     opacity: 1;
+    transition: opacity .3s ease-in;
+}
+.trending-list:not(.shadow-top)::before {
+    opacity: 0;
+    transition: opacity 0.3s ease-out;
 }
 
+/* Sombra inferior */
 .trending-list.shadow-bottom::after {
     opacity: 1;
+    transition: opacity .55s ease-in;
 }
+.trending-list:not(.shadow-bottom)::after {
+    opacity: 0;
+    transition: opacity 0.1s ease-out;
+}
+
 
 .trending-list li {
     display: flex;

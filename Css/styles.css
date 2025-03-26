@@ -3,6 +3,7 @@
 /* -------------------------- */
 :root {
     --color-background: #0c1a2b;
+    --color-background2: #0c1c2b;
     --color-text: #c0d9af;
     --color-primary: #a6c88f;
     --color-secondary: #88a368;
@@ -22,7 +23,8 @@
 /* -------------------------- */
 
 body {
-    background-color: var(--color-background);
+    /*background-color: var(--color-background);*/
+    background: radial-gradient(circle, var(--color-background2), var(--color-background));
     color: var(--color-text);
     font-family: 'Inter', Arial, sans-serif;
     margin: 0;

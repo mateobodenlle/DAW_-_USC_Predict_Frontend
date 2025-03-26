@@ -215,8 +215,8 @@
             </li>
         </ol>
 
-        <div class="ver-mas">
-            <a href="#">Ver más...</a>
+        <div class="ver-mas" id="ver-mas-trending2">
+            <a>Ver más...</a>
         </div>
     </section>
     </section>
@@ -235,6 +235,8 @@
 <script src="../Js/componentes.js"></script>
 
 <script>
+    let expandido = false;
+
     document.addEventListener("DOMContentLoaded", () => {
     const trendingBox = document.querySelector(".trending-box");
     const verMas = document.getElementById("ver-mas-trending");
@@ -251,11 +253,11 @@
         { img: "../Resources/ImagenEventos/Juez.jpg", nombre: "Evento 11", categoria: "Categoría", pct: "89%" },
     ];
 
-    let expandido = false;
 
     verMas.addEventListener("click", () => {
         trendingBox.classList.toggle("expandido");
         expandido = !expandido;
+
 
         if (expandido) {
             textoLink.textContent = "Ver menos...";
@@ -283,7 +285,6 @@
         } else {
             lista.scrollTop = 0; // Desplazar al inicio de la lista
             textoLink.textContent = "Ver más...";
-
             const nuevos = lista.querySelectorAll("li.nuevo");
             nuevos.forEach((li, i) => {
                 li.classList.remove("mostrar");
@@ -308,15 +309,26 @@
                 lista.classList.remove("shadow-top");
             }
 
-            if (scrollTop + clientHeight < scrollHeight) {
+            if (scrollTop + clientHeight < scrollHeight && expandido) {
                 lista.classList.add("shadow-bottom");
             } else {
                 lista.classList.remove("shadow-bottom");
             }
         };
+        const verMas = document.getElementById("ver-mas-trending");
 
         lista.addEventListener("scroll", updateShadows);
         updateShadows(); // Initialize shadows
+        verMas.addEventListener("click", () =>{
+            // Quitamos shadows
+            const lista = document.querySelector(".trending-list");
+            if (!expandido)
+                lista.classList.remove("shadow-bottom");
+            else
+
+                updateShadows();
+        });
+
     });
 
 
