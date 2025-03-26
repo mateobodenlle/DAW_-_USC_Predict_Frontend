@@ -173,6 +173,11 @@
     text-align: center;
     border-top: 1px solid #c0d9af50;
     padding-top: 10px;
+    padding-bottom: 11px;
+    margin-bottom: -5px;
+    border-radius: 8px;
+    background-color: #43606e;
+    transition: background-color 0.15s ease;
 }
 
 .ver-mas a {
@@ -186,9 +191,14 @@
 }
 
 /* Efecto hover */
-.ver-mas a:hover {
+.ver-mas:hover a{
     color: #ffffff;
     text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+}
+
+.ver-mas:hover {
+    background-color: #c0d9af50;
+    transition: background-color 0.25s ease;
 }
 
 
@@ -200,7 +210,7 @@
     border-radius: 8px;
     gap: 10px;
     position: relative;
-    transition: all 0.2s ease-in-out;
+    transition: all 0.1s ease-in-out;
 }
 
 /* EFECTO HOVER */
@@ -208,5 +218,5 @@
     background-color: var(--color-trending-list-item-hover); /* fondo más claro */
     opacity: 0.95;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    transform: scale(1.015);
+    transform: scale(1.005);
 }

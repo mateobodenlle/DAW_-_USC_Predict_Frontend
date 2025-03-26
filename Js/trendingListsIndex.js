@@ -32,7 +32,8 @@
 
     cajasTrending.forEach((trendingBox, index) => {
     const lista = trendingBox.querySelector(".trending-list");
-    const verMas = trendingBox.querySelector(".ver-mas a");
+    const verMas = trendingBox.querySelector(".ver-mas");
+    const verMasTexto = trendingBox.querySelector(".ver-mas a");
     let expandido = false;
 
     const datosExtra = datosPorCaja[index]; // Cargamos los datos correspondientes
@@ -63,7 +64,7 @@
     expandido = !expandido;
 
     if (expandido) {
-    verMas.textContent = "Ver menos...";
+    verMasTexto.textContent = "Ver menos...";
 
     datosExtra.forEach((evento, i) => {
     const li = document.createElement("li");
@@ -89,7 +90,7 @@
 
 } else {
     lista.scrollTop = 0;
-    verMas.textContent = "Ver más...";
+    verMasTexto.textContent = "Ver más...";
 
     const nuevos = lista.querySelectorAll("li.nuevo");
     nuevos.forEach((li, i) => {
