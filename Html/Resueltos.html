@@ -18,180 +18,35 @@
 <body>
 
 <!-- Encabezado principal del sitio -->
-<header>
-    <nav>
-        <div class="nav-left">
-            <div class="logo">
-                <a href="index.html">
-                    <img src="../Resources/Logo.png" width="130px" alt="USC Predict Logo">
-                </a>
-            </div>
-        </div>
-        <div class="nav-center">
-            <button onclick="location.href='Búsqueda.html'">Búsqueda</button>
-            <button onclick="location.href='Resueltos.html'">Resueltos</button>
-            <button class="active" onclick="location.href='Watchlist.html'">Watchlist</button>
-        </div>
-        <div class="nav-right">
-            <button onclick="location.href='#'">About us</button>
-        </div>
-    </nav>
-</header>
+<header id="navbar"></header>
 
 <main class="container">
 
-     <section>
+     <section id="main-section">
          <div class="acordeon">
 
              <div class="acordeon-summary">
-                 <div class="bloque titulo">Aprobados en algebra</div>
+                 <div class="bloque titulo">Aprobados</div>
                  <div class="bloque descripcion">El porcentaje de alumnos que superan la asignatura este año</div>
-                 <div class="bloque porcentaje">67%</div>
+
+                 <div class="bloque porcentaje">13</div>
              </div>
 
-
              <div class="acordeon-content">
-                 <!-- Aquí van las tarjetas o lo que quieras mostrar -->
-
-                 <div class="card-row">
-                     <article class="tarjeta-evento">
-                         <div class="tarjeta-top">
-                             <img src="../Resources/ImagenEventos/Ajedrez.jpg" alt="Evento">
-                             <div class="tarjeta-info">
-                                 <h3>Nombre <span class="porcentaje">x%</span></h3>
-                                 <p>Categoría</p>
-                             </div>
-                         </div>
-
-                         <div class="tarjeta-bottom">
-                             <button class="btn-si">SI</button>
-                             <button class="btn-no">NO</button>
-                         </div>
-                     </article>
-
-                     <article class="tarjeta-evento">
-                         <div class="tarjeta-top">
-                             <img src="../Resources/ImagenEventos/juez.jpg" alt="Evento">
-                             <div class="tarjeta-info">
-                                 <h3>Nombre <span class="porcentaje">x%</span></h3>
-                                 <p>Categoría</p>
-                             </div>
-                         </div>
-
-                         <div class="tarjeta-bottom">
-                             <button class="btn-si">SI</button>
-                             <button class="btn-no">NO</button>
-                         </div>
-                     </article>
-
-                     <article class="tarjeta-evento">
-                         <div class="tarjeta-top">
-                             <img src="../Resources/ImagenEventos/Ajedrez.jpg" alt="Evento">
-                             <div class="tarjeta-info">
-                                 <h3>Nombre <span class="porcentaje">x%</span></h3>
-                                 <p>Categoría</p>
-                             </div>
-                         </div>
-
-                         <div class="tarjeta-bottom">
-                             <button class="btn-si">SI</button>
-                             <button class="btn-no">NO</button>
-                         </div>
-                     </article>
-
-                     <article class="tarjeta-evento">
-                         <div class="tarjeta-top">
-                             <img src="../Resources/ImagenEventos/Ajedrez.jpg" alt="Evento">
-                             <div class="tarjeta-info">
-                                 <h3>Nombre <span class="porcentaje">x%</span></h3>
-                                 <p>Categoría</p>
-                             </div>
-                         </div>
-
-                         <div class="tarjeta-bottom">
-                             <button class="btn-si">SI</button>
-                             <button class="btn-no">NO</button>
-                         </div>
-                     </article>
-                 </div>
-
+                 <div class="cards"></div>
              </div>
          </div>
 
          <div class="acordeon">
 
              <div class="acordeon-summary">
-                 <div class="bloque titulo">Nuevo rector</div>
+                 <div class="bloque titulo">Puesto de renombre</div>
                  <div class="bloque descripcion">¿Quién será elegido como próximo rector de la universidad?</div>
                  <div class="bloque porcentaje">40%</div>
-             </div>
-
+         </div>
 
              <div class="acordeon-content">
-                 <!-- Aquí van las tarjetas o lo que quieras mostrar -->
-
-                 <div class="card-row">
-                     <article class="tarjeta-evento">
-                         <div class="tarjeta-top">
-                             <img src="../Resources/ImagenEventos/Ajedrez.jpg" alt="Evento">
-                             <div class="tarjeta-info">
-                                 <h3>Nombre <span class="porcentaje">x%</span></h3>
-                                 <p>Categoría</p>
-                             </div>
-                         </div>
-
-                         <div class="tarjeta-bottom">
-                             <button class="btn-si">SI</button>
-                             <button class="btn-no">NO</button>
-                         </div>
-                     </article>
-
-                     <article class="tarjeta-evento">
-                         <div class="tarjeta-top">
-                             <img src="../Resources/ImagenEventos/juez.jpg" alt="Evento">
-                             <div class="tarjeta-info">
-                                 <h3>Nombre <span class="porcentaje">x%</span></h3>
-                                 <p>Categoría</p>
-                             </div>
-                         </div>
-
-                         <div class="tarjeta-bottom">
-                             <button class="btn-si">SI</button>
-                             <button class="btn-no">NO</button>
-                         </div>
-                     </article>
-
-                     <article class="tarjeta-evento">
-                         <div class="tarjeta-top">
-                             <img src="../Resources/ImagenEventos/Ajedrez.jpg" alt="Evento">
-                             <div class="tarjeta-info">
-                                 <h3>Nombre <span class="porcentaje">x%</span></h3>
-                                 <p>Categoría</p>
-                             </div>
-                         </div>
-
-                         <div class="tarjeta-bottom">
-                             <button class="btn-si">SI</button>
-                             <button class="btn-no">NO</button>
-                         </div>
-                     </article>
-
-                     <article class="tarjeta-evento">
-                         <div class="tarjeta-top">
-                             <img src="../Resources/ImagenEventos/Ajedrez.jpg" alt="Evento">
-                             <div class="tarjeta-info">
-                                 <h3>Nombre <span class="porcentaje">x%</span></h3>
-                                 <p>Categoría</p>
-                             </div>
-                         </div>
-
-                         <div class="tarjeta-bottom">
-                             <button class="btn-si">SI</button>
-                             <button class="btn-no">NO</button>
-                         </div>
-                     </article>
-                 </div>
-
+                 <div class="cards"></div>
              </div>
          </div>
 
@@ -203,110 +58,54 @@
                  <div class="bloque porcentaje">80%</div>
              </div>
 
-
              <div class="acordeon-content">
-                 <!-- Aquí van las tarjetas o lo que quieras mostrar -->
-
-                 <div class="card-row">
-                     <article class="tarjeta-evento">
-                         <div class="tarjeta-top">
-                             <img src="../Resources/ImagenEventos/Ajedrez.jpg" alt="Evento">
-                             <div class="tarjeta-info">
-                                 <h3>Nombre <span class="porcentaje">x%</span></h3>
-                                 <p>Categoría</p>
-                             </div>
-                         </div>
-
-                         <div class="tarjeta-bottom">
-                             <button class="btn-si">SI</button>
-                             <button class="btn-no">NO</button>
-                         </div>
-                     </article>
-
-                     <article class="tarjeta-evento">
-                         <div class="tarjeta-top">
-                             <img src="../Resources/ImagenEventos/juez.jpg" alt="Evento">
-                             <div class="tarjeta-info">
-                                 <h3>Nombre <span class="porcentaje">x%</span></h3>
-                                 <p>Categoría</p>
-                             </div>
-                         </div>
-
-                         <div class="tarjeta-bottom">
-                             <button class="btn-si">SI</button>
-                             <button class="btn-no">NO</button>
-                         </div>
-                     </article>
-
-                     <article class="tarjeta-evento">
-                         <div class="tarjeta-top">
-                             <img src="../Resources/ImagenEventos/Ajedrez.jpg" alt="Evento">
-                             <div class="tarjeta-info">
-                                 <h3>Nombre <span class="porcentaje">x%</span></h3>
-                                 <p>Categoría</p>
-                             </div>
-                         </div>
-
-                         <div class="tarjeta-bottom">
-                             <button class="btn-si">SI</button>
-                             <button class="btn-no">NO</button>
-                         </div>
-                     </article>
-
-                     <article class="tarjeta-evento">
-                         <div class="tarjeta-top">
-                             <img src="../Resources/ImagenEventos/Ajedrez.jpg" alt="Evento">
-                             <div class="tarjeta-info">
-                                 <h3>Nombre <span class="porcentaje">x%</span></h3>
-                                 <p>Categoría</p>
-                             </div>
-                         </div>
-
-                         <div class="tarjeta-bottom">
-                             <button class="btn-si">SI</button>
-                             <button class="btn-no">NO</button>
-                         </div>
-                     </article>
-                 </div>
-
+                 <div class="cards"></div>
              </div>
          </div>
      </section>
 
-
-
 </main>
 
- <!-- Pie de página -->
-<footer>
-    <section class="footer-container">
-        <section class="footer-column">
-            <h3>Información</h3>
-            <p><a href="About Us.html">Quiénes somos</a></p>
-            <p><a href="About Us.html">Contacto</a></p>
-            <p><a href="TermsAndConditions.html">Política de privacidad</a></p>
-        </section>
-        <section class="footer-column">
-            <h3>Soporte</h3>
-            <p><a href="#">Ayuda</a></p>
-            <p><a href="#">Preguntas frecuentes</a></p>
-        </section>
-        <section class="footer-column">
-            <h3>Comunidad</h3>
-            <p><a href="#">Instagram</a></p>
-            <p><a href="#">X (Twitter)</a></p>
-        </section>
-        <section class="footer-column">
-            <h3>Legal</h3>
-            <p><a href="TermsAndConditions.html">Términos de uso</a></p>
-        </section>
-    </section>
-</footer>
+<!-- Pie de página -->
+<footer id="footer"></footer>
 
 </body>
 
 </html>
 
+<!-- Footer y Header -->
+<script src="../Js/componentes.js"></script>
+<!-- Inserción de tarjetas -->
+<script type="module">
+    import { generarTarjetas } from '../Js/loaderCards.js';
+
+    const datosEjemplo = [
+        { img: "../Resources/ImagenEventos/Ajedrez.jpg", nombre: "Ajedrez", categoria: "Deporte", porcentaje: "72%" },
+        { img: "../Resources/ImagenEventos/Examen.jpg", nombre: "Examen Final", categoria: "Académico", porcentaje: "59%" },
+        { img: "../Resources/ImagenEventos/Examen.jpg", nombre: "Parcial", categoria: "Académico", porcentaje: "44%" },
+        { img: "../Resources/ImagenEventos/Juez.jpg", nombre: "Expulsión de Nico", categoria: "Administrativo", porcentaje: "18%" },
+        { img: "../Resources/ImagenEventos/Examen.jpg", nombre: "Examen Mates", categoria: "Académico", porcentaje: "59%" },
+        { img: "../Resources/ImagenEventos/Ajedrez.jpg", nombre: "Torneo ajedrez", categoria: "Pasos", porcentaje: "42%" },
+        { img: "../Resources/ImagenEventos/Ajedrez.jpg", nombre: "Torneo ajedrez", categoria: "Pasos", porcentaje: "42%" },
+        { img: "../Resources/ImagenEventos/Ajedrez.jpg", nombre: "Torneo ajedrez", categoria: "Pasos", porcentaje: "42%" },
+
+    ];
+
+    const contenedores = document.querySelectorAll(".cards");
+
+    // Callback para botones
+    const manejarSi = (evento) => alert(`Votaste SÍ en: ${evento.nombre}`);
+    const manejarNo = (evento) => alert(`Votaste NO en: ${evento.nombre}`);
+
+    const tarjetas = document.querySelectorAll(".tarjeta-evento");
+
+    contenedores.forEach(contenedor => {
+        // generarTarjetas(contenedor, datosEjemplo, manejarSi, manejarNo);
+    });
+
+
+</script>
+<!-- Animación apertura de acordeón -->
 <script>
     document.addEventListener("DOMContentLoaded", () => {
         const summaries = document.querySelectorAll(".acordeon-summary");
@@ -320,15 +119,25 @@
                 // Cerrar todos (opcional: para comportamiento tipo acordeón)
                 document.querySelectorAll(".acordeon-content.visible").forEach(c => {
                     c.classList.remove("visible");
+
+                    c.previousElementSibling.classList.remove("animado"); // quitar animación del summary anterior
+
                 });
 
                 // Si no estaba visible, mostrarlo
                 if (!isVisible) {
                     content.classList.add("visible");
+
+                    summary.classList.add("animado");
+
                 }
+
+
             });
         });
+
     });
 </script>
+
 
 

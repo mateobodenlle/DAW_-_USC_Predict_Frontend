@@ -4,81 +4,6 @@ h1 {
     text-align: center;
     color: #c0d9af;
 }
-
-.acordeon-summary {
-    height: 40px; /* puedes ajustar si quieres más alto */
-    margin: 10px 0;
-
-    display: flex;
-    align-items: center;   /* centra verticalmente */
-    gap: 20px;
-    justify-content: flex-start; /* o center si quieres totalmente centrado */
-
-    font-size: 16px;
-    cursor: pointer;
-    transition: background 0.3s;
-
-    border: 2px solid #c0d9af; /* verde claro */
-    border-radius: 12px;
-    /*padding: 12px 20px;*/
-    background-color: #0c1a2b; /* mismo fondo o ligeramente más oscuro si quieres contraste */
-    box-shadow: 0 0 55px #c8e38a40; /* opcional: sombra suave verde */
-
-}
-
-.acordeon-summary .titulo {
-
-    background-color: #4a6978;
-    padding: 0px 12px;
-    border-radius: 12px;
-    font-weight: bold;
-    color: #c0d9af;
-
-    height: 100%;
-
-    display: flex;                /* centrado */
-    align-items: center;
-    justify-content: center;
-
-    flex: 1;
-}
-
-.acordeon-summary  .bloque {
-    flex: 1;
-}
-
-.acordeon-summary .descripcion {
-
-    opacity: 0.8;
-    font-size: 14px;
-
-    flex: 2;
-}
-
-.acordeon-summary .porcentaje {
-    text-align: right;
-    font-weight: bold;
-    color: #c8e38a;
-    padding: 0px 12px;
-
-    flex: 1;
-}
-
-
-.acordeon-content {
-    overflow: hidden;
-    max-height: 0;
-    opacity: 0;
-    transform: translateX(-10px);
-    transition: max-height 0.5s ease, opacity 0.5s ease, transform 0.5s ease;
-}
-
-.acordeon-content.visible {
-    max-height: 1000px; /* un valor suficientemente grande */
-    opacity: 1;
-    transform: translateY(0);
-}
-
 article {
     background: #0c1a2b;
     padding: 15px;
@@ -89,19 +14,140 @@ article {
     display: flex;
     flex-direction: row;
 }
-
 button {
     background-color: #88a368;
 }
 
-/* Tarjetas tipo row */
-.card-row {
+#main-section {
+    margin: 45px 0;
+}
+
+.acordeon {
+    margin: 20px;
+}
+
+/* Summary del acordeón */
+.acordeon-summary {
+
+
+    overflow: hidden;
+    width: 100%;
+    max-height: 40px;
+    margin: 10px 0 0 0;
+
+    /* GRID */
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    grid-template-rows: auto;
+
+    font-size: 16px;
+    cursor: pointer;
+
+    transition: height 1.0s ease, width 0.5s ease;
+
+    border: 2px solid #c0d9af; /* verde claro */
+    border-radius: 12px;
+    background-color: #0c1a2b; /* mismo fondo o ligeramente más oscuro si quieres contraste */
+    box-shadow: 0 0 55px #c8e38a40; /* opcional: sombra suave verde */
+
+}
+
+.acordeon-summary .bloque {
+    transition: transform 0.3s ease, opacity 0.3s ease;
+
+    display: flex;                /* centrado */
+    align-items: center;
+    justify-content: center;
+
+}
+.acordeon-summary .titulo {
+
+    background-color: #4a6978;
+    border-radius: 10px;
+    font-weight: bold;
+    color: #c0d9af;
+
+    /* Al único elemento al que le asigno un tamaño determinado es al título */
+    height: 40px;
+    width: 278px;
+
+    /*GRID*/
+    grid-column: 1;
+    grid-row: 1;
+}
+.acordeon-summary .descripcion {
+
+    font-size: 14px;
+
+    /*GRID*/
+    grid-column: 2;
+    grid-row: 1;
+}
+.acordeon-summary .porcentaje {
+    text-align: right;
+    font-weight: bold;
+    color: #c8e38a;
+
+    /*GRID*/
+    grid-column: 3;
+    grid-row: 1;
+}
+
+/* Contenido del acordeón*/
+/* Clase para controlar la animación de aparición */
+.acordeon-content {
+    overflow: hidden;
+    max-height: 0;
+    opacity: 0;
+    transform: translateX(-10px);
+    transition: max-height 0.5s ease, opacity 0.5s ease, transform 0.5s ease;
+}
+.acordeon-content.visible {
+    max-height: 1000px; /* un valor suficientemente grande */
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Clase para contener las tarjetas */
+.cards {
     display: flex;
     flex-wrap: wrap;
     gap: 20px; /* espacio entre artículos */
-    margin-top: 10px;
+    margin: 20px;
 }
 
-/* ANIMACIONES */
+.acordeon-summary.animado {
 
-/*Animación de la aparicion de las tarjetas*/
+    max-height: 400px; /* puedes ajustar si quieres más alto */
+    width: 25%;
+    transition: height 0.25s ease, width 0.25s ease, vertical-align 0.4s ease;
+
+    grid-template-columns: auto;
+    grid-template-rows: 1fr 2fr 1fr;
+
+
+}
+
+.acordeon-summary.animado .titulo {
+
+    grid-column: 1;
+    grid-row: 1;
+
+}
+
+.acordeon-summary.animado .descripcion {
+    grid-column: 1;
+    grid-row: 2;
+
+    padding: 0 10px;
+}
+
+.acordeon-summary.animado .porcentaje {
+    grid-column: 1;
+    grid-row: 3;
+    border-top: 2px solid #c0d9af;
+    /*border-top-right-radius: 12px;*/
+    /*border-top-left-radius: 12px;*/
+}
+
+
