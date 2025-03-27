@@ -1,90 +1,112 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
-<title>USCP - Search</title>
-<link rel="stylesheet" href="../Css/styles.css">
-<link rel="stylesheet" href="../Css/details.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name = "description" content = "USC Predict es una plataforma de predicción de eventos">
+    <meta name = "keywords" content = "USC, Predict, Eventos, Predicción">
+    <meta name = "author" content = "Mateo Bodenlle y Diego Cristóbal">
+    <title>Menú y Footer</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../Css/styles.css">
+    <link rel="stylesheet" href="../Css/index.css">
+    <link rel="stylesheet" href="../Css/layoutComun.css">
+    <link rel="stylesheet" href="../Css/Detalles.css">
 </head>
 <body>
 
-    <nav>
-        <img src="../Resources/Logo.jpg" width="150px">
-        <p><a href="Búsqueda.html">Búsqueda</a></p> 
-        <p><a href="Watchlist.html">Watchlist</a></p> 
-        <p><a href="Resueltos.html">Resueltos</a></p> 
-        <p><a href="About Us.html">About Us</a></p> 
-    </nav>
+<!-- Encabezado principal del sitio -->
+<header id="navbar"></header>
 
-
-<main>
-
-<header>
-    <h1>Detalles del Evento</h1>
-</header>
-
-<title>USC Predict</title>
-</head>
-<body>
-
-    <section>
-        <!-- Encabezado del evento -->
-        <section>
-            <img src="../Resources/ImagenEventos/Ajedrez.jpg" alt="Evento">
-            <article>
-                <h1>Examen de álgebra nota media mayor que 6</h1>
-                <p>Este evento resolverá en "Sí" si la nota media del examen de álgebra alcanza un valor superior a 6.</p>
-                <article>
-                    📅 12 / 02 / 2025 <br>
-                    👥 15.2k
-                </article>
+<!-- Contenido principal -->
+<main class="page-container">
+    <section class="main-content">
+        <div class="exam-header">
+            <img class="Imagen" src="../Resources/ImagenEventos/Examen.jpg" alt="Examen de álgebra">
+            <article class="exam-details">
+                <span class="date">12 / 02 / 2025</span>
+                <span class="views">15.2k</span>
             </article>
         </div>
 
-        <!-- Gráfica (falsa, solo caja) -->
-        <section>[Gráfica de evolución]</section>
+        <p class="exam-description">
+            Este evento resolverá si la nota del examen de álgebra de 1o de GEI alcanza una nota media
+            estrictamente mayor que 6. Se considera media sin tener en cuenta a los "no presentado",
+            y tras el período de reclamación.
+        </p>
 
-        <!-- Descripción del evento -->
-        <section>
-            Este evento se realiza por la gran incertidumbre de las preguntas del examen. Nunca se repiten y es una lotería.
-            Se puede estudiar todo el temario y caer solo una pregunta concreta.
-        </section>
+        <div class="chance-graph">
+            <p class="chance-percentage">Chance: 47%</p>
+            <!-- Placeholder for graph -->
+            <div class="graph-placeholder"></div>
+        </div>
 
-        <!-- Caja de votación -->
-        <section>
+        <p class="event-note">
+            Este evento se realiza por la gran incertidumbre de
+            las próximas del examen. Nunca se rinden y es
+            una lotería. Se puede estudiar todo el temario y
+            caer solo una pregunta concreta.
+        </p>
+    </section>
+
+
+    <aside class="voting-sidebar">
+        <h1>Examen de álgebra nota media mayor que 6</h1>
+
+        <div class="voting-container">
             <h2>Votar</h2>
-            <label for="votes">Número de votos</label>
-            <input type="number" id="votes" min="1">
-            <article>A precio: <strong>MERCADO</strong></article>
-            <p>Total: 7 voting points</p>
-            <p>Posible win: 19 voting points</p>
-            <article>
-                <button>SI</button>
-                <button>NO</button>
-            </article>
-            <button>VOTAR</button>
-        </section>
+            <div class="vote-input">
+                <label for="vote-count">Número de votos</label>
+                <input type="text" id="vote-count" name="vote-count">
+            </div>
+            <div class="vote-market">
+                <label>MERCADO</label>
+                <div class="total-votes">Total: 7 voting points</div>
+                <div class="vote-possibility">
+                    <span>Posible win: 19 voting points</span>
+                </div>
+            </div>
+            <div class="vote-options">
+                <button class="vote-yes">SÍ</button>
+                <button class="vote-no">NO</button>
+            </div>
+            <button class="vote-button">VOTAR</button>
+        </div>
+    </aside>
+</main>
 
-        <!-- Cuenta regresiva -->
-        <section>
-            07
-            11
-            01
-            02
-        <section>
-    <section>
-        <footer>
-            <!--LOGO-->
-            <img src="../Resources/Logo.jpg" width="150px">
-            <article>
-            Información en redes sociales
-                <ol>
-                    <li>Instgram</li>
-                    <li>X</li>
-                    <li>Facebook</li>
-                    <li>Linkedin</li>
-                    <li><a href="https://weshearn.com" target="_blank" rel="noopener noreferrer">Weshearn</a></li>
-                </ol>
-            </article>
-        </footer>
+
+
+<!-- Pie de página -->
+<footer id="footer"></footer>
+
+
 </body>
+
 </html>
+<script src="../Js/componentes.js"></script>
+<script type="module">
+    import { generarTarjetas } from '../Js/loaderCards.js';
+
+    const datosEjemplo = [
+        { img: "../Resources/ImagenEventos/Ajedrez.jpg", nombre: "Ajedrez", categoria: "Deporte", porcentaje: "72%" },
+        { img: "../Resources/ImagenEventos/Examen.jpg", nombre: "Examen Final", categoria: "Académico", porcentaje: "59%" },
+        { img: "../Resources/ImagenEventos/Examen.jpg", nombre: "Parcial", categoria: "Académico", porcentaje: "44%" },
+        { img: "../Resources/ImagenEventos/Juez.jpg", nombre: "Expulsión de Nico", categoria: "Administrativo", porcentaje: "18%" },
+        { img: "../Resources/ImagenEventos/Examen.jpg", nombre: "Examen Mates", categoria: "Académico", porcentaje: "59%" },
+        { img: "../Resources/ImagenEventos/Ajedrez.jpg", nombre: "Torneo ajedrez", categoria: "Pasos", porcentaje: "42%" },
+    ];
+
+    const contenedor = document.getElementById("contenedor-tarjetas");
+
+    // Callback para botones
+    const cargarDetalles = (evento) => window.location.href = './Detalles.html';
+    const manejarSi = (evento) => alert(`Votaste SÍ en: ${evento.nombre}`);
+    const manejarNo = (evento) => alert(`Votaste NO en: ${evento.nombre}`);
+
+    generarTarjetas(contenedor, datosEjemplo, cargarDetalles , manejarSi, manejarNo);
+
+
+</script>
+<script src="../Js/trendingListsIndex.js"> </script>
+

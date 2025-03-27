@@ -158,18 +158,16 @@
         { img: "../Resources/ImagenEventos/Juez.jpg", nombre: "Expulsión de Nico", categoria: "Administrativo", porcentaje: "18%" },
         { img: "../Resources/ImagenEventos/Examen.jpg", nombre: "Examen Mates", categoria: "Académico", porcentaje: "59%" },
         { img: "../Resources/ImagenEventos/Ajedrez.jpg", nombre: "Torneo ajedrez", categoria: "Pasos", porcentaje: "42%" },
-        { img: "../Resources/ImagenEventos/Ajedrez.jpg", nombre: "Torneo ajedrez", categoria: "Pasos", porcentaje: "42%" },
-        { img: "../Resources/ImagenEventos/Ajedrez.jpg", nombre: "Torneo ajedrez", categoria: "Pasos", porcentaje: "42%" },
-
     ];
 
     const contenedor = document.getElementById("contenedor-tarjetas");
 
     // Callback para botones
+    const cargarDetalles = (evento) => window.location.href = './Detalles.html';
     const manejarSi = (evento) => alert(`Votaste SÍ en: ${evento.nombre}`);
     const manejarNo = (evento) => alert(`Votaste NO en: ${evento.nombre}`);
 
-    generarTarjetas(contenedor, datosEjemplo, manejarSi, manejarNo);
+    generarTarjetas(contenedor, datosEjemplo, cargarDetalles , manejarSi, manejarNo);
 
 
 </script>
