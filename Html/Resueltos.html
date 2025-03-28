@@ -26,10 +26,10 @@
          <div class="acordeon">
 
              <div class="acordeon-summary">
-                 <div class="bloque titulo">Aprobados</div>
-                 <div class="bloque descripcion">El porcentaje de alumnos que superan la asignatura este año</div>
+                 <div class="summaryItem titulo">Aprobados</div>
+                 <div class="summaryItem descripcion">El porcentaje de alumnos que superan la asignatura este año</div>
 
-                 <div class="bloque porcentaje">13</div>
+                 <div class="summaryItem porcentaje">13</div>
              </div>
 
              <div class="acordeon-content">
@@ -40,9 +40,9 @@
          <div class="acordeon">
 
              <div class="acordeon-summary">
-                 <div class="bloque titulo">Puesto de renombre</div>
-                 <div class="bloque descripcion">¿Quién será elegido como próximo rector de la universidad?</div>
-                 <div class="bloque porcentaje">40%</div>
+                 <div class="summaryItem titulo">Puesto de renombre</div>
+                 <div class="summaryItem descripcion">¿Quién será elegido como próximo rector de la universidad?</div>
+                 <div class="summaryItem porcentaje">24</div>
          </div>
 
              <div class="acordeon-content">
@@ -53,9 +53,9 @@
          <div class="acordeon">
 
              <div class="acordeon-summary">
-                 <div class="bloque titulo">Presupuesto 2026</div>
-                 <div class="bloque descripcion">Cual será el presupuesto de la carrera de informática en 2026</div>
-                 <div class="bloque porcentaje">80%</div>
+                 <div class="summaryItem titulo">Presupuesto 2026</div>
+                 <div class="summaryItem descripcion">Presupuestos de las carreras de la USC</div>
+                 <div class="summaryItem porcentaje">40</div>
              </div>
 
              <div class="acordeon-content">
@@ -83,12 +83,12 @@
         { img: "../Resources/ImagenEventos/Ajedrez.jpg", nombre: "Ajedrez", categoria: "Deporte", porcentaje: "72%" },
         { img: "../Resources/ImagenEventos/Examen.jpg", nombre: "Examen Final", categoria: "Académico", porcentaje: "59%" },
         { img: "../Resources/ImagenEventos/Examen.jpg", nombre: "Parcial", categoria: "Académico", porcentaje: "44%" },
-        { img: "../Resources/ImagenEventos/Juez.jpg", nombre: "Expulsión de Nico", categoria: "Administrativo", porcentaje: "18%" },
+       /* { img: "../Resources/ImagenEventos/Juez.jpg", nombre: "Expulsión de Nico", categoria: "Administrativo", porcentaje: "18%" },
         { img: "../Resources/ImagenEventos/Examen.jpg", nombre: "Examen Mates", categoria: "Académico", porcentaje: "59%" },
         { img: "../Resources/ImagenEventos/Ajedrez.jpg", nombre: "Torneo ajedrez", categoria: "Pasos", porcentaje: "42%" },
         { img: "../Resources/ImagenEventos/Ajedrez.jpg", nombre: "Torneo ajedrez", categoria: "Pasos", porcentaje: "42%" },
         { img: "../Resources/ImagenEventos/Ajedrez.jpg", nombre: "Torneo ajedrez", categoria: "Pasos", porcentaje: "42%" },
-
+*/
     ];
 
     const contenedores = document.querySelectorAll(".cards");
@@ -100,7 +100,7 @@
     const tarjetas = document.querySelectorAll(".tarjeta-evento");
 
     contenedores.forEach(contenedor => {
-        // generarTarjetas(contenedor, datosEjemplo, manejarSi, manejarNo);
+        generarTarjetas(contenedor, datosEjemplo, manejarSi, manejarNo);
     });
 
 
@@ -122,6 +122,8 @@
 
                     c.previousElementSibling.classList.remove("animado"); // quitar animación del summary anterior
 
+                    c.closest(".acordeon").classList.remove("animado"); // Quitar la clase "animado" al acordeón
+
                 });
 
                 // Si no estaba visible, mostrarlo
@@ -129,6 +131,9 @@
                     content.classList.add("visible");
 
                     summary.classList.add("animado");
+
+                    summary.closest(".acordeon").classList.add("animado");
+
 
                 }
 

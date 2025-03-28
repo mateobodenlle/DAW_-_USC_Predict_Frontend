@@ -19,7 +19,7 @@ button {
 }
 
 #main-section {
-    margin: 45px 0;
+    margin: 50px 0 70px 0;
 }
 
 .acordeon {
@@ -28,7 +28,6 @@ button {
 
 /* Summary del acordeón */
 .acordeon-summary {
-
 
     overflow: hidden;
     width: 100%;
@@ -43,7 +42,7 @@ button {
     font-size: 16px;
     cursor: pointer;
 
-    transition: height 1.0s ease, width 0.5s ease;
+    transition: width 0.3s ease;
 
     border: 2px solid #c0d9af; /* verde claro */
     border-radius: 12px;
@@ -51,21 +50,21 @@ button {
     box-shadow: 0 0 55px #c8e38a40; /* opcional: sombra suave verde */
 
 }
-
-.acordeon-summary .bloque {
-    transition: transform 0.3s ease, opacity 0.3s ease;
+.acordeon-summary .summaryItem {
 
     display: flex;                /* centrado */
     align-items: center;
     justify-content: center;
+
+    text-align: center;
+
+    font-weight: bold;
 
 }
 .acordeon-summary .titulo {
 
     background-color: #4a6978;
     border-radius: 10px;
-    font-weight: bold;
-    color: #c0d9af;
 
     /* Al único elemento al que le asigno un tamaño determinado es al título */
     height: 40px;
@@ -77,7 +76,8 @@ button {
 }
 .acordeon-summary .descripcion {
 
-    font-size: 14px;
+    /*font-size: 14px;*/
+    font-weight: normal;
 
     /*GRID*/
     grid-column: 2;
@@ -86,16 +86,47 @@ button {
 .acordeon-summary .porcentaje {
     text-align: right;
     font-weight: bold;
-    color: #c8e38a;
 
     /*GRID*/
     grid-column: 3;
     grid-row: 1;
 }
 
+.acordeon.animado {
+    display: flex;
+}
+/* Summary animación */
+.acordeon-summary.animado {
+
+    max-height: 400px; /* puedes ajustar si quieres más alto */
+    width: 25%;
+    transition: width 0.3s ease;
+
+    grid-template-columns: auto;
+    grid-template-rows: 1fr 2fr 1fr;
+
+}
+.acordeon-summary.animado .titulo {
+
+    grid-column: 1;
+    grid-row: 1;
+
+}
+.acordeon-summary.animado .descripcion {
+    grid-column: 1;
+    grid-row: 2;
+
+    padding: 0 10px;
+}
+.acordeon-summary.animado .porcentaje {
+    grid-column: 1;
+    grid-row: 3;
+    border-top: 2px solid #c0d9af;
+}
+
 /* Contenido del acordeón*/
 /* Clase para controlar la animación de aparición */
-.acordeon-content {
+/*.acordeon-content {
     overflow: hidden;
     max-height: 0;
     opacity: 0;
@@ -103,51 +134,49 @@ button {
     transition: max-height 0.5s ease, opacity 0.5s ease, transform 0.5s ease;
 }
 .acordeon-content.visible {
-    max-height: 1000px; /* un valor suficientemente grande */
+    max-height: 1000px; !* un valor suficientemente grande *!
     opacity: 1;
-    transform: translateY(0);
+    transform: translateX(0);
 }
 
-/* Clase para contener las tarjetas */
+!* Clase para contener las tarjetas *!
 .cards {
     display: flex;
     flex-wrap: wrap;
-    gap: 20px; /* espacio entre artículos */
+    gap: 20px; !* espacio entre artículos *!
     margin: 20px;
+}*/
+
+
+/* INTENTO 1 DE CHATY PARA APARICIÓN DE TARJETAS */
+
+
+.acordeon-content {
+    overflow: hidden;
+    max-height: 0;
+    opacity: 0;
+    transform: translateX(-100px);
+    transition: max-height 0.5s ease, opacity 0.5s ease, transform 0.5s ease;
 }
 
-.acordeon-summary.animado {
-
-    max-height: 400px; /* puedes ajustar si quieres más alto */
-    width: 25%;
-    transition: height 0.25s ease, width 0.25s ease, vertical-align 0.4s ease;
-
-    grid-template-columns: auto;
-    grid-template-rows: 1fr 2fr 1fr;
-
-
+.acordeon-content.visible {
+    max-height: 1000px; /* Valor grande para contener todas las tarjetas */
+    opacity: 1;
+    transform: translateX(0); /* Asegura que todo el contenido se mueva */
 }
 
-.acordeon-summary.animado .titulo {
-
-    grid-column: 1;
-    grid-row: 1;
-
+/* Estilo para las tarjetas */
+.cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px; /* Espacio entre artículos */
+    margin: 20px;
+    transform: translateX(-100%); /* Empuja las tarjetas hacia la izquierda */
 }
 
-.acordeon-summary.animado .descripcion {
-    grid-column: 1;
-    grid-row: 2;
-
-    padding: 0 10px;
+/* Cuando el contenido se muestra, las tarjetas se desplazan una a una */
+.acordeon-content.visible .cards {
+    opacity: 1;
+    transform: translateX(0); /* Se mueve a su posición normal */
+    transition: transform 0.5s ease, opacity 0.5s ease;
 }
-
-.acordeon-summary.animado .porcentaje {
-    grid-column: 1;
-    grid-row: 3;
-    border-top: 2px solid #c0d9af;
-    /*border-top-right-radius: 12px;*/
-    /*border-top-left-radius: 12px;*/
-}
-
-
