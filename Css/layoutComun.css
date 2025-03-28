@@ -176,8 +176,9 @@ footer .footer-column a:hover {
 @media (max-width: 1050px) {
     nav {
         flex-direction: column;
+        /*background: #ffffff;*/
         align-items: stretch;
-        gap: 10px;
+        gap: 5px;
         padding: 20px;
     }
 
@@ -186,6 +187,13 @@ footer .footer-column a:hover {
     .nav-right {
         justify-content: center;
         flex-wrap: wrap;
+    }
+
+
+    .nav-center *,
+    .nav-left *,
+    .nav-right * {
+        witdth: 50%;
     }
 
     .logo {
