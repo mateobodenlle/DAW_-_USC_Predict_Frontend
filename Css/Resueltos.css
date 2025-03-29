@@ -1,5 +1,9 @@
-/* resolved.css - Estilos para la página de eventos resueltos */
+/* Resueltos.css - Estilos para la página de eventos resueltos */
 
+/* Propiedades generales */
+#main-section {
+    margin: 50px 0 70px 0;
+}
 h1 {
     text-align: center;
     color: #c0d9af;
@@ -18,20 +22,23 @@ button {
     background-color: #88a368;
 }
 
-#main-section {
-    margin: 50px 0 70px 0;
-}
 
-.acordeon {
+/* CATEGORIAS */
+.categoria {
     margin: 20px;
 }
+.categoria.animado {
+    display: flex;
+}
 
-/* Summary del acordeón */
-.acordeon-summary {
+/* SUMMARY DE LA CATEGORIA */
+
+/* Summary del categoria */
+.categoria-summary {
 
     overflow: hidden;
     width: 100%;
-    max-height: 40px;
+    max-height: 50px;
     margin: 10px 0 0 0;
 
     /* GRID */
@@ -47,10 +54,10 @@ button {
     border: 2px solid #c0d9af; /* verde claro */
     border-radius: 12px;
     background-color: #0c1a2b; /* mismo fondo o ligeramente más oscuro si quieres contraste */
-    box-shadow: 0 0 55px #c8e38a40; /* opcional: sombra suave verde */
+    box-shadow: 0 0 40px #c8e38a40; /* opcional: sombra suave verde */
 
 }
-.acordeon-summary .summaryItem {
+.categoria-summary .summaryItem {
 
     display: flex;                /* centrado */
     align-items: center;
@@ -61,7 +68,7 @@ button {
     font-weight: bold;
 
 }
-.acordeon-summary .titulo {
+.categoria-summary .titulo {
 
     background-color: #4a6978;
     border-radius: 10px;
@@ -74,7 +81,7 @@ button {
     grid-column: 1;
     grid-row: 1;
 }
-.acordeon-summary .descripcion {
+.categoria-summary .descripcion {
 
     /*font-size: 14px;*/
     font-weight: normal;
@@ -83,7 +90,7 @@ button {
     grid-column: 2;
     grid-row: 1;
 }
-.acordeon-summary .porcentaje {
+.categoria-summary .num {
     text-align: right;
     font-weight: bold;
 
@@ -91,92 +98,191 @@ button {
     grid-column: 3;
     grid-row: 1;
 }
-
-.acordeon.animado {
-    display: flex;
-}
-/* Summary animación */
-.acordeon-summary.animado {
+/* Animación */
+.categoria-summary.animado {
 
     max-height: 400px; /* puedes ajustar si quieres más alto */
     width: 25%;
+    flex-shrink: 0;
     transition: width 0.3s ease;
 
     grid-template-columns: auto;
     grid-template-rows: 1fr 2fr 1fr;
 
 }
-.acordeon-summary.animado .titulo {
+.categoria-summary.animado .titulo {
 
     grid-column: 1;
     grid-row: 1;
 
 }
-.acordeon-summary.animado .descripcion {
+.categoria-summary.animado .descripcion {
     grid-column: 1;
     grid-row: 2;
 
     padding: 0 10px;
 }
-.acordeon-summary.animado .porcentaje {
+.categoria-summary.animado .num {
     grid-column: 1;
     grid-row: 3;
     border-top: 2px solid #c0d9af;
 }
 
-/* Contenido del acordeón*/
-/* Clase para controlar la animación de aparición */
-/*.acordeon-content {
-    overflow: hidden;
-    max-height: 0;
-    opacity: 0;
-    transform: translateX(-10px);
-    transition: max-height 0.5s ease, opacity 0.5s ease, transform 0.5s ease;
-}
-.acordeon-content.visible {
-    max-height: 1000px; !* un valor suficientemente grande *!
-    opacity: 1;
-    transform: translateX(0);
-}
+/* CONTENIDO DE LA CATEGORIA */
 
-!* Clase para contener las tarjetas *!
+/* TARJETAS */
 .cards {
+    opacity: 0;
+
     display: flex;
-    flex-wrap: wrap;
-    gap: 20px; !* espacio entre artículos *!
-    margin: 20px;
-}*/
+    flex-wrap: nowrap;
 
+    overflow-x: scroll;
+    scrollbar-width: none;
 
-/* INTENTO 1 DE CHATY PARA APARICIÓN DE TARJETAS */
+    scroll-behavior: smooth;
 
+    gap: 20px; /* Espacio entre artículos */
+    margin: 20px 0 0 0;
 
-.acordeon-content {
+    transform: translateX(-100%); /* Empuja las tarjetas hacia la izquierda */
+    transition: transform 0.5s ease, opacity 0.5s ease;
+
+    padding-top: 4px;
+
+}
+/* Deslizamiento de las tarjetas */
+.categoria-content {
     overflow: hidden;
     max-height: 0;
     opacity: 0;
-    transform: translateX(-100px);
     transition: max-height 0.5s ease, opacity 0.5s ease, transform 0.5s ease;
-}
 
-.acordeon-content.visible {
+    position: relative;
+    margin: 0 0 0 20px;
+}
+.categoria-content.visible {
     max-height: 1000px; /* Valor grande para contener todas las tarjetas */
     opacity: 1;
-    transform: translateX(0); /* Asegura que todo el contenido se mueva */
 }
-
-/* Estilo para las tarjetas */
-.cards {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px; /* Espacio entre artículos */
-    margin: 20px;
-    transform: translateX(-100%); /* Empuja las tarjetas hacia la izquierda */
-}
-
-/* Cuando el contenido se muestra, las tarjetas se desplazan una a una */
-.acordeon-content.visible .cards {
+.categoria-content.visible .cards {
     opacity: 1;
     transform: translateX(0); /* Se mueve a su posición normal */
     transition: transform 0.5s ease, opacity 0.5s ease;
+}
+
+/* BOTONES DE SCROLL */
+.scroll-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+    overflow: hidden;
+
+    width: 48px;
+    height: 50px;
+
+    display: none;
+    align-items: center;
+    justify-content: center;
+
+    background: #0c1a2b;
+    color: #c0d9af;
+    border: 2px solid #c0d9af;
+    border-radius: 50%;
+    font-size: 20px;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+/* animación de deslizamiento del botón */
+.scroll-button::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: #c0d9af;
+    z-index: 0;
+    transition: left 0.3s;
+}
+.scroll-button.scroll-right::after  {
+    left: -100%;
+}
+.scroll-button.scroll-left::after  {
+    left: 100%;
+}
+.scroll-button:hover::after {
+    left: 0;
+}
+.scroll-button:hover {
+    color: #0c1a2b;
+}
+.scroll-button svg {
+    stroke: currentColor;
+    transition: stroke 0.3s;
+}
+/* Posición */
+.scroll-button span {
+    position: relative;
+    z-index: 1;
+}
+.scroll-left {
+    left: 10px;
+}
+.scroll-right {
+    position: absolute;
+    right: 10px;
+}
+
+/* SOMBRAS */
+.categoria-content::before,
+.categoria-content::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    width: 30px;
+    height: 100%;
+    z-index: 5;
+    pointer-events: none;
+    transition: opacity 0.3s;
+    opacity: 0;
+}
+.categoria-content.sombra-izquierda::before {
+    opacity: 1;
+    left: 0;
+    background: linear-gradient(to right, rgba(12, 26, 43, 0.5), transparent);
+}
+.categoria-content.sombra-derecha::after {
+    opacity: 1;
+    right: 0;
+    background: linear-gradient(to left, rgba(12, 26, 43, 0.8), transparent);
+}
+
+/* RESPONSIVIDAD PARA MOVIL*/
+@media (max-width: 768px) {
+    .categoria-summary {
+
+        max-height: none; /* puedes ajustar si quieres más alto */
+        width: 100%;
+        transition: width 0.3s ease;
+
+        display: flex;
+        flex-direction: column;
+
+    }
+    .categoria-summary .summaryItem {
+        padding: 10px 10px;
+    }
+    .categoria-summary .titulo {
+        width: 100%;
+        padding: 0;
+    }
+    .categoria-summary .descripcion {
+
+        padding: 10px 10px;
+    }
+    .categoria-summary .num {
+        border-top: 2px solid #c0d9af;
+        padding: 10px 10px;
+    }
 }

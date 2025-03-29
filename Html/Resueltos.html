@@ -12,7 +12,6 @@
     <link rel="stylesheet" href="../Css/Resueltos.css">
     <link rel="stylesheet" href="../Css/layoutComun.css">
     <link rel="stylesheet" href="../Css/Componentes/card.css">
-    <link rel="stylesheet" href="../Css/Componentes/trendingList.css">
 </head>
 
 <body>
@@ -20,49 +19,10 @@
 <!-- Encabezado principal del sitio -->
 <header id="navbar"></header>
 
+<!-- Contenido principal -->
 <main class="container">
 
-     <section id="main-section">
-         <div class="acordeon">
-
-             <div class="acordeon-summary">
-                 <div class="summaryItem titulo">Aprobados</div>
-                 <div class="summaryItem descripcion">El porcentaje de alumnos que superan la asignatura este año</div>
-
-                 <div class="summaryItem porcentaje">13</div>
-             </div>
-
-             <div class="acordeon-content">
-                 <div class="cards"></div>
-             </div>
-         </div>
-
-         <div class="acordeon">
-
-             <div class="acordeon-summary">
-                 <div class="summaryItem titulo">Puesto de renombre</div>
-                 <div class="summaryItem descripcion">¿Quién será elegido como próximo rector de la universidad?</div>
-                 <div class="summaryItem porcentaje">24</div>
-         </div>
-
-             <div class="acordeon-content">
-                 <div class="cards"></div>
-             </div>
-         </div>
-
-         <div class="acordeon">
-
-             <div class="acordeon-summary">
-                 <div class="summaryItem titulo">Presupuesto 2026</div>
-                 <div class="summaryItem descripcion">Presupuestos de las carreras de la USC</div>
-                 <div class="summaryItem porcentaje">40</div>
-             </div>
-
-             <div class="acordeon-content">
-                 <div class="cards"></div>
-             </div>
-         </div>
-     </section>
+     <section id="main-section"></section>
 
 </main>
 
@@ -73,76 +33,29 @@
 
 </html>
 
-<!-- Footer y Header -->
+<!-- Inserción de Footer y Header -->
 <script src="../Js/componentes.js"></script>
-<!-- Inserción de tarjetas -->
+<!-- Inserción de categorías -->
 <script type="module">
-    import { generarTarjetas } from '../Js/loaderCards.js';
 
-    const datosEjemplo = [
-        { img: "../Resources/ImagenEventos/Ajedrez.jpg", nombre: "Ajedrez", categoria: "Deporte", porcentaje: "72%" },
-        { img: "../Resources/ImagenEventos/Examen.jpg", nombre: "Examen Final", categoria: "Académico", porcentaje: "59%" },
-        { img: "../Resources/ImagenEventos/Examen.jpg", nombre: "Parcial", categoria: "Académico", porcentaje: "44%" },
-       /* { img: "../Resources/ImagenEventos/Juez.jpg", nombre: "Expulsión de Nico", categoria: "Administrativo", porcentaje: "18%" },
-        { img: "../Resources/ImagenEventos/Examen.jpg", nombre: "Examen Mates", categoria: "Académico", porcentaje: "59%" },
-        { img: "../Resources/ImagenEventos/Ajedrez.jpg", nombre: "Torneo ajedrez", categoria: "Pasos", porcentaje: "42%" },
-        { img: "../Resources/ImagenEventos/Ajedrez.jpg", nombre: "Torneo ajedrez", categoria: "Pasos", porcentaje: "42%" },
-        { img: "../Resources/ImagenEventos/Ajedrez.jpg", nombre: "Torneo ajedrez", categoria: "Pasos", porcentaje: "42%" },
-*/
-    ];
+    // Generator funcions
+    import { generarCategorias } from '../Js/loaderCategories.js';
 
-    const contenedores = document.querySelectorAll(".cards");
+    // Example data
+    import { categorias } from '../Js/exampleData/categories.js';
+    import { tarjetas } from '../Js/exampleData/cards.js';
+    import { manejarSi } from '../Js/exampleData/cards.js';
+    import { manejarNo } from '../Js/exampleData/cards.js';
 
-    // Callback para botones
-    const manejarSi = (evento) => alert(`Votaste SÍ en: ${evento.nombre}`);
-    const manejarNo = (evento) => alert(`Votaste NO en: ${evento.nombre}`);
+    // Animation
+    import { categoryAnimation } from '../Js/resueltos.js'
+    import { horizontalScroll} from "../Js/horizontalScroll.js";
 
-    const tarjetas = document.querySelectorAll(".tarjeta-evento");
 
-    contenedores.forEach(contenedor => {
-        generarTarjetas(contenedor, datosEjemplo, manejarSi, manejarNo);
-    });
+    const main_section = document.getElementById("main-section");
 
+    generarCategorias(main_section, categorias, tarjetas, manejarSi, manejarNo);
+    categoryAnimation(main_section);
+    horizontalScroll(main_section);
 
 </script>
-<!-- Animación apertura de acordeón -->
-<script>
-    document.addEventListener("DOMContentLoaded", () => {
-        const summaries = document.querySelectorAll(".acordeon-summary");
-
-        summaries.forEach(summary => {
-            summary.addEventListener("click", () => {
-                const content = summary.nextElementSibling;
-
-                const isVisible = content.classList.contains("visible");
-
-                // Cerrar todos (opcional: para comportamiento tipo acordeón)
-                document.querySelectorAll(".acordeon-content.visible").forEach(c => {
-                    c.classList.remove("visible");
-
-                    c.previousElementSibling.classList.remove("animado"); // quitar animación del summary anterior
-
-                    c.closest(".acordeon").classList.remove("animado"); // Quitar la clase "animado" al acordeón
-
-                });
-
-                // Si no estaba visible, mostrarlo
-                if (!isVisible) {
-                    content.classList.add("visible");
-
-                    summary.classList.add("animado");
-
-                    summary.closest(".acordeon").classList.add("animado");
-
-
-                }
-
-
-            });
-        });
-
-    });
-</script>
-
-
-
