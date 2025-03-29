@@ -102,6 +102,4 @@ export function horizontalScroll (categories_container) {
     });
 
 
-
-
 }

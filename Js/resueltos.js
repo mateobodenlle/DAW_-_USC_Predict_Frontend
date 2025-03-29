@@ -15,20 +15,22 @@ export function categoryAnimation (categories_container) {
             const content = summary.nextElementSibling; // Category content
             const isVisible = content.classList.contains("visible");
 
-            // Cerrar todos (opcional: para comportamiento tipo acordeón)
-            categories_container.querySelectorAll(".categoria-content.visible").forEach(c => {
-                c.classList.remove("visible"); // quitar categoria-content.visible
+            // Cerrar todos
+            if (!esMovil) {
+                categories_container.querySelectorAll(".categoria-content.visible").forEach(c => {
 
-                if (!esMovil)
                     setTimeout(() => {
 
-                            c.previousElementSibling.classList.remove("animado"); // quitar animado de categoria-summary, titulo, descripcion y num
-                            c.closest(".categoria").classList.remove("animado"); // quitar categoria.animado
+                        c.classList.remove("visible"); // quitar categoria-content.visible
+                        c.previousElementSibling.classList.remove("animado"); // quitar animado de categoria-summary, titulo, descripcion y num
+                        c.closest(".categoria").classList.remove("animado"); // quitar categoria.animado
 
                     }, delay);
+                });
+            }
+            else
+                content.classList.remove("visible"); // En móvil al seleccionar otra categoría no se cierran las anteriores, dado que el display es vertical y se mueve todo
 
-
-            });
 
             // Si no estaba visible, mostrarlo
             if (!isVisible) {

@@ -269,6 +269,8 @@ button {
         display: flex;
         flex-direction: column;
 
+        overflow: visible
+
     }
     .categoria-summary .summaryItem {
         padding: 10px 10px;
@@ -285,4 +287,37 @@ button {
         border-top: 2px solid #c0d9af;
         padding: 10px 10px;
     }
+
+    .cards {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 16px;
+        overflow-x: unset !important;
+        overflow-y: unset !important;
+    }
+
+    .
+
+    .categoria-content {
+        max-height: 0;
+        overflow: visible !important;
+        opacity: 1 !important;
+    }
+    .categoria-content.visible {
+        max-height: 100%;
+    }
+
+
+    .scroll-button {
+        display: none !important;
+        position: static !important;
+    }
+
+    .categoria-content::before,
+    .categoria-content::after {
+        display: none !important;
+    }
+
+
 }
