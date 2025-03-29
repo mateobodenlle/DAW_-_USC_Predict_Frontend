@@ -53,7 +53,7 @@ function gestionarSombras(categoria_content, cards) {
 function gestionarBotones(cards, btnLeft, btnRight) {
     const scrollLeft = cards.scrollLeft;
     const maxScrollLeft = cards.scrollWidth - cards.clientWidth;
-    const margen_error = 1;
+    const margen_error = 10;
 
     const estaAlFinal = Math.abs(scrollLeft - maxScrollLeft) < margen_error;
     const estaAlPrincipio = scrollLeft < margen_error;

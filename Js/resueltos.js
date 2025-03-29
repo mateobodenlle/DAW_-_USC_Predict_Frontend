@@ -9,13 +9,30 @@ export function categoryAnimation (categories_container) {
     const delay = 200; // Delay para hacer las animaciones por orden
     const summaries = categories_container.querySelectorAll(".categoria-summary");
 
+    const toggleBtn = categories_container.previousElementSibling;
+    toggleBtn.style.display = "none";
+
+    // Botón para cambiar la disposición de las tarjetas en móvil
+    if (esMovil) {
+        toggleBtn.addEventListener("click", () => {
+            const cardsList = document.querySelectorAll(".cards");
+
+            cardsList.forEach(cards => {
+                cards.classList.toggle("modo-columna");
+            });
+
+            const enModoColumna = cardsList[0].classList.contains("modo-columna");
+            toggleBtn.textContent = enModoColumna ? "See less" : "See all";
+        });
+    }
+
     summaries.forEach(summary => {
         summary.addEventListener("click", () => {
 
             const content = summary.nextElementSibling; // Category content
             const isVisible = content.classList.contains("visible");
 
-            // Cerrar todos
+            // Cerrar todas las categorías
             if (!esMovil) {
                 categories_container.querySelectorAll(".categoria-content.visible").forEach(c => {
 
@@ -29,7 +46,7 @@ export function categoryAnimation (categories_container) {
                 });
             }
             else
-                content.classList.remove("visible"); // En móvil al seleccionar otra categoría no se cierran las anteriores, dado que el display es vertical y se mueve todo
+                content.classList.remove("visible"); // En móvil al seleccionar otra categoría no se cierran las anteriores, dado que el display es vertical y se mueve to_do
 
 
             // Si no estaba visible, mostrarlo
@@ -54,6 +71,13 @@ export function categoryAnimation (categories_container) {
                 content.classList.add("sombra-derecha");
                 if (!esMovil)
                     btnRight.style.display = "flex";
+            }
+
+            // Botón para cambiar la disposición de las tarjetas en móvil
+            if (esMovil) {
+                if (toggleBtn && toggleBtn.style) {
+                    toggleBtn.style.display = (toggleBtn.style.display === "none") ? "block" : "none";
+                }
             }
 
         });
