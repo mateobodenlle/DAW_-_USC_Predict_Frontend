@@ -82,10 +82,10 @@
 }
 
 .btn-si:hover {
-    background-color: #a9c083;
+    background-color: var(--color-si);
 }
 
 .btn-no:hover {
-    background-color: #324452;
+    background-color: var(--color-no);
 }
 

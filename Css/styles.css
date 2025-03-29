@@ -7,7 +7,11 @@
     --color-text: #c0d9af;
     --color-primary: #a6c88f;
     --color-secondary: #88a368;
-    --color-border: #d9d9d9;
+    --color-border: #d3cdcd;
+    /*--color-si: #4CAF50;*/
+    /*--color-no: #ff4d4d;*/
+    --color-si:   #a9c083;
+    --color-no: #324452;
 
     --font-family: 'Inter', Arial, sans-serif;
     --font-size-base: 14px;
