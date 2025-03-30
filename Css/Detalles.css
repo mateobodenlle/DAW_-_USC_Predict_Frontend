@@ -113,6 +113,7 @@ body {
     padding: 0 10px;
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     width: 100%;
+    transition: 0.2s;
 }
 .header-Apuesta{
     display: flex;
@@ -290,6 +291,7 @@ input[type=number]::-webkit-inner-spin-button {
     align-items: center;
     margin-bottom: 10px;
     width: 100%;
+    transition: 0.2s;
 }
 
 .disminuir-precio, .aumentar-precio{

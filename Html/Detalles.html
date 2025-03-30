@@ -60,7 +60,7 @@
         <section class="contenedor-apuesta">
             <article class="header-Apuesta">
             <h2>Votar</h2>
-            <button class="market-limit">Market</button>
+            <button class="market-limit" id="marketLimitBtn">Market</button>
             </article>
             <article class="vote-input">
                 <label for="vote-count">Número de votos</label>
@@ -114,6 +114,36 @@
 </html>
 <script src="../Js/componentes.js"></script>
 <script>
+    console.log("HEHE");
+    // Seleccionamos los elementos
+    const marketLimitBtn = document.querySelector("#marketLimitBtn");
+    const precioSection = document.querySelector(".precio");
+
+    // Variable para controlar si está en modo Market o Limit
+    // true = Market, false = Limit
+    let isMarketMode = true;
+
+    // Ocultar el precio por defecto si empiezas en Market:
+    precioSection.style.display = "none"; // <-- Opcional, si quieres empezar oculto
+
+    // Escuchamos el clic en el botón
+    marketLimitBtn.addEventListener("click", () => {
+        // Cambiamos el modo
+        isMarketMode = !isMarketMode;
+        console.log(isMarketMode);
+        if (isMarketMode) {
+            // Si es Market: mostramos texto "Market" y ocultamos la sección de precio
+            marketLimitBtn.textContent = "Market";
+            precioSection.style.display = "none";
+        } else {
+            // Si es Limit: mostramos texto "Limit" y volvemos a mostrar la sección de precio
+            marketLimitBtn.textContent = "Limit";
+            precioSection.style.display = "block";
+        }
+    });
+</script>
+
+<script>
 
     // Cuando voton-si o voton-no son pulsados, se "activan"
     let modo = "start"; //no, si o start
@@ -164,5 +194,6 @@
         }
     });
 </script>
+
 <script src="../Js/trendingListsIndex.js"> </script>
 
