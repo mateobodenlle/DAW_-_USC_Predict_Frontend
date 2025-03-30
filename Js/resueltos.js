@@ -36,12 +36,10 @@ export function categoryAnimation (categories_container) {
             if (!esMovil) {
                 categories_container.querySelectorAll(".categoria-content.visible").forEach(c => {
 
+                    c.classList.remove("visible"); // quitar categoria-content.visible
                     setTimeout(() => {
-
-                        c.classList.remove("visible"); // quitar categoria-content.visible
                         c.previousElementSibling.classList.remove("animado"); // quitar animado de categoria-summary, titulo, descripcion y num
                         c.closest(".categoria").classList.remove("animado"); // quitar categoria.animado
-
                     }, delay);
                 });
             }
