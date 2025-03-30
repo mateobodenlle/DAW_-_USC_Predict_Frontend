@@ -1,4 +1,4 @@
-@import "Css/styles.css";
+@import "../styles.css";
 .tarjeta-evento {
     background-color: #7da190;
     border-radius: 12px;
