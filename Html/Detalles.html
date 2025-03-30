@@ -114,10 +114,10 @@
 </html>
 <script src="../Js/componentes.js"></script>
 <script>
-    console.log("HEHE");
     // Seleccionamos los elementos
     const marketLimitBtn = document.querySelector("#marketLimitBtn");
     const precioSection = document.querySelector(".precio");
+    const contenedorApuesta = document.querySelector(".contenedor-apuesta");
 
     // Variable para controlar si está en modo Market o Limit
     // true = Market, false = Limit
@@ -135,16 +135,20 @@
             // Si es Market: mostramos texto "Market" y ocultamos la sección de precio
             marketLimitBtn.textContent = "Market";
             precioSection.style.display = "none";
+            contenedorApuesta.style.height = "436px"; // Ajusta la altura del contenedor
+
         } else {
             // Si es Limit: mostramos texto "Limit" y volvemos a mostrar la sección de precio
+            contenedorApuesta.style.height = "540px"; // Ajusta la altura del contenedor
+            setTimeout(() => {
+                precioSection.style.display = "block";
+            }, 60);
             marketLimitBtn.textContent = "Limit";
-            precioSection.style.display = "block";
         }
     });
 </script>
 
 <script>
-
     // Cuando voton-si o voton-no son pulsados, se "activan"
     let modo = "start"; //no, si o start
     let botonSi = document.querySelector(".boton-si");
@@ -192,6 +196,58 @@
         } else {
             alert("Por favor, selecciona una opción antes de votar.");
         }
+    });
+</script>
+<!--Script para botones de más votos o más precio-->
+<script>
+    // Seleccionamos los botones y el input
+    const botonMas10 = document.querySelector("#boton\\+10");
+    const botonMas100 = document.querySelector("#boton\\+100");
+    const botonMenos10 = document.querySelector("#boton-10");
+    const botonMenos100 = document.querySelector("#boton-100");
+
+    const botonAumentarPrecio = document.querySelector(".aumentar-precio");
+    const botonDisminuirPrecio = document.querySelector(".disminuir-precio");
+
+    const inputVoto = document.querySelector("#vote-count");
+    const inputPrecio = document.querySelector("#precio-input");
+    // Añadimos los event listeners
+    botonMas10.addEventListener("click", function() {
+        if (inputVoto.value === "") {
+            inputVoto.value = 0;
+        }
+        inputVoto.value = parseInt(inputVoto.value) + 10;
+    });
+    botonMas100.addEventListener("click", function() {
+        if (inputVoto.value === "") {
+            inputVoto.value = 0;
+        }
+        inputVoto.value = parseInt(inputVoto.value) + 100;
+    });
+    botonMenos10.addEventListener("click", function() {
+        if (inputVoto.value === "") {
+            inputVoto.value = 0;
+        }
+        inputVoto.value = parseInt(inputVoto.value) - 10;
+        if (inputVoto.value < 0) {
+            inputVoto.value = 0;
+        }
+    });
+    botonMenos100.addEventListener("click", function() {
+        if (inputVoto.value === "") {
+            inputVoto.value = 0;
+        }
+        inputVoto.value = parseInt(inputVoto.value) - 100;
+        if (inputVoto.value < 0) {
+            inputVoto.value = 0;
+        }
+    });
+
+    botonAumentarPrecio.addEventListener("click", function() {
+        inputPrecio.value = (parseFloat(inputPrecio.value) + 0.01).toFixed(2);
+    });
+    botonDisminuirPrecio.addEventListener("click", function() {
+        inputPrecio.value = (parseFloat(inputPrecio.value) - 0.01).toFixed(2);
     });
 </script>
 

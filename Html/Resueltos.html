@@ -36,7 +36,17 @@
 </html>
 
 <!-- Inserción de Footer y Header -->
-<script src="../Js/componentes.js"></script>
+<script src="../Js/componentes.js">
+</script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const navBarResueltos = document.getElementById("navBarResueltos");
+        if (navBarResueltos) {
+            navBarResueltos.classList.add("active");
+        }
+    });
+</script>
 <!-- Inserción de categorías -->
 <script type="module">
 

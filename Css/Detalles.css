@@ -105,6 +105,7 @@ body {
     margin-top: 10px;
 }
 
+/*VOTACIÓN*/
 .contenedor-apuesta {
     box-sizing: border-box;
 
@@ -113,7 +114,8 @@ body {
     padding: 0 10px;
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     width: 100%;
-    transition: 0.2s;
+    height: 436px;
+    transition: 0.1s ease-out;
 }
 .header-Apuesta{
     display: flex;
@@ -183,14 +185,16 @@ body {
 #precio-input,
 #vote-count{
     background-color: #414e5e;
-    opacity: 70%;
+    opacity: 55%;
     color: var(--color-text);
-    font-weight: 100;
+    font-weight: 600;
+    font-size: 1.8vh;
     border-radius: 6px;
     line-height: 20px;
     margin: 5px 0;
-    border: 1px solid rgba(221, 221, 221, 0.3);
+    border: 1px solid rgba(221, 221, 221, 0.4);
     transition: 0.18s;
+    text-align: center;
 }
 #vote-count:hover{
     color: var(--color-text);
@@ -203,6 +207,7 @@ body {
     font-size: 0.9rem;
     font-weight: 400;
     opacity: 80%;
+    text-align: center;
 }
 
 .botones-aumento{
@@ -271,7 +276,7 @@ body {
 
 
 #precio-input{
-    padding: 10px;
+    padding: 10px 5px;
     -moz-appearance: textfield;
     border-radius: 0;
     border-right: none;
@@ -415,7 +420,7 @@ input[type=number]::-webkit-inner-spin-button {
     color: white;
     border: none;
     cursor: pointer;
-    margin-top: 2px;
+    margin-top: 20px;
     font-size: 1.2rem;
     font-weight: 600;
     padding: 20px 30px;
