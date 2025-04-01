@@ -1,0 +1,123 @@
+/* search.css - Estilos para la página de búsqueda */
+
+h1 {
+    text-align: center;
+    color: #c0d9af;
+}
+
+details {
+    background: #4a6978;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+details summary {
+    font-weight: bold;
+    color: #c0d9af;
+}
+
+iframe {
+    width: 100%;
+    height: 300px;
+    border-radius: 5px;
+}
+
+/* BARRA DE BÚSQUEDA */
+.barra-busqueda {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background-color: #0c1a2b;
+    border: 2px solid #c0d9af;
+    border-radius: 12px;
+    padding: 8px 12px;
+    max-width: 400px;
+    margin: 20px auto;
+    transition: all 0.3s ease;
+
+}
+.barra-busqueda input {
+    flex: 1;
+    background-color: transparent;
+    border: none;
+    color: #c0d9af;
+    font-size: 16px;
+    outline: none;
+}
+.barra-busqueda input::placeholder {
+    color: #c0d9af88;
+}
+.barra-busqueda:hover,
+.barra-busqueda:focus-within{
+    transform: scale(1.03);
+    box-shadow: 0 0 20px #c0d9af66, 0 0 40px #c0d9af33;
+}
+.barra-busqueda button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #c0d9af;
+    transition: color 0.3s;
+}
+.barra-busqueda button:hover {
+    color: #ffffff;
+}
+
+/* Resultados de la búsqueda */
+/* Tarjetas */
+#tarjetas-resultado {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+
+    padding: 20px;
+    margin-top: 20px;
+
+    /* Estética general */
+    background-color: #0c1a2b;
+    border: 2px solid #c0d9af;
+    border-radius: 12px;
+    box-shadow: 0 0 20px #c0d9af40;
+}
+.mensaje-vacio {
+    text-align: center;
+    padding: 20px 10px;
+    color: #c0d9af;
+    font-size: 1rem;
+    font-weight: 400;
+    background-color: #0c1a2b;
+    border: 2px dashed #c0d9af66;
+    border-radius: 8px;
+    box-shadow: 0 0 8px #c0d9af22;
+    max-width: 500px;
+    margin: 30px auto;
+}
+
+/* Categorias */
+#categorias-resultado {
+    padding: 20px;
+    margin-top: 20px;
+
+    /* Estética general */
+    background-color: #0c1a2b;
+    border: 2px solid #c0d9af;
+    border-radius: 12px;
+    box-shadow: 0 0 20px #c0d9af40;
+}
+
+#toggle-search-type {
+    background-color: #4a6978;
+    color: #c0d9af;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 8px;
+    margin-left: 10px;
+    transition: background-color 0.3s;
+}
+
+#toggle-search-type:hover {
+    background-color: #6f8d58;
+}

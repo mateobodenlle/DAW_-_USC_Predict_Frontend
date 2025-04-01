@@ -150,7 +150,7 @@
 <script src="../Js/componentes.js">
 </script>
 <script type="module">
-    import { generarTarjetas } from '../Js/loaderCards.js';
+    import { allCards } from '../Js/loaderCards.js';
 
     const datosEjemplo = [
         { img: "../Resources/ImagenEventos/Ajedrez.jpg", nombre: "Ajedrez", categoria: "Deporte", porcentaje: "72%" },
@@ -168,7 +168,7 @@
     const manejarSi = (evento) => alert(`Votaste SÍ en: ${evento.nombre}`);
     const manejarNo = (evento) => alert(`Votaste NO en: ${evento.nombre}`);
 
-    generarTarjetas(contenedor, datosEjemplo, cargarDetalles , manejarSi, manejarNo);
+    allCards(contenedor, datosEjemplo, cargarDetalles , manejarSi, manejarNo);
 
 
 </script>

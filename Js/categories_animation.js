@@ -9,12 +9,13 @@ export function categoryAnimation (categories_container) {
     const delay = 200; // Delay para hacer las animaciones por orden
     const summaries = categories_container.querySelectorAll(".categoria-summary");
 
-    const toggleBtn = categories_container.previousElementSibling;
-    toggleBtn.style.display = "none";
-
     // Botón para cambiar la disposición de las tarjetas en móvil
     if (esMovil) {
-        toggleBtn.addEventListener("click", () => {
+        const seeMore_button = categories_container.querySelector("#seeMore-button");
+
+        seeMore_button.style.display = "none";
+
+        seeMore_button.addEventListener("click", () => {
             const cardsList = document.querySelectorAll(".cards");
 
             cardsList.forEach(cards => {
@@ -22,7 +23,7 @@ export function categoryAnimation (categories_container) {
             });
 
             const enModoColumna = cardsList[0].classList.contains("modo-columna");
-            toggleBtn.textContent = enModoColumna ? "See less" : "See all";
+            seeMore_button.textContent = enModoColumna ? "See less" : "See all";
         });
     }
 
@@ -73,8 +74,9 @@ export function categoryAnimation (categories_container) {
 
             // Botón para cambiar la disposición de las tarjetas en móvil
             if (esMovil) {
-                if (toggleBtn && toggleBtn.style) {
-                    toggleBtn.style.display = (toggleBtn.style.display === "none") ? "block" : "none";
+                const seeMore_button = categories_container.querySelector("#seeMore-button");
+                if (seeMore_button && seeMore_button.style) {
+                    seeMore_button.style.display = (seeMore_button.style.display === "none") ? "block" : "none";
                 }
             }
 

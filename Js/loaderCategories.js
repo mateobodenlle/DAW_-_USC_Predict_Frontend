@@ -1,4 +1,4 @@
-import { generarTarjetas } from '../Js/loaderCards.js';
+import { allCards } from '../Js/loaderCards.js';
 
 function plantillaCategoriaMovil({ titulo, descripcion, num }) {
     return `
@@ -73,12 +73,18 @@ export function generarCategorias(contenedor, categorias, tarjetas, manejarSi, m
     const esMovil = window.matchMedia("(max-width: 768px)").matches;
     const plantillaCategoria = esMovil ? plantillaCategoriaMovil : plantillaCategoriaPC;
 
+    if (esMovil) {
+        const seeMore_button = document.createElement("div");
+        seeMore_button.innerHTML = `<button id="seeMore-button">See All</button>`;
+        contenedor.appendChild(seeMore_button);
+    }
+
     categorias.forEach(cat => {
         const categoriaElemento = crearCategoria(cat, plantillaCategoria);
         contenedor.appendChild(categoriaElemento);
         const cardsContainer = categoriaElemento.querySelector(".cards");
         if (cardsContainer) {
-            generarTarjetas(cardsContainer, tarjetas, manejarSi, manejarNo);
+            allCards(cardsContainer, tarjetas, manejarSi, manejarNo);
         }
     });
 }
