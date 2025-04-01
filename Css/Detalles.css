@@ -37,7 +37,7 @@ body {
 }
 
 .evento-header h1 {
-    font-size: 1.5rem;
+    font-size: 3rem;
     margin-bottom: 10px;
     text-justify: inter-word;
 }
@@ -56,12 +56,19 @@ body {
     padding: 14px 30px 14px 25px;
     font-weight: 500;
     border-radius: 15px;
-    background-color: #465362;
+    background-color: #1f2a38;
     color: var(--color-text);
     font-size: 3vh;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+}
+@media (max-width: 768px) {
+    .views, .date{
+        width: 100%;
+        margin: 0px 0px 10px 0px;
+        padding: 14px 0px 14px 0px;
+    }
 }
 
 .date{
@@ -106,10 +113,15 @@ body {
 }
 
 /*VOTACIÓN*/
+.Titulo_Evento{
+    margin: 0 -10px 15px -2px;
+    font-size: 2.2rem;
+    color: var(--color-text);
+}
 .contenedor-apuesta {
     box-sizing: border-box;
 
-    background-color: #465362;
+    background-color: #1f2a38;
     border-radius: 8px;
     padding: 0 10px;
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
@@ -123,7 +135,7 @@ body {
     justify-content: space-between;
     align-items: center;
     padding: 0 9px;
-    background-color: #465362;
+    background-color: #1f2a38;
     border-radius: 8px 8px 0 0;
     margin-left: -8px;
 }
@@ -131,7 +143,7 @@ body {
 .contenedor-apuesta h2 {
     margin-bottom: 20px;
     line-height: 15px;
-    font-size: 1.5rem;
+    font-size: 1.7rem;
     font-weight: bold;
 }
 
@@ -154,6 +166,7 @@ body {
     background-color: #536477;
     cursor: pointer;
     font-size: 2.05vh;
+    transform: scale(1.05);
 }
 
 .vote-input, .vote-market, .selectorPrecio {
@@ -196,6 +209,7 @@ body {
     transition: 0.18s;
     text-align: center;
 }
+#precio-input:hover,
 #vote-count:hover{
     color: var(--color-text);
     opacity: 1;
@@ -248,6 +262,7 @@ body {
     color: var(--color-text);
     opacity: 1;
     border: 1px solid rgba(221, 221, 221, 0.60);
+    transform: scale(1.05);
 }
 
 .disminucion{
@@ -277,6 +292,7 @@ body {
 
 #precio-input{
     padding: 10px 5px;
+    width: 100%;
     -moz-appearance: textfield;
     border-radius: 0;
     border-right: none;
@@ -315,7 +331,8 @@ input[type=number]::-webkit-inner-spin-button {
     border: 1px solid rgba(221, 221, 221, 0.60);
     cursor: pointer;
     font-size: 2.05vh;
-    width: 100%;
+    width: 40%;
+    transform: scale(1.05);
 }
 
 .disminuir-precio{
@@ -373,6 +390,7 @@ input[type=number]::-webkit-inner-spin-button {
     background-color: var(--color-si);
     opacity: 1;
     border: 1px solid rgba(221, 221, 221, 0.60);
+    transform: scale(1.05);
 }
 .boton-no{
     color: var(--color-text);
@@ -381,12 +399,14 @@ input[type=number]::-webkit-inner-spin-button {
     background-color: var(--color-no);
     opacity: 1;
     border: 1px solid rgba(221, 221, 221, 0.60);
+    transform: scale(1.05);
 }
 
 .botones-votar button:hover{
     color: var(--color-text);
     opacity: 1;
     border: 1px solid rgba(221, 221, 221, 0.60);
+    transform: scale(1.05);
 }
 
 .boton-si.active{
@@ -436,6 +456,8 @@ input[type=number]::-webkit-inner-spin-button {
 .vote-button.si:hover{
     opacity: 1;
     border-radius: 16px ;
+    transform: scale(1.02);
+
 }
 
 .vote-button.si{
@@ -464,4 +486,45 @@ input[type=number]::-webkit-inner-spin-button {
         position: static;
         margin-top: 20px;
     }
+}
+
+/* Contenedor principal con fondo oscuro y estilo aproximado */
+.chart-container {
+    background-color: #1f2a38;  /* Similar a Polymarket */
+    border-radius: 8px;
+    padding: 15px;
+    max-width: 100%;           /* Ajusta según tu diseño */
+    color: #fff;                /* Texto claro */
+    font-family: sans-serif;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+}
+
+/* Cabecera de la gráfica */
+.chart-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.chart-title {
+    margin: 5px 5px 5px 15px;
+    font-size: 3rem;
+    font-weight: 400;
+    color: #c0d9af; /* Color claro para el título */
+    letter-spacing: 1px;
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.2);
+
+}
+
+.chart-subtitle {
+    font-size: 0.9rem;
+    opacity: 0.8;
+}
+
+/* Ajusta el lienzo si quieres un tamaño distinto */
+#myChart {
+    display: block;
+    width: 100%;
+    height: auto;
 }
