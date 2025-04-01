@@ -1,34 +1,3 @@
-
-/*function gestionSombrasYBotones(categoria_content, cards, btnLeft, btnRight) {
-
-    const scrollLeft = cards.scrollLeft;
-    const maxScrollLeft = cards.scrollWidth - cards.clientWidth;
-
-    // console.log("scrollLeft:", scrollLeft);
-
-    const margen_error = 1;
-
-    const estaAlFinal = Math.abs(scrollLeft - maxScrollLeft) < margen_error;
-    const estaAlPrincipio = scrollLeft < margen_error;
-
-    if (estaAlPrincipio) {
-        categoria_content.classList.remove("sombra-izquierda");
-        btnLeft.style.display = "none";
-    } else {
-        categoria_content.classList.add("sombra-izquierda");
-        btnLeft.style.display = "flex";
-    }
-
-    if (estaAlFinal) {
-        categoria_content.classList.remove("sombra-derecha");
-        btnRight.style.display = "none";
-    } else {
-        categoria_content.classList.add("sombra-derecha");
-        btnRight.style.display = "flex";
-    }
-
-}*/
-
 // Funciones separadas para poder gestionar mejor las opciones de móvil
 function gestionarSombras(categoria_content, cards) {
     const scrollLeft = cards.scrollLeft;

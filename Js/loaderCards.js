@@ -45,7 +45,7 @@ export function crearTarjetaEvento(evento,onClick, onSi, onNo) {
  * @param {Function} onSi - Callback para botón "SI"
  * @param {Function} onNo - Callback para botón "NO"
  */
-export function allCards(contenedor, eventos, onClick, onSi, onNo) {
+export function generarTarjetas(contenedor, eventos, onClick, onSi, onNo) {
     eventos.forEach(evento => {
         const tarjeta = crearTarjetaEvento(evento,onClick, onSi, onNo);
         contenedor.appendChild(tarjeta);

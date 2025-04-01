@@ -1,4 +1,4 @@
-import { allCards } from '../Js/loaderCards.js';
+import { generarTarjetas } from '../Js/loaderCards.js';
 
 function plantillaCategoriaMovil({ titulo, descripcion, num }) {
     return `
@@ -65,10 +65,11 @@ function crearCategoria(cat, plantillaCategoria) {
  * @param {HTMLElement} contenedor - contenedor donde van a ser insertadas las categorías
  * @param {Array} categorias - lista de categorías
  * @param {Array} tarjetas - lista de tarjetas //TODO (por ahora serán las mismas para todas las categorías)
+ * @param {Function} onClick - manejo del acceso a la pestaña de detalles
  * @param {Function} manejarSi - Manejar la selección del usuario
  * @param {Function} manejarNo - Manejar la selección del usuario
  */
-export function generarCategorias(contenedor, categorias, tarjetas, manejarSi, manejarNo) {
+export function generarCategorias(contenedor, categorias, tarjetas, onClick, manejarSi, manejarNo) {
 
     const esMovil = window.matchMedia("(max-width: 768px)").matches;
     const plantillaCategoria = esMovil ? plantillaCategoriaMovil : plantillaCategoriaPC;
@@ -84,7 +85,7 @@ export function generarCategorias(contenedor, categorias, tarjetas, manejarSi, m
         contenedor.appendChild(categoriaElemento);
         const cardsContainer = categoriaElemento.querySelector(".cards");
         if (cardsContainer) {
-            allCards(cardsContainer, tarjetas, manejarSi, manejarNo);
+            generarTarjetas(cardsContainer, tarjetas, manejarSi, manejarNo);
         }
     });
 }

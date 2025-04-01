@@ -25,6 +25,14 @@ iframe {
 }
 
 /* BARRA DE BÚSQUEDA */
+#buscador {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    margin: 20px auto;
+    flex-wrap: wrap;
+}
 .barra-busqueda {
     display: flex;
     align-items: center;
@@ -33,18 +41,16 @@ iframe {
     border: 2px solid #c0d9af;
     border-radius: 12px;
     padding: 8px 12px;
-    max-width: 400px;
-    margin: 20px auto;
     transition: all 0.3s ease;
-
 }
+
 .barra-busqueda input {
-    flex: 1;
-    background-color: transparent;
+    background: transparent;
     border: none;
+    outline: none;
     color: #c0d9af;
     font-size: 16px;
-    outline: none;
+    width: 250px;
 }
 .barra-busqueda input::placeholder {
     color: #c0d9af88;
@@ -57,12 +63,31 @@ iframe {
 .barra-busqueda button {
     background: none;
     border: none;
-    cursor: pointer;
     color: #c0d9af;
-    transition: color 0.3s;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 .barra-busqueda button:hover {
     color: #ffffff;
+}
+
+/* Botón con el mismo estilo que la barra */
+#buttonSelect-cardOrCategory {
+    padding: 10px 16px;
+    border: 2px solid #c0d9af;
+    border-radius: 12px;
+    background-color: transparent;
+    color: #c0d9af;
+    font-size: 16px;
+    font-family: inherit;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+#buttonSelect-cardOrCategory:hover {
+    transform: scale(1.03);
+    box-shadow: 0 0 20px #c0d9af66;
 }
 
 /* Resultados de la búsqueda */
@@ -107,17 +132,4 @@ iframe {
     box-shadow: 0 0 20px #c0d9af40;
 }
 
-#toggle-search-type {
-    background-color: #4a6978;
-    color: #c0d9af;
-    border: none;
-    padding: 5px 10px;
-    cursor: pointer;
-    border-radius: 8px;
-    margin-left: 10px;
-    transition: background-color 0.3s;
-}
 
-#toggle-search-type:hover {
-    background-color: #6f8d58;
-}

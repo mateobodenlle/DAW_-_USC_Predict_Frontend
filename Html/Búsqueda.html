@@ -23,17 +23,21 @@
 <!-- Contenido principal -->
 <main class="container">
 
-    <div class="barra-busqueda">
-        <input type="text" id="search-input" placeholder="Buscar eventos..." />
-        <button id="search-button">
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24">
-                <path d="M21 21l-4.35-4.35M10 17a7 7 0 1 1 0-14 7 7 0 0 1 0 14z"
-                      fill="none" stroke="currentColor" stroke-width="2"
-                      stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-        </button>
-        <button id="toggle-search-type">Buscar por Categorías</button> <!-- Botón para cambiar tipo de búsqueda -->
-    </div>
+    <section id="buscador">
+        <button id="buttonSelect-cardOrCategory">Buscar por Categorías</button>
+        <div class="barra-busqueda">
+
+            <button id="search-button">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24">
+                    <path d="M21 21l-4.35-4.35M10 17a7 7 0 1 1 0-14 7 7 0 0 1 0 14z"
+                          fill="none" stroke="currentColor" stroke-width="2"
+                          stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </button>
+            <input type="text" id="search-input" placeholder="Buscar eventos..." />
+        </div>
+
+    </section>
 
     <section id="tarjetas-resultado"></section>
 
@@ -48,37 +52,37 @@
 
 </html>
 <script type="module">
-    import { allCards } from '../Js/loaderCards.js';
-    import { allCategories } from '../Js/loaderCategories';
-    import { tarjetas, manejarSi, manejarNo } from '../Js/exampleData/cards.js';
+    import { generarTarjetas } from '../Js/loaderCards.js';
+    import { generarCategorias } from '../Js/loaderCategories.js';
+    import { tarjetas, cargarDetalles, manejarSi, manejarNo } from '../Js/exampleData/cards.js';
+    import { categorias } from '../Js/exampleData/categories.js';
+
+    // Animation
+    import { categoryAnimation } from '../Js/categories_animation.js'
+    import { horizontalScroll} from "../Js/horizontalScroll.js";
 
     const input = document.getElementById("search-input");
     const button = document.getElementById("search-button");
-    const toggleButton = document.getElementById("toggle-search-type");
+    const button_cardOrCategory = document.getElementById("buttonSelect-cardOrCategory");
     const cardsContainer = document.getElementById("tarjetas-resultado");
     const categoriesContainer = document.getElementById("categorias-resultado");
 
     categoriesContainer.style.display = "none";
 
     let selectedContainer = cardsContainer;
-    let selectedData = allCards;
+    let selectedData = tarjetas;
 
-    toggleButton.addEventListener("click", () => {
-        // Cambiar entre "tarjetas" y "categorías"
-        if (selectedContainer.id === "tarjetas-resultado") {
-            selectedContainer = categoriesContainer;
-            selectedData = allCategories;
-            toggleButton.textContent = "Buscar por Tarjetas"; // Cambiar el texto del botón
-            cardsContainer.style.display = "none"; // Ocultar tarjetas
-            categoriesContainer.style.display = "block"; // Mostrar categorías
-        } else {
-            selectedContainer = cardsContainer;
-            selectedData = allCards;
-            toggleButton.textContent = "Buscar por Categorías"; // Cambiar el texto del botón
-            categoriesContainer.style.display = "none"; // Ocultar categorías
-            cardsContainer.style.display = "block"; // Mostrar tarjetas
+    let idData = "nombre";
+
+    function showResults(filteredData) {
+        if (selectedContainer.id === "tarjetas-resultado")
+            generarTarjetas(selectedContainer, filteredData, () => {}, manejarSi, manejarNo);
+        else {
+            generarCategorias(selectedContainer, filteredData, tarjetas, cargarDetalles, manejarSi, manejarNo);
+            categoryAnimation(selectedContainer);
+            horizontalScroll(selectedContainer);
         }
-    });
+    }
 
     filtrarTarjetas();
 
@@ -87,20 +91,49 @@
         const texto = input.value.trim().toLowerCase();
 
         const filteredData = selectedData.filter(t =>
-            t.nombre.toLowerCase().includes(texto)
+            t[idData].toLowerCase().includes(texto)
         );
 
-        categoriesContainer.innerHTML = ""; // Limpiar
+        selectedContainer.innerHTML = ""; // Limpiar
         if (filteredData.length > 0) {
-            categoriesContainer.style.display = "grid"; // activar grid si hay resultados
-            allCards(categoriesContainer, filteredData, () => {}, manejarSi, manejarNo);
+            if (selectedContainer.id === "tarjetas-resultado"){ // activar grid si hay resultados de tarjetas
+                selectedContainer.style.display = "grid";
+
+            }
+            showResults(filteredData);
         } else {
-            categoriesContainer.innerHTML = "<p class=mensaje-vacio >No se encontraron eventos.</p>";
-            categoriesContainer.style.display = "block"; // mostrar aunque no haya tarjetas
+            selectedContainer.innerHTML = "<p class=mensaje-vacio >No se encontraron eventos.</p>";
+            selectedContainer.style.display = "block"; // mostrar aunque no haya tarjetas
 
         }
         input.blur(); // Quitar foco al buscar
     }
+
+    button_cardOrCategory.addEventListener("click", () => {
+
+        if (selectedContainer.id === "tarjetas-resultado") {
+
+            selectedContainer = categoriesContainer;
+            selectedData = categorias;
+            idData = "titulo";
+
+            input.placeholder = "Buscar categorias...";
+            button_cardOrCategory.textContent = "Buscar por Eventos"; // Cambiar el texto del botón
+            cardsContainer.style.display = "none"; // Ocultar tarjetas
+            categoriesContainer.style.display = "block"; // Mostrar categorías
+        } else {
+
+            selectedContainer = cardsContainer;
+            selectedData = tarjetas;
+            idData = "nombre";
+
+            input.placeholder = "Buscar eventos...";
+            button_cardOrCategory.textContent = "Buscar por Categorías"; // Cambiar el texto del botón
+            categoriesContainer.style.display = "none"; // Ocultar categorías
+            cardsContainer.style.display = "grid"; // Mostrar tarjetas
+        }
+        filtrarTarjetas();
+    });
 
     // Click en el botón
     button.addEventListener("click", filtrarTarjetas);
@@ -120,39 +153,5 @@
 
 
 
-
-
-
-
-
-
 <!-- Inserción de Footer y Header -->
 <script src="../Js/componentes.js"></script>
-
-<!-- Inserción de categorías -->
-<script type="module">
-
-    // Generator funcions
-    import { generarCategorias } from '../Js/loaderCategories.js';
-
-    // Example data
-    import { categorias } from '../Js/exampleData/categories.js';
-    import { tarjetas } from '../Js/exampleData/cards.js';
-    import { manejarSi } from '../Js/exampleData/cards.js';
-    import { manejarNo } from '../Js/exampleData/cards.js';
-
-    // Animation
-    import { categoryAnimation } from '../Js/categories_animation.js'
-    import { horizontalScroll} from "../Js/horizontalScroll.js";
-
-    document.addEventListener("DOMContentLoaded", () => {
-        const categories_container = document.getElementById("categorias-resultado");
-
-        generarCategorias(categories_container, categorias, tarjetas, manejarSi, manejarNo);
-        categoryAnimation(categories_container);
-        horizontalScroll(categories_container);
-
-    });
-
-
-</script>

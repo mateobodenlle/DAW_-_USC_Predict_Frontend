@@ -45,9 +45,7 @@
 
     // Example data
     import { categorias } from '../Js/exampleData/categories.js';
-    import { tarjetas } from '../Js/exampleData/cards.js';
-    import { manejarSi } from '../Js/exampleData/cards.js';
-    import { manejarNo } from '../Js/exampleData/cards.js';
+    import { tarjetas, cargarDetalles, manejarSi, manejarNo } from '../Js/exampleData/cards.js';
 
     // Animation
     import { categoryAnimation } from '../Js/categories_animation.js'
@@ -55,9 +53,9 @@
 
 
     document.addEventListener("DOMContentLoaded", () => {
-        const categories_container = document.getElementById("categorias-resultado");
+        const categories_container = document.getElementById("categories-container");
 
-        generarCategorias(categories_container, categorias, tarjetas, manejarSi, manejarNo);
+        generarCategorias(categories_container, categorias, tarjetas, cargarDetalles, manejarSi, manejarNo);
         categoryAnimation(categories_container);
         horizontalScroll(categories_container);
 

@@ -6,7 +6,7 @@ export function categoryAnimation (categories_container) {
 
     const esMovil = window.matchMedia("(max-width: 768px)").matches;
 
-    const delay = 200; // Delay para hacer las animaciones por orden
+    const delay = 250; // Delay para hacer las animaciones por orden
     const summaries = categories_container.querySelectorAll(".categoria-summary");
 
     // Botón para cambiar la disposición de las tarjetas en móvil
