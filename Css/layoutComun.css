@@ -142,7 +142,7 @@ footer .footer-container {
 }
 
 footer .footer-column {
-    flex: 1 1 200px;
+    flex: 1 1 80px;
     min-width: 150px;
 }
 
@@ -208,8 +208,10 @@ footer .footer-column a:hover {
     footer .footer-column {
         text-align: center;
         border-top: 1px solid #4a6978;
-        padding-top: 20px;
+        padding-top: 5px;
+        width: 75%;
     }
+
 
     footer .footer-column h3 {
         cursor: pointer;
