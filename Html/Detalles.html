@@ -122,30 +122,26 @@
     const eventoId = getParameterByName('id');
 
     if (eventoId) {
-        // Ajusta la ruta al JSON según la estructura de tus carpetas
+        // Ajusta la ruta al JSON según tu estructura (verifica si es ../Recursos/Data/eventos.json o similar)
         fetch('../Resources/Data/eventos.json')
             .then(response => response.json())
             .then(eventos => {
                 const evento = eventos.find(e => e.id == eventoId);
                 if (evento) {
-                    // Actualizar encabezado y detalles básicos
+                    // Actualizar imagen, título, fechas y vistas
                     document.querySelector(".evento-header img.Imagen").src = evento.img;
                     document.querySelector(".exam-details .date .value").textContent = evento.fechaResolucion;
                     document.querySelector(".exam-details .views .value").textContent = evento.nViews;
                     document.getElementById("tituloEvento").textContent = evento.nombre;
-                    // Opcional: actualizar la descripción si el JSON tuviera ese campo
-                    // document.getElementById("descripcionEvento").textContent = evento.descripcion || "";
-
                     // Usar el histórico de precios para la gráfica y para la tarjeta de apuesta
                     const historico = evento.historicoPrecios;
                     const precioActual = historico[historico.length - 1];
-                    // Actualizar el input de precio en la tarjeta de apuesta
+                    // Actualizar input de precio en la tarjeta de apuesta
                     document.getElementById("precio-input").value = precioActual.toFixed(2);
-                    // Actualizar el título de la gráfica (formateado como porcentaje)
+                    // Actualizar título de la gráfica (formateado como porcentaje)
                     document.getElementById("chartTitle").textContent = (precioActual * 100).toFixed(0) + "% chance";
 
-                    // Inicializar la gráfica con los datos del histórico
-                    // Generar etiquetas dinámicamente: "T1", "T2", ..., "Tn"
+                    // Generar etiquetas dinámicamente: "T1", "T2", ... según la cantidad de precios
                     const labels = historico.map((_, i) => "T" + (i + 1));
                     const data = {
                         labels: labels,
@@ -177,9 +173,7 @@
                                 }
                             },
                             plugins: {
-                                legend: {
-                                    display: false
-                                },
+                                legend: { display: false },
                                 tooltip: {
                                     callbacks: {
                                         label: function(context) {
@@ -211,15 +205,23 @@
 <script src="../Js/trendingListsIndex.js"></script>
 <script>
     // Código para la tarjeta de apuesta (Market/Limit, votos, precio, etc.)
-    let precio = 0.49; // Valor por defecto; se actualizará al cargar el evento
-    const precioMercado = precio.toFixed(2);
+    let precio = parseFloat(document.getElementById("precio-input").value);
+    console.log(precio);
     const marketLimitBtn = document.querySelector("#marketLimitBtn");
+    let precioMercado;
+    console.log(precioMercado);
     const precioSection = document.querySelector(".precio");
     const contenedorApuesta = document.querySelector(".contenedor-apuesta");
+
+    document.addEventListener("DOMContentLoaded", function() {
+        precioMercado = precio;
+    });
 
     // Modo Market/Limit: true = Market, false = Limit
     let isMarketMode = true;
     precioSection.style.display = "none"; // Comenzamos en modo Market
+
+
 
     function actualizarDatosApuesta() {
         let total = parseInt(inputVoto.value) * parseFloat(inputPrecio.value);
@@ -231,28 +233,50 @@
     marketLimitBtn.addEventListener("click", () => {
         isMarketMode = !isMarketMode;
         if (isMarketMode) {
-            marketLimitBtn.textContent = "Market";
             precio = precioMercado;
+            marketLimitBtn.textContent = "Market";
             precioSection.querySelector("input").value = precio;
             actualizarDatosApuesta();
             precioSection.style.display = "none";
             contenedorApuesta.style.height = "436px";
         } else {
+            precioMercado = parseFloat(inputPrecio.value);
             contenedorApuesta.style.height = "540px";
-            setTimeout(() => {
-                precioSection.style.display = "block";
-            }, 60);
+            setTimeout(() => { precioSection.style.display = "block"; }, 60);
             marketLimitBtn.textContent = "Limit";
         }
     });
 
-    let modo = "start";
-    let botonSi = document.querySelector(".boton-si");
-    let botonNo = document.querySelector(".boton-no");
-    let botonVotar = document.querySelector(".vote-button");
-    let precioInput = document.querySelector(".precio-input");
+    // Variables de votación
+    let modo = "start"; // Valores: "si", "no" o "start"
+    const botonSi = document.querySelector(".boton-si");
+    const botonNo = document.querySelector(".boton-no");
+    const botonVotar = document.querySelector(".vote-button");
+    const precioInput = document.querySelector(".precio-input");
+    const inputVoto = document.querySelector("#vote-count");
+    const inputPrecio = document.querySelector("#precio-input");
     precioInput.value = precio;
     botonVotar.disabled = true;
+
+    // Función auxiliar para preseleccionar según el parámetro "voto"
+    const votoParam = getParameterByName('voto');
+    if (votoParam === 'si') {
+        modo = "si";
+        botonSi.classList.add("active");
+        botonNo.classList.remove("active");
+        precioInput.value = precio;
+        botonVotar.disabled = false;
+        botonVotar.classList.add("si");
+        botonVotar.classList.remove("no");
+    } else if (votoParam === 'no') {
+        modo = "no";
+        botonNo.classList.add("active");
+        botonSi.classList.remove("active");
+        precioInput.value = (1 - precio).toFixed(2);
+        botonVotar.disabled = false;
+        botonVotar.classList.add("no");
+        botonVotar.classList.remove("si");
+    }
 
     botonSi.addEventListener("click", function() {
         modo = "si";
@@ -268,7 +292,7 @@
         modo = "no";
         botonNo.classList.add("active");
         botonSi.classList.remove("active");
-        precioInput.value = 1 - precio;
+        precioInput.value = (1 - precio).toFixed(2);
         botonVotar.disabled = false;
         botonVotar.classList.add("no");
         botonVotar.classList.remove("si");
@@ -284,14 +308,13 @@
         }
     });
 
+    // Botones para ajustar votos y precio
     const botonMas10 = document.querySelector("#boton\\+10");
     const botonMas100 = document.querySelector("#boton\\+100");
     const botonMenos10 = document.querySelector("#boton-10");
     const botonMenos100 = document.querySelector("#boton-100");
     const botonAumentarPrecio = document.querySelector(".aumentar-precio");
     const botonDisminuirPrecio = document.querySelector(".disminuir-precio");
-    const inputVoto = document.querySelector("#vote-count");
-    const inputPrecio = document.querySelector("#precio-input");
 
     botonMas10.addEventListener("click", function() {
         if (inputVoto.value === "") { inputVoto.value = 0; }

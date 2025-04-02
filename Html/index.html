@@ -159,12 +159,12 @@
 
     // Callbacks para botones "SI" y "NO"
     const onSi = (evento, tarjeta) => {
-        alert(`Votaste SI en: ${evento.nombre}`);
+        window.location.href = `Detalles.html?id=${evento.id}&voto=si`;
+    };
+    const onNo = (evento, tarjeta) => {
+        window.location.href = `Detalles.html?id=${evento.id}&voto=no`;
     };
 
-    const onNo = (evento, tarjeta) => {
-        alert(`Votaste NO en: ${evento.nombre}`);
-    };
 
     // Cargar el JSON con la información de los eventos
     fetch('../Resources/Data/eventos.json')
