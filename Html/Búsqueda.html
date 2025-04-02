@@ -51,9 +51,14 @@
 </body>
 
 </html>
+
+<!--  -->
 <script type="module">
+    // Inserción de datos
     import { generarTarjetas } from '../Js/loaderCards.js';
     import { generarCategorias } from '../Js/loaderCategories.js';
+
+    // Datos
     import { tarjetas, cargarDetalles, manejarSi, manejarNo } from '../Js/exampleData/cards.js';
     import { categorias } from '../Js/exampleData/categories.js';
 
@@ -61,19 +66,17 @@
     import { categoryAnimation } from '../Js/categories_animation.js'
     import { horizontalScroll} from "../Js/horizontalScroll.js";
 
+    // Obtención de elementos
     const input = document.getElementById("search-input");
-    const button = document.getElementById("search-button");
+    const search_button = document.getElementById("search-button");
     const button_cardOrCategory = document.getElementById("buttonSelect-cardOrCategory");
     const cardsContainer = document.getElementById("tarjetas-resultado");
     const categoriesContainer = document.getElementById("categorias-resultado");
 
-    categoriesContainer.style.display = "none";
-
+    // Variables según la selección de los resultados de búsqueda
     let selectedContainer = cardsContainer;
     let selectedData = tarjetas;
-
     let idData = "nombre";
-
     function showResults(filteredData) {
         if (selectedContainer.id === "tarjetas-resultado")
             generarTarjetas(selectedContainer, filteredData, () => {}, manejarSi, manejarNo);
@@ -84,30 +87,31 @@
         }
     }
 
-    filtrarTarjetas();
+    // Comienzo enseñando las tarjetas, por lo que oculta las categorías
+    categoriesContainer.style.display = "none";
 
-    // Filtrar tarjetas por nombre
+    // Filtración por nombre / título
     function filtrarTarjetas() {
-        const texto = input.value.trim().toLowerCase();
 
+        const texto = input.value.trim().toLowerCase();
         const filteredData = selectedData.filter(t =>
             t[idData].toLowerCase().includes(texto)
         );
 
-        selectedContainer.innerHTML = ""; // Limpiar
+        selectedContainer.innerHTML = "";
         if (filteredData.length > 0) {
-            if (selectedContainer.id === "tarjetas-resultado"){ // activar grid si hay resultados de tarjetas
+            if (selectedContainer.id === "tarjetas-resultado") // activar grid si hay resultados de tarjetas
                 selectedContainer.style.display = "grid";
-
-            }
             showResults(filteredData);
         } else {
             selectedContainer.innerHTML = "<p class=mensaje-vacio >No se encontraron eventos.</p>";
-            selectedContainer.style.display = "block"; // mostrar aunque no haya tarjetas
-
+            selectedContainer.style.display = "block";
         }
-        input.blur(); // Quitar foco al buscar
+        input.blur();
     }
+
+    // Búsqueda inicial
+    filtrarTarjetas();
 
     button_cardOrCategory.addEventListener("click", () => {
 
@@ -119,6 +123,7 @@
 
             input.placeholder = "Buscar categorias...";
             button_cardOrCategory.textContent = "Buscar por Eventos"; // Cambiar el texto del botón
+
             cardsContainer.style.display = "none"; // Ocultar tarjetas
             categoriesContainer.style.display = "block"; // Mostrar categorías
         } else {
@@ -129,6 +134,7 @@
 
             input.placeholder = "Buscar eventos...";
             button_cardOrCategory.textContent = "Buscar por Categorías"; // Cambiar el texto del botón
+
             categoriesContainer.style.display = "none"; // Ocultar categorías
             cardsContainer.style.display = "grid"; // Mostrar tarjetas
         }
@@ -136,7 +142,7 @@
     });
 
     // Click en el botón
-    button.addEventListener("click", filtrarTarjetas);
+    search_button.addEventListener("click", filtrarTarjetas);
 
     // Pulsar Enter
     input.addEventListener("keydown", (e) => {
@@ -145,13 +151,6 @@
         }
     });
 
-
 </script>
-
-
-
-
-
-
 <!-- Inserción de Footer y Header -->
 <script src="../Js/componentes.js"></script>

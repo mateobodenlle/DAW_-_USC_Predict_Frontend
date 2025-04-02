@@ -1,17 +1,4 @@
-/* search.css - Estilos para la página de búsqueda */
-
-article {
-    background: #0c1a2b;
-    padding: 15px;
-    margin: 10px;
-    border-radius: 5px;
-    text-align: center;
-    width: 200px;
-    display: flex;
-    flex-direction: row;
-}
-
-/* BARRA DE BÚSQUEDA */
+/* BÚSQUEDA */
 #buscador {
     display: flex;
     justify-content: center;
@@ -20,6 +7,7 @@ article {
     margin: 20px auto;
     flex-wrap: wrap;
 }
+/* Barra de búsqueda */
 .barra-busqueda {
     display: flex;
     align-items: center;
@@ -30,7 +18,6 @@ article {
     padding: 8px 12px;
     transition: all 0.3s ease;
 }
-
 .barra-busqueda input {
     background: transparent;
     border: none;
@@ -59,8 +46,19 @@ article {
 .barra-busqueda button:hover {
     color: #ffffff;
 }
-
-/* Botón con el mismo estilo que la barra */
+/* Personalización del autocompletado del input */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+    -webkit-box-shadow: 0 0 0px 1000px #0c1a2b inset !important;
+    -webkit-text-fill-color: #c0d9af !important;
+    caret-color: #c0d9af;
+    border: none !important;
+    outline: none !important;
+    transition: background-color 9999s ease-in-out 0s; /* Truco adicional */
+}
+/* Botón de cambio de tipo de búsqueda */
 #buttonSelect-cardOrCategory {
     padding: 10px 16px;
     border: 2px solid #c0d9af;
@@ -77,7 +75,7 @@ article {
     box-shadow: 0 0 20px #c0d9af66;
 }
 
-/* Resultados de la búsqueda */
+/* CONTENEDOR DE RESULTADOS */
 /* Tarjetas */
 #tarjetas-resultado {
     display: grid;
@@ -93,6 +91,18 @@ article {
     border-radius: 12px;
     box-shadow: 0 0 20px #c0d9af40;
 }
+/* Categorias */
+#categorias-resultado {
+    padding: 20px;
+    margin-top: 20px;
+
+    /* Estética general */
+    background-color: #0c1a2b;
+    border: 2px solid #c0d9af;
+    border-radius: 12px;
+    box-shadow: 0 0 20px #c0d9af40;
+}
+/* Not found */
 .mensaje-vacio {
     text-align: center;
     padding: 20px 10px;
@@ -106,32 +116,3 @@ article {
     max-width: 500px;
     margin: 30px auto;
 }
-
-/* Categorias */
-#categorias-resultado {
-    padding: 20px;
-    margin-top: 20px;
-
-    /* Estética general */
-    background-color: #0c1a2b;
-    border: 2px solid #c0d9af;
-    border-radius: 12px;
-    box-shadow: 0 0 20px #c0d9af40;
-}
-
-/* Personalización del autocompletado del input */
-input:-webkit-autofill,
-input:-webkit-autofill:hover,
-input:-webkit-autofill:focus,
-input:-webkit-autofill:active {
-    -webkit-box-shadow: 0 0 0px 1000px #0c1a2b inset !important;
-    -webkit-text-fill-color: #c0d9af !important;
-    caret-color: #c0d9af;
-    border: none !important;
-    outline: none !important;
-    transition: background-color 9999s ease-in-out 0s; /* Truco adicional */
-}
-
-
-
-
