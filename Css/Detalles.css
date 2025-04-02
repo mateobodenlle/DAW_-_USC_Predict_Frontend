@@ -88,9 +88,20 @@ body {
     text-align: right;
 }
 
-.exam-description, .event-note {
+.evento-descripcion, .event-note {
     line-height: 1.6;
     margin-bottom: 20px;
+}
+.evento-descripcion p{
+    text-align: justify;
+}
+
+.evento-condicion h2{
+    margin-bottom: -10px;
+}
+
+.evento-condicion p{
+    text-align: justify;
 }
 
 .chance-graph {

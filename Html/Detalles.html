@@ -34,9 +34,13 @@
             </article>
         </div>
 
-        <p class="exam-description" id="descripcionEvento">
-            Este evento resolverá si la nota del examen alcanza una nota media estrictamente mayor que 6. Se considera media sin tener en cuenta a los "no presentado", y tras el período de reclamación.
-        </p>
+        <!-- Descripción corta (ya presente en el layout original) -->
+
+        <!-- Nueva sección para la descripción larga del evento -->
+        <article class="evento-descripcion">
+            <p id="evento-descripcion"></p>
+        </article>
+
 
         <!-- Contenedor de la gráfica -->
         <div class="chart-container">
@@ -48,9 +52,14 @@
             <!-- Canvas para Chart.js -->
             <canvas id="myChart" width="400" height="200"></canvas>
         </div>
-
-        <!-- Se carga Chart.js desde CDN -->
+        <!-- Carga Chart.js desde CDN -->
         <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+        <article class="evento-condicion">
+            <h2>Condición de Resolución</h2>
+            <p id="condicionResolucion"></p>
+        </article>
+
     </section>
 
     <aside class="voting-sidebar">
@@ -122,7 +131,7 @@
     const eventoId = getParameterByName('id');
 
     if (eventoId) {
-        // Ajusta la ruta al JSON según tu estructura (verifica si es ../Recursos/Data/eventos.json o similar)
+        // Ajusta la ruta al JSON según tu estructura de carpetas
         fetch('../Resources/Data/eventos.json')
             .then(response => response.json())
             .then(eventos => {
@@ -133,6 +142,12 @@
                     document.querySelector(".exam-details .date .value").textContent = evento.fechaResolucion;
                     document.querySelector(".exam-details .views .value").textContent = evento.nViews;
                     document.getElementById("tituloEvento").textContent = evento.nombre;
+                    // Actualizar descripción corta si se quiere (ya está en exam-description)
+
+                    // Insertar la descripción larga y la condición de resolución
+                    document.getElementById("evento-descripcion").textContent = evento.descripcion || "";
+                    document.getElementById("condicionResolucion").textContent = evento.condicionResolucion || "";
+
                     // Usar el histórico de precios para la gráfica y para la tarjeta de apuesta
                     const historico = evento.historicoPrecios;
                     const precioActual = historico[historico.length - 1];
@@ -141,7 +156,7 @@
                     // Actualizar título de la gráfica (formateado como porcentaje)
                     document.getElementById("chartTitle").textContent = (precioActual * 100).toFixed(0) + "% chance";
 
-                    // Generar etiquetas dinámicamente: "T1", "T2", ... según la cantidad de precios
+                    // Generar etiquetas dinámicamente para la gráfica: "T1", "T2", ..., "Tn"
                     const labels = historico.map((_, i) => "T" + (i + 1));
                     const data = {
                         labels: labels,
@@ -248,7 +263,7 @@
     });
 
     // Variables de votación
-    let modo = "start"; // Valores: "si", "no" o "start"
+    let modo = "start";
     const botonSi = document.querySelector(".boton-si");
     const botonNo = document.querySelector(".boton-no");
     const botonVotar = document.querySelector(".vote-button");
@@ -258,7 +273,7 @@
     precioInput.value = precio;
     botonVotar.disabled = true;
 
-    // Función auxiliar para preseleccionar según el parámetro "voto"
+    // Preseleccionar opción según parámetro "voto" de la URL
     const votoParam = getParameterByName('voto');
     if (votoParam === 'si') {
         modo = "si";
@@ -308,7 +323,6 @@
         }
     });
 
-    // Botones para ajustar votos y precio
     const botonMas10 = document.querySelector("#boton\\+10");
     const botonMas100 = document.querySelector("#boton\\+100");
     const botonMenos10 = document.querySelector("#boton-10");
