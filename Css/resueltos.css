@@ -1,8 +1,13 @@
 /* resueltos.css - Estilos para la página de eventos resueltos */
 
 /* Propiedades generales */
-#categorias-resultado {
-    margin: 50px 0 70px 0;
+#categories-container {
+    padding: 20px;
+    margin-top: 20px;
+    background-color: #0c1a2b;
+    border: 2px solid #c0d9af;
+    border-radius: 12px;
+    box-shadow: 0 0 20px #c0d9af40;
 }
 h1 {
     text-align: center;
@@ -20,4 +25,8 @@ article {
 }
 button {
     background-color: #88a368;
+}
+
+main {
+    height: 100%;
 }

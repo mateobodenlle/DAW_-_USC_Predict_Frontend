@@ -1,27 +1,14 @@
 /* search.css - Estilos para la página de búsqueda */
 
-h1 {
+article {
+    background: #0c1a2b;
+    padding: 15px;
+    margin: 10px;
+    border-radius: 5px;
     text-align: center;
-    color: #c0d9af;
-}
-
-details {
-    background: #4a6978;
-    padding: 10px;
-    margin: 10px 0;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-details summary {
-    font-weight: bold;
-    color: #c0d9af;
-}
-
-iframe {
-    width: 100%;
-    height: 300px;
-    border-radius: 5px;
+    width: 200px;
+    display: flex;
+    flex-direction: row;
 }
 
 /* BARRA DE BÚSQUEDA */
@@ -58,7 +45,7 @@ iframe {
 .barra-busqueda:hover,
 .barra-busqueda:focus-within{
     transform: scale(1.03);
-    box-shadow: 0 0 20px #c0d9af66, 0 0 40px #c0d9af33;
+    box-shadow: 0 0 20px #c0d9af66;
 }
 .barra-busqueda button {
     background: none;
@@ -131,5 +118,20 @@ iframe {
     border-radius: 12px;
     box-shadow: 0 0 20px #c0d9af40;
 }
+
+/* Personalización del autocompletado del input */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+    -webkit-box-shadow: 0 0 0px 1000px #0c1a2b inset !important;
+    -webkit-text-fill-color: #c0d9af !important;
+    caret-color: #c0d9af;
+    border: none !important;
+    outline: none !important;
+    transition: background-color 9999s ease-in-out 0s; /* Truco adicional */
+}
+
+
 
 
