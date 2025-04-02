@@ -1,0 +1,32 @@
+/* resueltos.css - Estilos para la página de eventos resueltos */
+
+/* Propiedades generales */
+#categories-container {
+    padding: 20px;
+    margin-top: 20px;
+    background-color: #0c1a2b;
+    border: 2px solid #c0d9af;
+    border-radius: 12px;
+    box-shadow: 0 0 20px #c0d9af40;
+}
+h1 {
+    text-align: center;
+    color: #c0d9af;
+}
+article {
+    background: #0c1a2b;
+    padding: 15px;
+    margin: 10px;
+    border-radius: 5px;
+    text-align: center;
+    width: 200px;
+    display: flex;
+    flex-direction: row;
+}
+button {
+    background-color: #88a368;
+}
+
+main {
+    height: 100%;
+}

@@ -1,81 +1,156 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<title>USCP - Search</title>
-<link rel="stylesheet" href="../Css/styles.css">
-<link rel="stylesheet" href="../Css/search.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name = "description" content = "Buscador de tarjetas, lista de todas las categorías y mapa de google">
+    <meta name = "keywords" content = "USC, Predict, Eventos, Predicción">
+    <meta name = "author" content = "Mateo Bodenlle y Diego Cristóbal">
+    <title>Búsqueda</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../Css/styles.css">
+    <link rel="stylesheet" href="../Css/busqueda.css">
+    <link rel="stylesheet" href="../Css/layoutComun.css">
+    <link rel="stylesheet" href="../Css/Componentes/categories.css">
+    <link rel="stylesheet" href="../Css/Componentes/card.css">
 </head>
+
 <body>
 
-    <nav>
-        <img src="../Resources/Logo.jpg" width="150px">
-        <p><a href="Búsqueda.html">Búsqueda</a></p> 
-        <p><a href="Watchlist.html">Watchlist</a></p> 
-        <p><a href="Resueltos.html">Resueltos</a></p> 
-        <p><a href="About Us.html">About Us</a></p> 
-    </nav>
+<!-- Encabezado principal del sitio -->
+<header id="navbar"></header>
 
+<!-- Contenido principal -->
+<main class="container">
 
-<main>
-    <header>
-        <h1>EXPLORA</h1>
-    </header>
+    <section id="buscador">
+        <button id="buttonSelect-cardOrCategory">Buscar por Categorías</button>
+        <div class="barra-busqueda">
 
-        <!-- Categorías -->
-        <details>
-            <summary>Categoría 1</summary>
-            <article>
-                <h2>TARJETA1</h2>
-                <p>Descripción evento 2</p>
-                <img src="../Resources/ImagenEventos/Examen.jpg" width="100px"><br>
-                 <button>Votar si</button>  <button>Votar no</button>
-            </article>
-            <article>
-                <h2>TARJETA2</h2>
-                <p>Descripción evento 2</p>
-                <img src="../Resources/ImagenEventos/Ajedrez.jpg" width="100px"><br>
-                 <button>Votar si</button>  <button>Votar no</button>
-            </article>
-            <p>Eventos relacionados con esta categoría.</p>
-        </details>
-        <details>
-            <summary>Categoría 2</summary>
-            <p>Eventos relacionados con esta categoría.</p>
-        </details>
-        <details>
-            <summary>Categoría 3</summary>
-            <p>Eventos relacionados con esta categoría.</p>
-        </details>
-        <details>
-            <summary>Categoría 4</summary>
-            <p>Eventos relacionados con esta categoría.</p>
-        </details>
+            <button id="search-button">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24">
+                    <path d="M21 21l-4.35-4.35M10 17a7 7 0 1 1 0-14 7 7 0 0 1 0 14z"
+                          fill="none" stroke="currentColor" stroke-width="2"
+                          stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </button>
+            <input type="text" id="search-input" placeholder="Buscar eventos..." />
+        </div>
 
-        <!-- Mapa -->
-        <section>
-            <h2>Mapa de eventos</h2>
-            <iframe 
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2381.689377917878!2d-8.54513928422843!3d42.880595109078105!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd2e5bff62b2b4a5%3A0x30886dcf3f9d8d58!2sUniversidad%20de%20Santiago%20de%20Compostela!5e0!3m2!1ses!2ses!4v1647381872091!5m2!1ses!2ses"
-                allowfullscreen="" loading="lazy"></iframe>
-        </section>
+    </section>
 
-    </main>
+    <section id="tarjetas-resultado"></section>
 
+    <section id="categorias-resultado"></section>
 
+</main>
 
+<!-- Pie de página -->
+<footer id="footer"></footer>
 
-    <footer>
-        <!--LOGO-->
-        <img src="../Resources/Logo.jpg" width="150px">
-        <article>
-        Información en redes sociales
-            <ol>
-                <li>Instgram</li>
-                <li>X</li>
-                <li>Facebook</li>
-                <li>Linkedin</li>
-                <li><a href="https://weshearn.com" target="_blank" rel="noopener noreferrer">Weshearn</a></li>
-            </ol>
-        </article>
-    </footer>
-<body>
+</body>
+
+</html>
+
+<!--  -->
+<script type="module">
+    // Inserción de datos
+    import { generarTarjetas } from '../Js/loaderCards.js';
+    import { generarCategorias } from '../Js/loaderCategories.js';
+
+    // Datos
+    import { tarjetas, cargarDetalles, manejarSi, manejarNo } from '../Js/exampleData/cards.js';
+    import { categorias } from '../Js/exampleData/categories.js';
+
+    // Animation
+    import { categoryAnimation } from '../Js/categories_animation.js'
+    import { horizontalScroll} from "../Js/horizontalScroll.js";
+
+    // Obtención de elementos
+    const input = document.getElementById("search-input");
+    const search_button = document.getElementById("search-button");
+    const button_cardOrCategory = document.getElementById("buttonSelect-cardOrCategory");
+    const cardsContainer = document.getElementById("tarjetas-resultado");
+    const categoriesContainer = document.getElementById("categorias-resultado");
+
+    // Variables según la selección de los resultados de búsqueda
+    let selectedContainer = cardsContainer;
+    let selectedData = tarjetas;
+    let idData = "nombre";
+    function showResults(filteredData) {
+        if (selectedContainer.id === "tarjetas-resultado")
+            generarTarjetas(selectedContainer, filteredData, () => {}, manejarSi, manejarNo);
+        else {
+            generarCategorias(selectedContainer, filteredData, tarjetas, cargarDetalles, manejarSi, manejarNo);
+            categoryAnimation(selectedContainer);
+            horizontalScroll(selectedContainer);
+        }
+    }
+
+    // Comienzo enseñando las tarjetas, por lo que oculta las categorías
+    categoriesContainer.style.display = "none";
+
+    // Filtración por nombre / título
+    function filtrarTarjetas() {
+
+        const texto = input.value.trim().toLowerCase();
+        const filteredData = selectedData.filter(t =>
+            t[idData].toLowerCase().includes(texto)
+        );
+
+        selectedContainer.innerHTML = "";
+        if (filteredData.length > 0) {
+            if (selectedContainer.id === "tarjetas-resultado") // activar grid si hay resultados de tarjetas
+                selectedContainer.style.display = "grid";
+            showResults(filteredData);
+        } else {
+            selectedContainer.innerHTML = "<p class=mensaje-vacio >No se encontraron eventos.</p>";
+            selectedContainer.style.display = "block";
+        }
+        input.blur();
+    }
+
+    // Búsqueda inicial
+    filtrarTarjetas();
+
+    button_cardOrCategory.addEventListener("click", () => {
+
+        if (selectedContainer.id === "tarjetas-resultado") {
+
+            selectedContainer = categoriesContainer;
+            selectedData = categorias;
+            idData = "titulo";
+
+            input.placeholder = "Buscar categorias...";
+            button_cardOrCategory.textContent = "Buscar por Eventos"; // Cambiar el texto del botón
+
+            cardsContainer.style.display = "none"; // Ocultar tarjetas
+            categoriesContainer.style.display = "block"; // Mostrar categorías
+        } else {
+
+            selectedContainer = cardsContainer;
+            selectedData = tarjetas;
+            idData = "nombre";
+
+            input.placeholder = "Buscar eventos...";
+            button_cardOrCategory.textContent = "Buscar por Categorías"; // Cambiar el texto del botón
+
+            categoriesContainer.style.display = "none"; // Ocultar categorías
+            cardsContainer.style.display = "grid"; // Mostrar tarjetas
+        }
+        filtrarTarjetas();
+    });
+
+    // Click en el botón
+    search_button.addEventListener("click", filtrarTarjetas);
+
+    // Pulsar Enter
+    input.addEventListener("keydown", (e) => {
+        if (e.key === "Enter") {
+            filtrarTarjetas();
+        }
+    });
+
+</script>
+<!-- Inserción de Footer y Header -->
+<script src="../Js/componentes.js"></script>

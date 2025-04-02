@@ -65,13 +65,20 @@ function crearCategoria(cat, plantillaCategoria) {
  * @param {HTMLElement} contenedor - contenedor donde van a ser insertadas las categorías
  * @param {Array} categorias - lista de categorías
  * @param {Array} tarjetas - lista de tarjetas //TODO (por ahora serán las mismas para todas las categorías)
+ * @param {Function} onClick - manejo del acceso a la pestaña de detalles
  * @param {Function} manejarSi - Manejar la selección del usuario
  * @param {Function} manejarNo - Manejar la selección del usuario
  */
-export function generarCategorias(contenedor, categorias, tarjetas, manejarSi, manejarNo) {
+export function generarCategorias(contenedor, categorias, tarjetas, onClick, manejarSi, manejarNo) {
 
     const esMovil = window.matchMedia("(max-width: 768px)").matches;
     const plantillaCategoria = esMovil ? plantillaCategoriaMovil : plantillaCategoriaPC;
+
+    if (esMovil) {
+        const seeMore_button = document.createElement("div");
+        seeMore_button.innerHTML = `<button id="seeMore-button">See All</button>`;
+        contenedor.appendChild(seeMore_button);
+    }
 
     categorias.forEach(cat => {
         const categoriaElemento = crearCategoria(cat, plantillaCategoria);

@@ -12,7 +12,7 @@
 
 .tarjeta-evento:hover {
     transform: translateY(-4px);
-    background-color: #9dbdae;
+    background-color: #678E7C;
     cursor: pointer;
 }
 
@@ -38,6 +38,9 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+}
+.tarjeta-evento:hover .tarjeta-info h3 {
+    /*color: #0c1a2b;*/
 }
 
 .tarjeta-info .porcentaje {
@@ -89,3 +92,9 @@
     background-color: var(--color-no);
 }
 
+@media (max-width: 768px) {
+    .tarjeta-evento {
+        width: 100%;
+        box-sizing: border-box;
+    }
+}

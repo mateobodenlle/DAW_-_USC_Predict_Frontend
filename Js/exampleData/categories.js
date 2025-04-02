@@ -1,8 +1,8 @@
 export const categorias = [
     {
         titulo: "Aprobados",
-        descripcion: "El num de alumnos que superan la asignatura este año",
-        num: "13"
+        descripcion: "El número de alumnos que superan la asignatura este año",
+        num: "15"
     },
     {
         titulo: "Puesto de renombre",

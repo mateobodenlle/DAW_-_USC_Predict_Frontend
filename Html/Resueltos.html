@@ -9,8 +9,9 @@
     <title>Resueltos</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../Css/styles.css">
-    <link rel="stylesheet" href="../Css/Resueltos.css">
+    <link rel="stylesheet" href="../Css/resueltos.css">
     <link rel="stylesheet" href="../Css/layoutComun.css">
+    <link rel="stylesheet" href="../Css/Componentes/categories.css">
     <link rel="stylesheet" href="../Css/Componentes/card.css">
 </head>
 
@@ -22,9 +23,7 @@
 <!-- Contenido principal -->
 <main class="container">
 
-    <button id="toggle-layout">See All</button>
-
-    <section id="main-section"></section>
+    <section id="categories-container"></section>
 
 </main>
 
@@ -36,17 +35,8 @@
 </html>
 
 <!-- Inserción de Footer y Header -->
-<script src="../Js/componentes.js">
-</script>
+<script src="../Js/componentes.js"></script>
 
-<script>
-    document.addEventListener("DOMContentLoaded", () => {
-        const navBarResueltos = document.getElementById("navBarResueltos");
-        if (navBarResueltos) {
-            navBarResueltos.classList.add("active");
-        }
-    });
-</script>
 <!-- Inserción de categorías -->
 <script type="module">
 
@@ -55,25 +45,20 @@
 
     // Example data
     import { categorias } from '../Js/exampleData/categories.js';
-    import { tarjetas } from '../Js/exampleData/cards.js';
-    import { manejarSi } from '../Js/exampleData/cards.js';
-    import { manejarNo } from '../Js/exampleData/cards.js';
+    import { tarjetas, cargarDetalles, manejarSi, manejarNo } from '../Js/exampleData/cards.js';
 
     // Animation
-    import { categoryAnimation } from '../Js/resueltos.js'
+    import { categoryAnimation } from '../Js/categories_animation.js'
     import { horizontalScroll} from "../Js/horizontalScroll.js";
 
 
-    const main_section = document.getElementById("main-section");
+    document.addEventListener("DOMContentLoaded", () => {
+        const categories_container = document.getElementById("categories-container");
 
-    generarCategorias(main_section, categorias, tarjetas, manejarSi, manejarNo);
-    categoryAnimation(main_section);
-    horizontalScroll(main_section);
+        generarCategorias(categories_container, categorias, tarjetas, cargarDetalles, manejarSi, manejarNo);
+        categoryAnimation(categories_container);
+        horizontalScroll(categories_container);
 
-</script>
-
-
-<script>
+    });
 
 </script>
-

@@ -10,5 +10,6 @@ export const tarjetas = [
 
 ];
 
+export const cargarDetalles = (evento) => window.location.href = './Detalles.html';
 export const manejarSi = (evento) => alert(`Votaste SÍ en: ${evento.nombre}`);
 export const manejarNo = (evento) => alert(`Votaste NO en: ${evento.nombre}`);
