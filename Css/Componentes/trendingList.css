@@ -3,7 +3,7 @@
 /* trending-box animable */
 
 :root {
-    --color-trending-box: #ff0000; /* var(--color-trending-box) */
+    --color-trending-box: #425f6d; /* var(--color-trending-box) */
     --color-trending-header-icon: #a9c083; /* var(--color-trending-header-icon) */
     --color-trending-list-item: #7da190; /* var(--color-trending-list-item) */
     --color-trending-list-item-hover: #b0d3bf; /* var(--color-trending-list-item-hover) */

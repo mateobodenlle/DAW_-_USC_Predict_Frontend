@@ -1,18 +1,4 @@
-// tarjetasEventos.js
-
-/**
- * Genera una tarjeta de evento
- * @param {Object} evento - Objeto con datos del evento
- * @param {string} evento.img - Ruta de la imagen
- * @param {string} evento.nombre - Nombre del evento
- * @param {string} evento.categoria - Categoría del evento
- * @param {string} evento.porcentaje - Porcentaje a mostrar
- * @param {Function} onClick - Callback para click en tarjeta
- * @param {Function} onSi - Callback para botón "SI"
- * @param {Function} onNo - Callback para botón "NO"
- * @returns {HTMLElement} - Tarjeta generada
- */
-export function crearTarjetaEvento(evento,onClick, onSi, onNo) {
+export function crearTarjetaEvento(evento, onClick, onSi, onNo) {
     const tarjeta = document.createElement("article");
     tarjeta.className = "tarjeta-evento";
 
@@ -20,7 +6,7 @@ export function crearTarjetaEvento(evento,onClick, onSi, onNo) {
         <div class="tarjeta-top">
             <img src="${evento.img}" alt="Evento">
             <div class="tarjeta-info">
-                <h3>${evento.nombre} <span class="porcentaje">${evento.porcentaje}</span></h3>
+                <h3>${evento.nombre} <span class="porcentaje">${evento.porcentaje || ''}</span></h3>
                 <p>${evento.categoria}</p>
             </div>
         </div>
@@ -30,24 +16,27 @@ export function crearTarjetaEvento(evento,onClick, onSi, onNo) {
         </div>
     `;
 
-    tarjeta.querySelector(".btn-si").addEventListener("click", () => onSi?.(evento, tarjeta));
-    tarjeta.querySelector(".btn-no").addEventListener("click", () => onNo?.(evento, tarjeta));
-    tarjeta.addEventListener("click", onClick);
+    // Para el botón SI
+    tarjeta.querySelector(".btn-si").addEventListener("click", (e) => {
+        e.stopPropagation(); // opcional, evita que salte el click de la tarjeta
+        onSi?.(evento, tarjeta);
+    });
+
+    // Para el botón NO
+    tarjeta.querySelector(".btn-no").addEventListener("click", (e) => {
+        e.stopPropagation();
+        onNo?.(evento, tarjeta);
+    });
+
+    // Para hacer click en toda la tarjeta y redirigir
+    tarjeta.addEventListener("click", () => onClick(evento));
 
     return tarjeta;
 }
 
-/**
- * Genera múltiples tarjetas y las añade a un contenedor
- * @param {HTMLElement} contenedor - Contenedor donde se añadirán las tarjetas
- * @param {Array} eventos - Array de eventos a generar
- * @param {Function} onClick - Callback para click en tarjeta
- * @param {Function} onSi - Callback para botón "SI"
- * @param {Function} onNo - Callback para botón "NO"
- */
-export function generarTarjetas(contenedor, eventos,onClick, onSi, onNo) {
+export function generarTarjetas(contenedor, eventos, onClick, onSi, onNo) {
     eventos.forEach(evento => {
-        const tarjeta = crearTarjetaEvento(evento,onClick, onSi, onNo);
+        const tarjeta = crearTarjetaEvento(evento, onClick, onSi, onNo);
         contenedor.appendChild(tarjeta);
     });
 }
