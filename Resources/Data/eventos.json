@@ -12,7 +12,8 @@
     "fechaResolucion": "2025-02-12",
     "nViews": 15200,
     "descripcion": "Un examen de álgebra es una evaluación que mide el conocimiento y habilidades en álgebra, incluyendo ecuaciones, funciones y gráficos. Los estudiantes deben resolver problemas y demostrar su comprensión de los conceptos algebraicos. Evaluamos si la nota media será más alta de un 6.00, o no",
-    "condicionResolucion": "Este evento se resolverá con SI en caso de que la nota media de los estudiantes sea mayor a 6.00, y con NO en caso contrario. La nota media se calculará a partir de las notas de los estudiantes que participen en el examen. El evento se resolverá el 12 de febrero de 2025."
+    "condicionResolucion": "Este evento se resolverá con SI en caso de que la nota media de los estudiantes sea mayor a 6.00, y con NO en caso contrario. La nota media se calculará a partir de las notas de los estudiantes que participen en el examen. El evento se resolverá el 12 de febrero de 2025.",
+    "resultado": "NO"
   },
   {
     "id": "2",
@@ -27,7 +28,9 @@
     "fechaResolucion": "2025-03-10",
     "nViews": 9800,
     "descripcion": "Un torneo de ajedrez es una competición en la que los jugadores se enfrentan en partidas de ajedrez. Los participantes compiten por puntos y premios, y el evento puede ser organizado en diferentes formatos, como suizo o round-robin. El torneo puede incluir jugadores de diferentes niveles y edades.",
-    "condicionResolucion": "Este evento se resolverá con SI en caso de que el torneo se celebre con al menos 20 participantes, y con NO en caso contrario. El evento se resolverá el 10 de marzo de 2025."
+    "condicionResolucion": "Este evento se resolverá con SI en caso de que el torneo se celebre con al menos 20 participantes, y con NO en caso contrario. El evento se resolverá el 10 de marzo de 2025.",
+    "resultado": "SI"
+
   },
     {
         "id": "3",
@@ -147,6 +150,7 @@
         "fechaResolucion": "2025-2-10",
         "nViews": 20000,
         "descripcion": "Un torneo de videojuegos es una competición en la que los jugadores se enfrentan en diferentes videojuegos. Los participantes pueden competir por premios y reconocimiento, y el evento puede ser presencial o en línea. Los torneos suelen atraer a jugadores de diferentes niveles y géneros de videojuegos.",
-        "condicionResolucion": "Este evento se resolverá con SI en caso de que el ganador del torneo de videojuegos sea Pablo Pazos, y con NO en caso contrario. El evento se resolverá el 10 de noviembre de 2025."
+        "condicionResolucion": "Este evento se resolverá con SI en caso de que el ganador del torneo de videojuegos sea Pablo Pazos, y con NO en caso contrario. El evento se resolverá el 10 de noviembre de 2025.",
+        "resultado": "SI"
     }
 ]
