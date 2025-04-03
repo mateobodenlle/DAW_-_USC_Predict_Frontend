@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name = "description" content = "Lista de categorías equivalentes a la de la página de búsqueda pero con los eventos que ya han sido completados">
-    <meta name = "keywords" content = "USC, Predict, Eventos, Predicción">
-    <meta name = "author" content = "Mateo Bodenlle y Diego Cristóbal">
+    <meta name="description" content="Lista de eventos resueltos, vista por categorías">
+    <meta name="keywords" content="USC, Predict, Eventos, Resueltos, Categorías, Predicción">
+    <meta name="author" content="Mateo Bodenlle y Diego Cristóbal">
     <title>Resueltos</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../Css/styles.css">
@@ -14,51 +14,54 @@
     <link rel="stylesheet" href="../Css/Componentes/categories.css">
     <link rel="stylesheet" href="../Css/Componentes/card.css">
 </head>
-
 <body>
-
-<!-- Encabezado principal del sitio -->
+<!-- Encabezado principal -->
 <header id="navbar"></header>
 
 <!-- Contenido principal -->
 <main class="container">
-
-    <section id="categories-container"></section>
-
+    <!-- Único contenedor: vista por categorías -->
+    <section id="categorias-resultado"></section>
 </main>
 
 <!-- Pie de página -->
 <footer id="footer"></footer>
-
 </body>
-
 </html>
 
-<!-- Inserción de Footer y Header -->
-<script src="../Js/componentes.js"></script>
-
-<!-- Inserción de categorías -->
+<!-- Scripts -->
 <script type="module">
-
-    // Generator funcions
+    // Importamos la función para generar categorías y animaciones
     import { generarCategorias } from '../Js/loaderCategories.js';
-
-    // Example data
+    import { categoryAnimation } from '../Js/categories_animation.js';
+    import { horizontalScroll } from "../Js/horizontalScroll.js";
+    // Importamos el array de categorías de ejemplo (predefinido)
     import { categorias } from '../Js/exampleData/categories.js';
-    import { tarjetas, cargarDetalles, manejarSi, manejarNo } from '../Js/exampleData/cards.js';
 
-    // Animation
-    import { categoryAnimation } from '../Js/categories_animation.js'
-    import { horizontalScroll} from "../Js/horizontalScroll.js";
-
-
-    document.addEventListener("DOMContentLoaded", () => {
-        const categories_container = document.getElementById("categories-container");
-
-        generarCategorias(categories_container, categorias, tarjetas, cargarDetalles, manejarSi, manejarNo);
-        categoryAnimation(categories_container);
-        horizontalScroll(categories_container);
-
-    });
-
+    // Cargar dinámicamente el JSON de eventos y filtrar los resueltos
+    fetch('../Resources/Data/eventos.json')
+        .then(response => response.json())
+        .then(data => {
+            // Todos los eventos cargados
+            const eventosData = data;
+            // Consideramos resuelto si la fechaResolucion es anterior a hoy
+            const hoy = new Date();
+            const resolvedData = eventosData.filter(e => new Date(e.fechaResolucion) < hoy);
+            // Usaremos resolvedData para agrupar por categorías.
+            const container = document.getElementById("categorias-resultado");
+            // Generamos las categorías, modificando loaderCategories.js para filtrar eventos por categoría.
+            generarCategorias(
+                container,
+                categorias,
+                resolvedData,
+                (evento) => { window.location.href = `Detalles.html?id=${evento.id}`; },
+                (evento, tarjeta) => { window.location.href = `Detalles.html?id=${evento.id}&voto=si`; },
+                (evento, tarjeta) => { window.location.href = `Detalles.html?id=${evento.id}&voto=no`; }
+            );
+            categoryAnimation(container);
+            horizontalScroll(container);
+        })
+        .catch(error => console.error('Error al cargar el JSON:', error));
 </script>
+<!-- Scripts de componentes generales -->
+<script src="../Js/componentes.js"></script>

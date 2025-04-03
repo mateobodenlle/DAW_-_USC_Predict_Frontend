@@ -69,8 +69,7 @@ function crearCategoria(cat, plantillaCategoria) {
  * @param {Function} manejarSi - Manejar la selección del usuario
  * @param {Function} manejarNo - Manejar la selección del usuario
  */
-export function generarCategorias(contenedor, categorias, tarjetas, onClick, manejarSi, manejarNo) {
-
+export function generarCategorias(contenedor, categorias, eventos, onClick, manejarSi, manejarNo) {
     const esMovil = window.matchMedia("(max-width: 768px)").matches;
     const plantillaCategoria = esMovil ? plantillaCategoriaMovil : plantillaCategoriaPC;
 
@@ -85,7 +84,12 @@ export function generarCategorias(contenedor, categorias, tarjetas, onClick, man
         contenedor.appendChild(categoriaElemento);
         const cardsContainer = categoriaElemento.querySelector(".cards");
         if (cardsContainer) {
-            generarTarjetas(cardsContainer, tarjetas, manejarSi, manejarNo);
+            // Filtrar eventos para esta categoría: suponiendo que el objeto categoría tiene 'titulo'
+            // y que el evento tiene un campo 'categoria'
+            const eventosCategoria = eventos.filter(evento =>
+                evento.categoria.toLowerCase() === cat.titulo.toLowerCase()
+            );
+            generarTarjetas(cardsContainer, eventosCategoria, onClick, manejarSi, manejarNo);
         }
     });
 }

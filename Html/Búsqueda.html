@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name = "description" content = "Buscador de tarjetas, lista de todas las categorías y mapa de google">
-    <meta name = "keywords" content = "USC, Predict, Eventos, Predicción">
-    <meta name = "author" content = "Mateo Bodenlle y Diego Cristóbal">
+    <meta name="description" content="Buscador de tarjetas, lista de todas las categorías y mapa de google">
+    <meta name="keywords" content="USC, Predict, Eventos, Predicción">
+    <meta name="author" content="Mateo Bodenlle y Diego Cristóbal">
     <title>Búsqueda</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../Css/styles.css">
@@ -14,7 +14,6 @@
     <link rel="stylesheet" href="../Css/Componentes/categories.css">
     <link rel="stylesheet" href="../Css/Componentes/card.css">
 </head>
-
 <body>
 
 <!-- Encabezado principal del sitio -->
@@ -22,11 +21,9 @@
 
 <!-- Contenido principal -->
 <main class="container">
-
     <section id="buscador">
         <button id="buttonSelect-cardOrCategory">Buscar por Categorías</button>
         <div class="barra-busqueda">
-
             <button id="search-button">
                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24">
                     <path d="M21 21l-4.35-4.35M10 17a7 7 0 1 1 0-14 7 7 0 0 1 0 14z"
@@ -36,121 +33,130 @@
             </button>
             <input type="text" id="search-input" placeholder="Buscar eventos..." />
         </div>
-
     </section>
 
+    <!-- Contenedor para tarjetas de eventos -->
     <section id="tarjetas-resultado"></section>
-
+    <!-- Contenedor para categorías (se mantiene sin cambios) -->
     <section id="categorias-resultado"></section>
-
 </main>
 
 <!-- Pie de página -->
 <footer id="footer"></footer>
 
 </body>
-
 </html>
 
-<!--  -->
 <script type="module">
-    // Inserción de datos
+    // Importamos los módulos para generar tarjetas y categorías
     import { generarTarjetas } from '../Js/loaderCards.js';
     import { generarCategorias } from '../Js/loaderCategories.js';
+    // Importamos los módulos de animación para categorías (si los usas)
+    import { categoryAnimation } from '../Js/categories_animation.js';
+    import { horizontalScroll } from "../Js/horizontalScroll.js";
 
-    // Datos
-    import { tarjetas, cargarDetalles, manejarSi, manejarNo } from '../Js/exampleData/cards.js';
-    import { categorias } from '../Js/exampleData/categories.js';
+    import { categorias } from '../Js/exampleData/categories.js'
 
-    // Animation
-    import { categoryAnimation } from '../Js/categories_animation.js'
-    import { horizontalScroll} from "../Js/horizontalScroll.js";
 
-    // Obtención de elementos
+    // Obtención de elementos del DOM
     const input = document.getElementById("search-input");
     const search_button = document.getElementById("search-button");
     const button_cardOrCategory = document.getElementById("buttonSelect-cardOrCategory");
     const cardsContainer = document.getElementById("tarjetas-resultado");
     const categoriesContainer = document.getElementById("categorias-resultado");
 
-    // Variables según la selección de los resultados de búsqueda
+    // Variables para la búsqueda. Para las tarjetas, ahora usaremos los datos cargados dinámicamente.
+    let eventosData = []; // Aquí almacenaremos los eventos cargados desde el JSON
     let selectedContainer = cardsContainer;
-    let selectedData = tarjetas;
-    let idData = "nombre";
+    let selectedData = []; // Inicialmente vacía; se llenará con eventosData
+    let idData = "nombre"; // Campo por el cual filtrar (para eventos, usamos "nombre")
+
+    // Callbacks para redirección
+    const onClick = (evento) => {
+        // Redirige a la página de detalles (sin voto) al hacer click en la tarjeta
+        window.location.href = `Detalles.html?id=${evento.id}`;
+    };
+    const onSi = (evento, tarjeta) => {
+        window.location.href = `Detalles.html?id=${evento.id}&voto=si`;
+    };
+    const onNo = (evento, tarjeta) => {
+        window.location.href = `Detalles.html?id=${evento.id}&voto=no`;
+    };
+
+    // Función para mostrar resultados filtrados
     function showResults(filteredData) {
-        if (selectedContainer.id === "tarjetas-resultado")
-            generarTarjetas(selectedContainer, filteredData, () => {}, manejarSi, manejarNo);
-        else {
-            generarCategorias(selectedContainer, filteredData, tarjetas, cargarDetalles, manejarSi, manejarNo);
+        if (selectedContainer.id === "tarjetas-resultado") {
+            generarTarjetas(selectedContainer, filteredData, onClick, onSi, onNo);
+        } else {
+            generarCategorias(selectedContainer, filteredData, eventosData, onClick, onSi, onNo);
             categoryAnimation(selectedContainer);
             horizontalScroll(selectedContainer);
         }
     }
 
-    // Comienzo enseñando las tarjetas, por lo que oculta las categorías
-    categoriesContainer.style.display = "none";
-
-    // Filtración por nombre / título
+    // Función de filtrado (por nombre o título)
     function filtrarTarjetas() {
-
         const texto = input.value.trim().toLowerCase();
-        const filteredData = selectedData.filter(t =>
-            t[idData].toLowerCase().includes(texto)
+        const filteredData = selectedData.filter(item =>
+            item[idData].toLowerCase().includes(texto)
         );
-
         selectedContainer.innerHTML = "";
         if (filteredData.length > 0) {
-            if (selectedContainer.id === "tarjetas-resultado") // activar grid si hay resultados de tarjetas
+            if (selectedContainer.id === "tarjetas-resultado")
                 selectedContainer.style.display = "grid";
             showResults(filteredData);
         } else {
-            selectedContainer.innerHTML = "<p class=mensaje-vacio >No se encontraron eventos.</p>";
+            selectedContainer.innerHTML = "<p class='mensaje-vacio'>No se encontraron eventos.</p>";
             selectedContainer.style.display = "block";
         }
         input.blur();
     }
 
-    // Búsqueda inicial
-    filtrarTarjetas();
+    // Carga dinámica de datos: fetch para el JSON de eventos
+    fetch('../Resources/Data/eventos.json')
+        .then(response => response.json())
+        .then(data => {
+            eventosData = data;
+            // Asumimos que inicialmente se muestran eventos, así que:
+            selectedData = eventosData;
+            // Llamada inicial para mostrar todas las tarjetas
+            filtrarTarjetas();
+        })
+        .catch(error => console.error('Error al cargar el JSON:', error));
 
+    // Cambiar entre mostrar tarjetas y categorías
     button_cardOrCategory.addEventListener("click", () => {
-
         if (selectedContainer.id === "tarjetas-resultado") {
-
+            // Cambiamos a modo "categorías"
             selectedContainer = categoriesContainer;
-            selectedData = categorias;
+            selectedData = categorias;  // Usamos el array ya importado
             idData = "titulo";
-
             input.placeholder = "Buscar categorias...";
-            button_cardOrCategory.textContent = "Buscar por Eventos"; // Cambiar el texto del botón
-
-            cardsContainer.style.display = "none"; // Ocultar tarjetas
-            categoriesContainer.style.display = "block"; // Mostrar categorías
+            button_cardOrCategory.textContent = "Buscar por Eventos";
+            cardsContainer.style.display = "none";
+            categoriesContainer.style.display = "block";
+            filtrarTarjetas();
         } else {
-
+            // Volvemos a modo "eventos"
             selectedContainer = cardsContainer;
-            selectedData = tarjetas;
+            selectedData = eventosData; // Tus eventos cargados por fetch
             idData = "nombre";
-
             input.placeholder = "Buscar eventos...";
-            button_cardOrCategory.textContent = "Buscar por Categorías"; // Cambiar el texto del botón
-
-            categoriesContainer.style.display = "none"; // Ocultar categorías
-            cardsContainer.style.display = "grid"; // Mostrar tarjetas
+            button_cardOrCategory.textContent = "Buscar por Categorías";
+            categoriesContainer.style.display = "none";
+            cardsContainer.style.display = "grid";
+            filtrarTarjetas();
         }
-        filtrarTarjetas();
     });
 
-    // Click en el botón
+    // Evento click en el botón de búsqueda
     search_button.addEventListener("click", filtrarTarjetas);
-
-    // Pulsar Enter
+    // Permitir filtrar pulsando Enter en el input
     input.addEventListener("keydown", (e) => {
         if (e.key === "Enter") {
             filtrarTarjetas();
         }
     });
-
 </script>
 <!-- Inserción de Footer y Header -->
 <script src="../Js/componentes.js"></script>
