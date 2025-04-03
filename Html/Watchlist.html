@@ -28,28 +28,31 @@
 
     <h1>Historial</h1>
     <div class="historial-container">
-
         <div class="historial-grid">
             <!-- Columna Ganadas -->
             <div class="historial-columna">
                 <h2>Ganadas</h2>
-                <div id="tarjetas-ganadas"></div>
+                <div class="scroll-wrapper">
+                    <div id="tarjetas-ganadas" class="scroll-vertical"></div>
+                </div>
             </div>
 
             <!-- Medidor central -->
             <div class="outer">
                 <div class="gauge-wrapper">
+                    <h2>Ratio de aciertos</h2>
                     <div id="container-speed" class="chart-container"></div>
                     <div id="container-ratio"></div>
                     <div class="gauge-needle" id="needle"></div>
                 </div>
-
             </div>
 
             <!-- Columna Perdidas -->
             <div class="historial-columna">
                 <h2>Perdidas</h2>
-                <div id="tarjetas-perdidas"></div>
+                <div class="scroll-wrapper">
+                    <div id="tarjetas-perdidas" class="scroll-vertical"></div>
+                </div>
             </div>
         </div>
     </div>
@@ -65,7 +68,7 @@
 
 </html>
 
-<!--  -->
+<!-- Watchlist -->
 <script type="module">
     // Inserción de datos
     import { generateBettedCards } from '../Js/loaderBettedCards.js';
@@ -75,23 +78,23 @@
 
     // Obtención de elementos
     const cardsContainer = document.getElementById("tarjetas-resultado");
-    const cardsWinned = document.getElementById("tarjetas-ganadas");
-    const cardsLost = document.getElementById("tarjetas-perdidas");
 
     generateBettedCards(cardsContainer, tarjetas, cargarDetalles, manejarSi, manejarNo);
-    generateBettedCards(cardsWinned, tarjetas, cargarDetalles, manejarSi, manejarNo);
-    generateBettedCards(cardsLost, tarjetas, cargarDetalles, manejarSi, manejarNo);
 
 
 </script>
 <!-- Inserción de Footer y Header -->
 <script src="../Js/componentes.js"></script>
 
+<!-- Historial -->
+<!-- Gráfica -->
 <script src="https://code.highcharts.com/highcharts.js"></script>
 <script src="https://code.highcharts.com/highcharts-more.js"></script>
 <script src="https://code.highcharts.com/modules/solid-gauge.js"></script>
 <script src="../Js/graficoVelocimetro.js"></script>
-<script>
+<script type="module">
+
+    // Gráfica
     function actualizarAguja(valor) {
         // Convierte el valor (0-100) a un ángulo entre -90 y 90
         const angulo = (valor / 100) * 180 - 90;
@@ -102,28 +105,26 @@
         actualizarAguja(valor);
         actualizarRatio(valor);
     }
-
-    actualizarGrafica(1);
     setTimeout(() => {
         actualizarGrafica(67);
     }, 2000);
 
-    setTimeout(() => {
-        actualizarGrafica(32);
-    }, 4000);
+    // Sombras
+    import { verticalScroll } from "../Js/verticalScroll.js";
+    const scrollContenedores = document.querySelectorAll(".scroll-vertical");
+    verticalScroll(scrollContenedores)
 
-    setTimeout(() => {
-        actualizarGrafica(100);
-    }, 6000);
+    // Inserción de datos
+    import { generateBettedCards } from '../Js/loaderBettedCards.js';
+    // Datos
+    import { tarjetas, cargarDetalles, manejarSi, manejarNo } from '../Js/exampleData/cards.js';
 
-    setTimeout(() => {
-        actualizarGrafica(54);
-    }, 8000);
+    const cardsWinned = document.getElementById("tarjetas-ganadas");
+    const cardsLost = document.getElementById("tarjetas-perdidas");
 
-    setTimeout(() => {
-        actualizarGrafica(14);
-    }, 10000);
+    cardsWinned
 
-
+    generateBettedCards(cardsWinned, tarjetas, cargarDetalles, manejarSi, manejarNo);
+    generateBettedCards(cardsLost, tarjetas, cargarDetalles, manejarSi, manejarNo);
 
 </script>

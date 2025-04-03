@@ -236,7 +236,6 @@ main .row {
 html, body {
     scrollbar-width: none;           /* Firefox */
     -ms-overflow-style: none;        /* IE y Edge Legacy */
-    overflow: auto;                  /* sigue permitiendo el scroll */
 }
 /* Para Chrome, Safari, Opera */
 html::-webkit-scrollbar,
