@@ -1,0 +1,186 @@
+:root {
+    --verde-fondo: #7da190;
+    --verde-fondo-hover: #678E7C;
+    --verde-claro: #c0d9af;
+    --verde-claro-hover: #a9c083;
+    --verde-oscuro: #006e28;
+    --verde-neon: #00E253;
+
+    --rojo-oscuro: #8d1818;
+    --rojo-neon: #A11B1B;
+
+    --azul-oscuro: #0c1a2b;
+    --texto-claro: #e5f1db;
+
+    --sombra-suave: 0 2px 10px rgba(0, 0, 0, 0.1);
+    --sombra-intensa: 0 0 20px #c0d9af40;
+}
+
+/* Contenedor general de la tarjeta */
+.tarjeta-evento {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    grid-template-rows: auto auto;
+    grid-template-areas:
+        "img info porcentajes"
+        "posicion decision editar";
+    gap: 12px;
+    align-items: center;
+
+    background-color: var(--verde-fondo);
+    border-radius: 12px;
+    box-shadow: var(--sombra-suave);
+    padding: 16px;
+
+    transition: transform 0.2s ease, background-color 0.05s ease;
+}
+.tarjeta-evento:hover {
+    transform: translateY(-4px);
+    background-color: var(--verde-fondo-hover);
+    cursor: pointer;
+}
+
+
+/* Imagen */
+.tarjeta-evento img {
+    grid-area: img;
+
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 2px solid var(--verde-claro);
+}
+
+
+/* Info: título + categoría */
+.tarjeta-info {
+    grid-area: info;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 4px;
+}
+.tarjeta-info h3 {
+    margin: 0;
+    font-size: 16px;
+    font-weight: bold;
+    color: var(--verde-claro);
+}
+.tarjeta-info p {
+    margin: 0;
+    font-size: 13px;
+    color: var(--texto-claro);
+}
+
+
+/* Porcentajes y flecha */
+.tarjeta-porcentajes {
+    grid-area: porcentajes;
+
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    white-space: nowrap;
+    justify-content: flex-end;
+}
+.variacion {
+    display: flex;
+    align-items: center;
+
+    margin: 0;
+    font-size: 14px;
+    font-weight: bold;
+}
+/* Estados de variación */
+.winning {
+    color: var(--verde-oscuro);
+    stroke: var(--verde-oscuro);
+}
+.loosing {
+    color: var(--rojo-oscuro);
+    stroke: var(--rojo-oscuro);
+}
+.tarjeta-evento:hover .winning {
+    color: var(--verde-neon);
+    text-shadow: 0 0 10px var(--verde-neon);
+}
+.tarjeta-evento:hover .loosing {
+    color: var(--rojo-neon);
+    text-shadow: 0 0 1px var(--rojo-neon);
+}
+.tarjeta-evento:hover svg.winning path {
+    stroke: var(--verde-neon);
+    filter: drop-shadow(0 0 6px var(--verde-neon));
+}
+.tarjeta-evento:hover svg.loosing path {
+    stroke: var(--rojo-neon);
+    filter: drop-shadow(0 0 1px var(--rojo-neon));
+}
+
+/* Posición */
+.posicion {
+    grid-area: posicion;
+}
+.posicion h3 {
+    margin: 10px 0 0;
+    font-size: 16px;
+    font-weight: bold;
+    color: var(--verde-claro);
+}
+.posicion p {
+    margin: 0;
+    font-size: 13px;
+    color: var(--azul-oscuro);
+
+    display: inline-block;
+    border-bottom: 1px solid;
+    padding-bottom: 2px;
+}
+
+/* Decisión */
+#decision {
+    grid-area: decision;
+
+    color: var(--azul-oscuro);
+    font-weight: bold;
+    border: 3px solid var(--azul-oscuro);
+    border-radius: 12px;
+    padding: 12px 15px;
+    box-shadow: 0 0 5px var(--azul-oscuro);
+
+    text-align: center;
+    width: fit-content;
+    justify-self: center;
+}
+
+/* Botón editar */
+.btn-editar {
+    grid-area: editar;
+
+    background-color: var(--verde-claro);
+    color: var(--azul-oscuro);
+    border: none;
+    border-radius: 12px;
+    padding: 8px 16px;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+
+    transition: background-color 0.2s ease, box-shadow 0.2s ease;
+}
+.btn-editar:hover {
+    background-color: var(--verde-claro-hover);
+    box-shadow: 0 0 6px var(--verde-claro-hover);
+}
+
+
+
+/* Responsive */
+@media (max-width: 768px) {
+    .tarjeta-evento {
+        width: 100%;
+        box-sizing: border-box;
+    }
+}

@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Buscador de tarjetas, lista de todas las categorías y mapa de google">
-    <meta name="keywords" content="USC, Predict, Eventos, Predicción">
-    <meta name="author" content="Mateo Bodenlle y Diego Cristóbal">
+    <meta name = "description" content = "Buscador de tarjetas, lista de todas las categorías y mapa de google">
+    <meta name = "keywords" content = "USC, Predict, Eventos, Predicción">
+    <meta name = "author" content = "Mateo Bodenlle y Diego Cristóbal">
     <title>Búsqueda</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../Css/styles.css">
@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="../Css/Componentes/categories.css">
     <link rel="stylesheet" href="../Css/Componentes/card.css">
 </head>
+
 <body>
 
 <!-- Encabezado principal del sitio -->
@@ -21,9 +22,11 @@
 
 <!-- Contenido principal -->
 <main class="container">
+
     <section id="buscador">
         <button id="buttonSelect-cardOrCategory">Buscar por Categorías</button>
         <div class="barra-busqueda">
+
             <button id="search-button">
                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24">
                     <path d="M21 21l-4.35-4.35M10 17a7 7 0 1 1 0-14 7 7 0 0 1 0 14z"
@@ -33,20 +36,23 @@
             </button>
             <input type="text" id="search-input" placeholder="Buscar eventos..." />
         </div>
+
     </section>
 
-    <!-- Contenedor para tarjetas de eventos -->
     <section id="tarjetas-resultado"></section>
-    <!-- Contenedor para categorías (se mantiene sin cambios) -->
+
     <section id="categorias-resultado"></section>
+
 </main>
 
 <!-- Pie de página -->
 <footer id="footer"></footer>
 
 </body>
+
 </html>
 
+<!--  -->
 <script type="module">
     // Importamos los módulos para generar tarjetas y categorías
     import { generarTarjetas } from '../Js/loaderCards.js';
@@ -94,19 +100,24 @@
         }
     }
 
-    // Función de filtrado (por nombre o título)
+    // Comienzo enseñando las tarjetas, por lo que oculta las categorías
+    categoriesContainer.style.display = "none";
+
+    // Filtración por nombre / título
     function filtrarTarjetas() {
+
         const texto = input.value.trim().toLowerCase();
         const filteredData = selectedData.filter(item =>
             item[idData].toLowerCase().includes(texto)
         );
+
         selectedContainer.innerHTML = "";
         if (filteredData.length > 0) {
-            if (selectedContainer.id === "tarjetas-resultado")
+            if (selectedContainer.id === "tarjetas-resultado") // activar grid si hay resultados de tarjetas
                 selectedContainer.style.display = "grid";
             showResults(filteredData);
         } else {
-            selectedContainer.innerHTML = "<p class='mensaje-vacio'>No se encontraron eventos.</p>";
+            selectedContainer.innerHTML = "<p class=mensaje-vacio >No se encontraron eventos.</p>";
             selectedContainer.style.display = "block";
         }
         input.blur();
@@ -126,37 +137,43 @@
 
     // Cambiar entre mostrar tarjetas y categorías
     button_cardOrCategory.addEventListener("click", () => {
+
         if (selectedContainer.id === "tarjetas-resultado") {
             // Cambiamos a modo "categorías"
             selectedContainer = categoriesContainer;
-            selectedData = categorias;  // Usamos el array ya importado
+            selectedData = categorias;
             idData = "titulo";
+
             input.placeholder = "Buscar categorias...";
-            button_cardOrCategory.textContent = "Buscar por Eventos";
-            cardsContainer.style.display = "none";
-            categoriesContainer.style.display = "block";
-            filtrarTarjetas();
+            button_cardOrCategory.textContent = "Buscar por Eventos"; // Cambiar el texto del botón
+
+            cardsContainer.style.display = "none"; // Ocultar tarjetas
+            categoriesContainer.style.display = "block"; // Mostrar categorías
         } else {
-            // Volvemos a modo "eventos"
+
             selectedContainer = cardsContainer;
-            selectedData = eventosData; // Tus eventos cargados por fetch
+            selectedData = tarjetas;
             idData = "nombre";
+
             input.placeholder = "Buscar eventos...";
-            button_cardOrCategory.textContent = "Buscar por Categorías";
-            categoriesContainer.style.display = "none";
-            cardsContainer.style.display = "grid";
-            filtrarTarjetas();
+            button_cardOrCategory.textContent = "Buscar por Categorías"; // Cambiar el texto del botón
+
+            categoriesContainer.style.display = "none"; // Ocultar categorías
+            cardsContainer.style.display = "grid"; // Mostrar tarjetas
         }
+        filtrarTarjetas();
     });
 
-    // Evento click en el botón de búsqueda
+    // Click en el botón
     search_button.addEventListener("click", filtrarTarjetas);
-    // Permitir filtrar pulsando Enter en el input
+
+    // Pulsar Enter
     input.addEventListener("keydown", (e) => {
         if (e.key === "Enter") {
             filtrarTarjetas();
         }
     });
+
 </script>
 <!-- Inserción de Footer y Header -->
 <script src="../Js/componentes.js"></script>
