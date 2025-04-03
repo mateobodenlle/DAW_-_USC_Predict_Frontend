@@ -1,134 +1,129 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<title>USCP - Watchlist</title>
-<link rel="stylesheet" href="../Css/styles.css">
-<link rel="stylesheet" href="../Css/Watchlist.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name = "description" content = "Buscador de tarjetas, lista de todas las categorías y mapa de google">
+    <meta name = "keywords" content = "USC, Predict, Eventos, Predicción">
+    <meta name = "author" content = "Mateo Bodenlle y Diego Cristóbal">
+    <title>Watchlist</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../Css/styles.css">
+    <link rel="stylesheet" href="../Css/watchlist.css">
+    <link rel="stylesheet" href="../Css/layoutComun.css">
+    <link rel="stylesheet" href="../Css/Componentes/categories.css">
+    <link rel="stylesheet" href="../Css/Componentes/bettedCard.css">
 </head>
+
 <body>
 
-    <nav>
-        <img src="../Resources/Logo.jpg" width="150px">
-        <p><a href="Búsqueda.html">Búsqueda</a></p> 
-        <p><a href="Watchlist.html">Watchlist</a></p> 
-        <p><a href="Resueltos.html">Resueltos</a></p> 
-        <p><a href="About Us.html">About Us</a></p> 
-    </nav>
-    <header>
-        <h1>Watchlist</h1>
-    </header>
-        <!-- Watchlist -->
-        <section>
-            <article>
-                <h3>TARJETA1</h3>
-                <p>Descripción evento 1</p>
-                <img src="../Resources/ImagenEventos/Juez.jpg" width="100px"><br>
-                <button>Votar si</button>  <button>Votar no</button>
-            </article>
-            
-            
-            <article>
-                <h3>TARJETA2</h3>
-                <p>Descripción evento 2</p>
-                <img src="../Resources/ImagenEventos/Examen.jpg" width="100px"><br>
-                 <button>Votar si</button>  <button>Votar no</button>
-            </article>
-            
-            <article>
-                    <h3>TARJETA3</h3>
-                    <p>Descripción evento 3</p>
-                    <img src="../Resources/ImagenEventos/Juez.jpg" width="100px"><br>
-                    <button>Votar si</button>  <button>Votar no</button>
-                </article>
-                
-            <article>
-                    <h3>TARJETA4</h3>
-                    <p>Descripción evento 4</p>
-                    <img src="Examen.jpg" width="100px"><br>
-                    <button>Votar si</button>  <button>Votar no</button>
-                </article>
-            </p>
-                
-            <article>
-                    <h3>Proclamación Rector</h3>
-                    <p>El 7 de marzo 5</p>
-                    <img src="../Resources/ImagenEventos/Juez.jpg" width="100px"><br>
-                    <button>Votar si</button>  <button>Votar no</button>
-             </article>
+<!-- Encabezado principal del sitio -->
+<header id="navbar"></header>
 
-             <article>
-                <h3>TARJETA5</h3>
-                <p>Descripción evento 1</p>
-                <img src="../Resources/ImagenEventos/Juez.jpg" width="100px"><br>
-                <button>Votar si</button>  <button>Votar no</button>
-            </article>
-            
-            
-            <article>
-                <h3>TARJETA6</h3>
-                <p>Descripción evento 2</p>
-                <img src="../Resources/ImagenEventos/Examen.jpg" width="100px"><br>
-                 <button>Votar si</button>  <button>Votar no</button>
-            </article>
-        </section>
+<!-- Contenido principal -->
+<main class="container">
 
-        <!-- Historial -->
-        <h1>Historial</h1>
-        <section>
-            <!-- Ganadas -->
-            <section>
+    <h1>Watchlist</h1>
+    <section id="tarjetas-resultado"></section>
+
+    <h1>Historial</h1>
+    <div class="historial-container">
+
+        <div class="historial-grid">
+            <!-- Columna Ganadas -->
+            <div class="historial-columna">
                 <h2>Ganadas</h2>
-                <article>
-                    <h4>TARJETA1</h4>
-                    <p>Descripción evento 1</p>
-                    <img src="../Resources/ImagenEventos/Examen.jpg" width="100px"><br>
-                    <button>Votar si</button>  <button>Votar no</button>
-                </article>
-                <article>
-                    <h4>TARJETA2</h4>
-                    <p>Descripción evento 1</p>
-                    <img src="../Resources/ImagenEventos/Juez.jpg" width="100px"><br>
-                    <button>Votar si</button>  <button>Votar no</button>
-                </article>
-            </section>
+                <div id="tarjetas-ganadas"></div>
+            </div>
 
-            <!-- Ratio de aciertos -->
-            <h2>Ratio de aciertos</h2>
-            <img src="../Resources/Ratio de aciertos.png">
+            <!-- Medidor central -->
+            <div class="outer">
+                <div class="gauge-wrapper">
+                    <div id="container-speed" class="chart-container"></div>
+                    <div id="container-ratio"></div>
+                    <div class="gauge-needle" id="needle"></div>
+                </div>
 
-            <!-- Perdidas -->
-            <section>
+            </div>
+
+            <!-- Columna Perdidas -->
+            <div class="historial-columna">
                 <h2>Perdidas</h2>
-                <article>
-                    <h4>TARJETA1</h4>
-                    <p>Descripción evento 1</p>
-                    <img src="../Resources/ImagenEventos/Juez.jpg" width="100px"><br>
-                    <button>Votar si</button>  <button>Votar no</button>
-                </article>
-                <article>
-                    <h4>TARJETA2</h4>
-                    <p>Descripción evento 1</p>
-                    <img src="../Resources/ImagenEventos/Ajedrez.jpg" width="100px"><br>
-                    <button>Votar si</button>  <button>Votar no</button>
-                </article>
-            </section>
-        </section>
+                <div id="tarjetas-perdidas"></div>
+            </div>
+        </div>
+    </div>
 
-    </section>
-    <footer>
-        <!--LOGO-->
-        <img src="../Resources/Logo.jpg" width="150px">
-        <article>
-        Información en redes sociales
-            <ol>
-                <li>Instgram</li>
-                <li>X</li>
-                <li>Facebook</li>
-                <li>Linkedin</li>
-                <li><a href="https://weshearn.com" target="_blank" rel="noopener noreferrer">Weshearn</a></li>
-            </ol>
-        </article>
-    </footer>
+
+
+</main>
+
+<!-- Pie de página -->
+<footer id="footer"></footer>
+
 </body>
+
 </html>
-<body>
+
+<!--  -->
+<script type="module">
+    // Inserción de datos
+    import { generateBettedCards } from '../Js/loaderBettedCards.js';
+
+    // Datos
+    import { tarjetas, cargarDetalles, manejarSi, manejarNo } from '../Js/exampleData/cards.js';
+
+    // Obtención de elementos
+    const cardsContainer = document.getElementById("tarjetas-resultado");
+    const cardsWinned = document.getElementById("tarjetas-ganadas");
+    const cardsLost = document.getElementById("tarjetas-perdidas");
+
+    generateBettedCards(cardsContainer, tarjetas, cargarDetalles, manejarSi, manejarNo);
+    generateBettedCards(cardsWinned, tarjetas, cargarDetalles, manejarSi, manejarNo);
+    generateBettedCards(cardsLost, tarjetas, cargarDetalles, manejarSi, manejarNo);
+
+
+</script>
+<!-- Inserción de Footer y Header -->
+<script src="../Js/componentes.js"></script>
+
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/highcharts-more.js"></script>
+<script src="https://code.highcharts.com/modules/solid-gauge.js"></script>
+<script src="../Js/graficoVelocimetro.js"></script>
+<script>
+    function actualizarAguja(valor) {
+        // Convierte el valor (0-100) a un ángulo entre -90 y 90
+        const angulo = (valor / 100) * 180 - 90;
+        document.getElementById("needle").style.transform = `translateX(-50%) rotate(${angulo}deg)`;
+    }
+
+    function actualizarGrafica(valor) {
+        actualizarAguja(valor);
+        actualizarRatio(valor);
+    }
+
+    actualizarGrafica(1);
+    setTimeout(() => {
+        actualizarGrafica(67);
+    }, 2000);
+
+    setTimeout(() => {
+        actualizarGrafica(32);
+    }, 4000);
+
+    setTimeout(() => {
+        actualizarGrafica(100);
+    }, 6000);
+
+    setTimeout(() => {
+        actualizarGrafica(54);
+    }, 8000);
+
+    setTimeout(() => {
+        actualizarGrafica(14);
+    }, 10000);
+
+
+
+</script>

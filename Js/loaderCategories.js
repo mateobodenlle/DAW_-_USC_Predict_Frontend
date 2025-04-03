@@ -85,7 +85,7 @@ export function generarCategorias(contenedor, categorias, tarjetas, onClick, man
         contenedor.appendChild(categoriaElemento);
         const cardsContainer = categoriaElemento.querySelector(".cards");
         if (cardsContainer) {
-            generarTarjetas(cardsContainer, tarjetas, manejarSi, manejarNo);
+            generarTarjetas(cardsContainer, tarjetas, onClick, manejarSi, manejarNo);
         }
     });
 }

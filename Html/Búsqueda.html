@@ -52,7 +52,7 @@
 
 </html>
 
-<!--  -->
+<!-- Inserción de los resultados de la búsqueda -->
 <script type="module">
     // Inserción de datos
     import { generarTarjetas } from '../Js/loaderCards.js';
@@ -79,7 +79,7 @@
     let idData = "nombre";
     function showResults(filteredData) {
         if (selectedContainer.id === "tarjetas-resultado")
-            generarTarjetas(selectedContainer, filteredData, () => {}, manejarSi, manejarNo);
+            generarTarjetas(selectedContainer, filteredData, cargarDetalles, manejarSi, manejarNo);
         else {
             generarCategorias(selectedContainer, filteredData, tarjetas, cargarDetalles, manejarSi, manejarNo);
             categoryAnimation(selectedContainer);
