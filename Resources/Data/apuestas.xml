@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<apuestas>
+    <apuesta>
+        <fechaInicio>2025-06-01</fechaInicio>
+        <precioCompra>0.45</precioCompra>
+        <precioActual>0.50</precioActual>
+        <eventoId>1</eventoId>
+        <numeroVotos>100</numeroVotos>
+    </apuesta>
+    <apuesta>
+        <fechaInicio>2025-07-10</fechaInicio>
+        <precioCompra>0.60</precioCompra>
+        <precioActual>0.65</precioActual>
+        <eventoId>2</eventoId>
+        <numeroVotos>150</numeroVotos>
+    </apuesta>
+</apuestas>
