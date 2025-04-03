@@ -44,7 +44,8 @@
         "fechaResolucion": "2025-04-15",
         "nViews": 25000,
         "descripcion": "Un concierto de rock es un evento musical en el que una banda o artista interpreta canciones de rock en vivo. Los conciertos pueden variar en tamaño, desde pequeños clubes hasta grandes estadios, y suelen incluir efectos visuales y de sonido impresionantes.",
-        "condicionResolucion": "Este evento se resolverá con SI en caso de que el concierto se celebre con al menos 1000 asistentes, y con NO en caso contrario. El evento se resolverá el 15 de abril de 2025."
+        "condicionResolucion": "Este evento se resolverá con SI en caso de que el concierto se celebre con al menos 1000 asistentes, y con NO en caso contrario. El evento se resolverá el 15 de abril de 2025.",
+        "resultado": "NO"
     },
     {
         "id": "4",
@@ -59,7 +60,8 @@
         "fechaResolucion": "2025-05-20",
         "nViews": 12000,
         "descripcion": "Una feria de ciencias es un evento educativo donde los estudiantes presentan proyectos científicos y experimentos. Los participantes pueden ganar premios y reconocimiento por su trabajo. Las ferias de ciencias fomentan el interés en la ciencia y la tecnología.",
-        "condicionResolucion": "Este evento se resolverá con SI en caso de que al menos 50 proyectos sean presentados, y con NO en caso contrario. El evento se resolverá el 20 de mayo de 2025."
+        "condicionResolucion": "Este evento se resolverá con SI en caso de que al menos 50 proyectos sean presentados, y con NO en caso contrario. El evento se resolverá el 20 de mayo de 2025.",
+        "resultado": "NO"
     },
     {
         "id": "5",
@@ -74,7 +76,8 @@
         "fechaResolucion": "2025-06-10",
         "nViews": 18000,
         "descripcion": "El estreno de una película es el evento en el que se presenta por primera vez una película al público. Suele incluir una alfombra roja, entrevistas con el elenco y el equipo, y proyecciones especiales. Los estrenos generan expectación y pueden influir en el éxito comercial de la película.",
-        "condicionResolucion": "Este evento se resolverá con SI en caso de que la película obtenga una calificación superior a 7.0 en Rotten Tomatoes, y con NO en caso contrario. El evento se resolverá el 10 de junio de 2025."
+        "condicionResolucion": "Este evento se resolverá con SI en caso de que la película obtenga una calificación superior a 7.0 en Rotten Tomatoes, y con NO en caso contrario. El evento se resolverá el 10 de junio de 2025.",
+        "resultado": "NO"
 
     },
     {
@@ -90,7 +93,8 @@
         "fechaResolucion": "2025-07-25",
         "nViews": 30000,
         "descripcion": "Un maratón benéfico es una carrera larga organizada para recaudar fondos para una causa benéfica. Los participantes se inscriben y recaudan dinero a través de donaciones. El evento promueve la actividad física y la solidaridad.",
-        "condicionResolucion": "Este evento se resolverá con SI en caso de que se recauden más de 10,000 euros para la causa benéfica, y con NO en caso contrario. El evento se resolverá el 25 de julio de 2025."
+        "condicionResolucion": "Este evento se resolverá con SI en caso de que se recauden más de 10,000 euros para la causa benéfica, y con NO en caso contrario. El evento se resolverá el 25 de julio de 2025.",
+        "resultado": "NO"
     },
     {
         "id": "7",
@@ -105,7 +109,8 @@
         "fechaResolucion": "2025-08-30",
         "nViews": 15000,
         "descripcion": "Una exposición de arte es un evento donde se exhiben obras de arte, como pinturas, esculturas y fotografías. Los artistas pueden mostrar su trabajo al público y vender sus obras. Las exposiciones pueden ser temáticas o individuales y suelen atraer a amantes del arte y coleccionistas.",
-        "condicionResolucion": "Este evento se resolverá con SI en caso de que al menos 1000 personas visiten la exposición, y con NO en caso contrario. El evento se resolverá el 30 de agosto de 2025."
+        "condicionResolucion": "Este evento se resolverá con SI en caso de que al menos 1000 personas visiten la exposición, y con NO en caso contrario. El evento se resolverá el 30 de agosto de 2025.",
+        "resultado": "NO"
     },
     {
         "id": "8",
@@ -120,7 +125,8 @@
         "fechaResolucion": "2025-09-20",
         "nViews": 22000,
         "descripcion": "Un festival gastronómico es un evento que celebra la comida y la cultura culinaria. Los asistentes pueden degustar platos de diferentes regiones, participar en talleres de cocina y disfrutar de actividades relacionadas con la gastronomía. Estos festivales suelen atraer a amantes de la comida y chefs.",
-        "condicionResolucion": "Este evento se resolverá con SI en caso de que al menos 5000 personas asistan al festival, y con NO en caso contrario. El evento se resolverá el 20 de septiembre de 2025."
+        "condicionResolucion": "Este evento se resolverá con SI en caso de que al menos 5000 personas asistan al festival, y con NO en caso contrario. El evento se resolverá el 20 de septiembre de 2025.",
+        "resultado": "NO"
     },
     {
         "id": "9",
@@ -135,7 +141,8 @@
         "fechaResolucion": "2025-10-15",
         "nViews": 14000,
         "descripcion": "Una conferencia de tecnología es un evento donde expertos y profesionales del sector tecnológico comparten conocimientos, tendencias y avances en el campo. Los asistentes pueden aprender sobre nuevas tecnologías, participar en talleres y hacer networking con otros profesionales.",
-        "condicionResolucion": "Este evento se resolverá con SI en caso de que al menos 3000 personas asistan a la conferencia, y con NO en caso contrario. El evento se resolverá el 15 de octubre de 2025."
+        "condicionResolucion": "Este evento se resolverá con SI en caso de que al menos 3000 personas asistan a la conferencia, y con NO en caso contrario. El evento se resolverá el 15 de octubre de 2025.",
+        "resultado": "NO"
     },
     {
         "id": "10",

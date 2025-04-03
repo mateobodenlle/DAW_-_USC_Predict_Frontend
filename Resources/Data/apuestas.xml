@@ -6,6 +6,8 @@
         <precioActual>0.50</precioActual>
         <eventoId>1</eventoId>
         <numeroVotos>100</numeroVotos>
+        <apuestaId>1</apuestaId>
+        <apuesta>SI</apuesta>
     </apuesta>
     <apuesta>
         <fechaInicio>2025-07-10</fechaInicio>
@@ -13,5 +15,25 @@
         <precioActual>0.65</precioActual>
         <eventoId>2</eventoId>
         <numeroVotos>150</numeroVotos>
+        <apuestaId>2</apuestaId>
+        <apuesta>NO</apuesta>
+    </apuesta>
+    <apuesta>
+        <fechaInicio>2025-08-15</fechaInicio>
+        <precioCompra>0.30</precioCompra>
+        <precioActual>0.35</precioActual>
+        <eventoId>3</eventoId>
+        <numeroVotos>200</numeroVotos>
+        <apuestaId>3</apuestaId>
+        <apuesta>SI</apuesta>
+    </apuesta>
+    <apuesta>
+        <fechaInicio>2025-09-20</fechaInicio>
+        <precioCompra>0.55</precioCompra>
+        <precioActual>0.60</precioActual>
+        <eventoId>4</eventoId>
+        <numeroVotos>250</numeroVotos>
+        <apuestaId>4</apuestaId>
+        <apuesta>NO</apuesta>
     </apuesta>
 </apuestas>
