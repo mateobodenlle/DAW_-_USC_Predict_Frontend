@@ -39,8 +39,6 @@
 }
 
 /*Barra de navegación*/
-
-
 header {
     background-color: #0C1A2B;
 }
@@ -73,6 +71,12 @@ nav::after {
 .nav-right {
     display: flex;
     align-items: center;
+}
+.nav-right {
+    gap: 2px;
+}
+.nav-right button {
+    margin: 0; /* eliminamos el margen lateral que genera separación extra */
 }
 
 /* Botón USC Predict */

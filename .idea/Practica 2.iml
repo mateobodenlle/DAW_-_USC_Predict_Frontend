@@ -11,5 +11,7 @@
     <orderEntry type="library" name="highcharts" level="application" />
     <orderEntry type="library" name="highcharts-more" level="application" />
     <orderEntry type="library" name="solid-gauge" level="application" />
+    <orderEntry type="library" name="bootstrap" level="application" />
+    <orderEntry type="library" name="bootstrap-icons" level="application" />
   </component>
 </module>

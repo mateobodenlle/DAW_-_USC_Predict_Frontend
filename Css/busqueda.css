@@ -29,11 +29,6 @@
 .barra-busqueda input::placeholder {
     color: #c0d9af88;
 }
-.barra-busqueda:hover,
-.barra-busqueda:focus-within{
-    transform: scale(1.03);
-    box-shadow: 0 0 20px #c0d9af66;
-}
 .barra-busqueda button {
     background: none;
     border: none;
@@ -43,9 +38,12 @@
     align-items: center;
     justify-content: center;
 }
-.barra-busqueda button:hover {
-    color: #ffffff;
+.barra-busqueda:hover,
+.barra-busqueda:focus-within{
+    transform: scale(1.03);
+    box-shadow: 0 0 20px #c0d9af66;
 }
+
 /* Personalización del autocompletado del input */
 input:-webkit-autofill,
 input:-webkit-autofill:hover,
