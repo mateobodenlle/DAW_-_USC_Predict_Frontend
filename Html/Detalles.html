@@ -7,6 +7,9 @@
     <meta name="keywords" content="USC, Predict, Eventos, Predicción">
     <meta name="author" content="Mateo Bodenlle y Diego Cristóbal">
     <title>Detalles del Evento</title>
+    <!-- jQuery (CDN) -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../Css/styles.css">
     <link rel="stylesheet" href="../Css/index.css">
@@ -34,13 +37,10 @@
             </article>
         </div>
 
-        <!-- Descripción corta (ya presente en el layout original) -->
-
-        <!-- Nueva sección para la descripción larga del evento -->
+        <!-- Sección para la descripción larga -->
         <article class="evento-descripcion">
             <p id="evento-descripcion"></p>
         </article>
-
 
         <!-- Contenedor de la gráfica -->
         <div class="chart-container">
@@ -55,11 +55,11 @@
         <!-- Carga Chart.js desde CDN -->
         <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
+        <!-- Sección para la condición de resolución -->
         <article class="evento-condicion">
             <h2>Condición de Resolución</h2>
             <p id="condicionResolucion"></p>
         </article>
-
     </section>
 
     <aside class="voting-sidebar">
@@ -115,50 +115,42 @@
 <!-- Pie de página -->
 <footer id="footer"></footer>
 
-<!-- Script para cargar los datos del evento desde el JSON y actualizar la página -->
+<!-- Script con jQuery para cargar y procesar datos -->
 <script>
-    // Función para extraer parámetros de la URL
-    function getParameterByName(name) {
-        const url = window.location.href;
-        name = name.replace(/[\[\]]/g, '\\$&');
-        const regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
-            results = regex.exec(url);
-        if (!results) return null;
-        if (!results[2]) return '';
-        return decodeURIComponent(results[2].replace(/\+/g, ' '));
-    }
+    $(document).ready(function() {
+        // Función para obtener parámetros de la URL
+        function getParameterByName(name) {
+            var url = window.location.href;
+            name = name.replace(/[\[\]]/g, '\\$&');
+            var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+                results = regex.exec(url);
+            if (!results) return null;
+            if (!results[2]) return '';
+            return decodeURIComponent(results[2].replace(/\+/g, ' '));
+        }
 
-    const eventoId = getParameterByName('id');
+        var eventoId = getParameterByName('id');
 
-    if (eventoId) {
-        // Ajusta la ruta al JSON según tu estructura de carpetas
-        fetch('../Resources/Data/eventos.json')
-            .then(response => response.json())
-            .then(eventos => {
-                const evento = eventos.find(e => e.id == eventoId);
+        if (eventoId) {
+            // Usamos $.getJSON para cargar el JSON de eventos
+            $.getJSON('../Resources/Data/eventos.json', function(eventos) {
+                var evento = eventos.find(function(e) { return e.id == eventoId; });
                 if (evento) {
-                    // Actualizar imagen, título, fechas y vistas
-                    document.querySelector(".evento-header img.Imagen").src = evento.img;
-                    document.querySelector(".exam-details .date .value").textContent = evento.fechaResolucion;
-                    document.querySelector(".exam-details .views .value").textContent = evento.nViews;
-                    document.getElementById("tituloEvento").textContent = evento.nombre;
-                    // Actualizar descripción corta si se quiere (ya está en exam-description)
+                    // Actualizamos los datos del evento usando jQuery
+                    $(".evento-header img.Imagen").attr("src", evento.img);
+                    $(".exam-details .date .value").text(evento.fechaResolucion);
+                    $(".exam-details .views .value").text(evento.nViews);
+                    $("#tituloEvento").text(evento.nombre);
+                    $("#evento-descripcion").text(evento.descripcion || "");
+                    $("#condicionResolucion").text(evento.condicionResolucion || "");
 
-                    // Insertar la descripción larga y la condición de resolución
-                    document.getElementById("evento-descripcion").textContent = evento.descripcion || "";
-                    document.getElementById("condicionResolucion").textContent = evento.condicionResolucion || "";
-
-                    // Usar el histórico de precios para la gráfica y para la tarjeta de apuesta
-                    const historico = evento.historicoPrecios;
-                    const precioActual = historico[historico.length - 1];
-                    // Actualizar input de precio en la tarjeta de apuesta
-                    document.getElementById("precio-input").value = precioActual.toFixed(2);
-                    // Actualizar título de la gráfica (formateado como porcentaje)
-                    document.getElementById("chartTitle").textContent = (precioActual * 100).toFixed(0) + "% chance";
-
-                    // Generar etiquetas dinámicamente para la gráfica: "T1", "T2", ..., "Tn"
-                    const labels = historico.map((_, i) => "T" + (i + 1));
-                    const data = {
+                    // Configuramos la gráfica usando Chart.js
+                    var historico = evento.historicoPrecios;
+                    var precioActual = historico[historico.length - 1];
+                    $("#precio-input").val(precioActual.toFixed(2));
+                    $("#chartTitle").text((precioActual * 100).toFixed(0) + "% chance");
+                    var labels = historico.map(function(_, i) { return "T" + (i + 1); });
+                    var data = {
                         labels: labels,
                         datasets: [{
                             label: 'Chance over time',
@@ -171,7 +163,7 @@
                             pointHoverRadius: 6
                         }]
                     };
-                    const config = {
+                    var config = {
                         type: 'line',
                         data: data,
                         options: {
@@ -192,7 +184,7 @@
                                 tooltip: {
                                     callbacks: {
                                         label: function(context) {
-                                            let val = context.parsed.y * 100;
+                                            var val = context.parsed.y * 100;
                                             return val.toFixed(1) + '%';
                                         }
                                     }
@@ -200,183 +192,27 @@
                             }
                         }
                     };
-                    const ctx = document.getElementById('myChart').getContext('2d');
+                    var ctx = document.getElementById("myChart").getContext("2d");
                     new Chart(ctx, config);
+
+                    // Si la fecha de resolución ya ha pasado, ocultamos el apartado de votación/apuesta
+                    if (new Date(evento.fechaResolucion) < new Date()) {
+                        $(".voting-sidebar").hide();
+                    }
                 } else {
-                    document.getElementById('detalles-evento').innerHTML = '<p>Evento no encontrado.</p>';
+                    $("#detalles-evento").html("<p>Evento no encontrado.</p>");
                 }
-            })
-            .catch(error => {
-                console.error('Error al cargar el JSON:', error);
-                document.getElementById('detalles-evento').innerHTML = '<p>Error al cargar el evento.</p>';
+            }).fail(function(jqXHR, textStatus, errorThrown) {
+                $("#detalles-evento").html("<p>Error al cargar el evento.</p>");
             });
-    } else {
-        document.getElementById('detalles-evento').innerHTML = '<p>No se especificó ningún evento.</p>';
-    }
+        } else {
+            $("#detalles-evento").html("<p>No se especificó ningún evento.</p>");
+        }
+    });
 </script>
 
-<!-- Scripts de votación y ajustes de la tarjeta de apuesta -->
+<!-- Scripts de componentes generales -->
 <script src="../Js/componentes.js"></script>
-<script src="../Js/trendingListsIndex.js"></script>
-<script>
-    // Código para la tarjeta de apuesta (Market/Limit, votos, precio, etc.)
-    let precio = parseFloat(document.getElementById("precio-input").value);
-    console.log(precio);
-    const marketLimitBtn = document.querySelector("#marketLimitBtn");
-    let precioMercado;
-    console.log(precioMercado);
-    const precioSection = document.querySelector(".precio");
-    const contenedorApuesta = document.querySelector(".contenedor-apuesta");
-
-    document.addEventListener("DOMContentLoaded", function() {
-        precioMercado = precio;
-    });
-
-    // Modo Market/Limit: true = Market, false = Limit
-    let isMarketMode = true;
-    precioSection.style.display = "none"; // Comenzamos en modo Market
-
-
-
-    function actualizarDatosApuesta() {
-        let total = parseInt(inputVoto.value) * parseFloat(inputPrecio.value);
-        document.querySelector(".info-valor").textContent = total.toFixed(2) + " voting points";
-        let win = parseInt(inputVoto.value);
-        document.querySelector("#WIN").textContent = win.toFixed(2) + " voting points";
-    }
-
-    marketLimitBtn.addEventListener("click", () => {
-        isMarketMode = !isMarketMode;
-        if (isMarketMode) {
-            precio = precioMercado;
-            marketLimitBtn.textContent = "Market";
-            precioSection.querySelector("input").value = precio;
-            actualizarDatosApuesta();
-            precioSection.style.display = "none";
-            contenedorApuesta.style.height = "436px";
-        } else {
-            precioMercado = parseFloat(inputPrecio.value);
-            contenedorApuesta.style.height = "540px";
-            setTimeout(() => { precioSection.style.display = "block"; }, 60);
-            marketLimitBtn.textContent = "Limit";
-        }
-    });
-
-    // Variables de votación
-    let modo = "start";
-    const botonSi = document.querySelector(".boton-si");
-    const botonNo = document.querySelector(".boton-no");
-    const botonVotar = document.querySelector(".vote-button");
-    const precioInput = document.querySelector(".precio-input");
-    const inputVoto = document.querySelector("#vote-count");
-    const inputPrecio = document.querySelector("#precio-input");
-    precioInput.value = precio;
-    botonVotar.disabled = true;
-
-    // Preseleccionar opción según parámetro "voto" de la URL
-    const votoParam = getParameterByName('voto');
-    if (votoParam === 'si') {
-        modo = "si";
-        botonSi.classList.add("active");
-        botonNo.classList.remove("active");
-        precioInput.value = precio;
-        botonVotar.disabled = false;
-        botonVotar.classList.add("si");
-        botonVotar.classList.remove("no");
-    } else if (votoParam === 'no') {
-        modo = "no";
-        botonNo.classList.add("active");
-        botonSi.classList.remove("active");
-        precioInput.value = (1 - precio).toFixed(2);
-        botonVotar.disabled = false;
-        botonVotar.classList.add("no");
-        botonVotar.classList.remove("si");
-    }
-
-    botonSi.addEventListener("click", function() {
-        modo = "si";
-        botonSi.classList.add("active");
-        botonNo.classList.remove("active");
-        precioInput.value = precio;
-        botonVotar.disabled = false;
-        botonVotar.classList.add("si");
-        botonVotar.classList.remove("no");
-    });
-
-    botonNo.addEventListener("click", function() {
-        modo = "no";
-        botonNo.classList.add("active");
-        botonSi.classList.remove("active");
-        precioInput.value = (1 - precio).toFixed(2);
-        botonVotar.disabled = false;
-        botonVotar.classList.add("no");
-        botonVotar.classList.remove("si");
-    });
-
-    botonVotar.addEventListener("click", function() {
-        if (modo === "si") {
-            alert("Has votado 'Sí' con un precio de " + precioInput.value);
-        } else if (modo === "no") {
-            alert("Has votado 'No' con un precio de " + precioInput.value);
-        } else {
-            alert("Por favor, selecciona una opción antes de votar.");
-        }
-    });
-
-    const botonMas10 = document.querySelector("#boton\\+10");
-    const botonMas100 = document.querySelector("#boton\\+100");
-    const botonMenos10 = document.querySelector("#boton-10");
-    const botonMenos100 = document.querySelector("#boton-100");
-    const botonAumentarPrecio = document.querySelector(".aumentar-precio");
-    const botonDisminuirPrecio = document.querySelector(".disminuir-precio");
-
-    botonMas10.addEventListener("click", function() {
-        if (inputVoto.value === "") { inputVoto.value = 0; }
-        inputVoto.value = parseInt(inputVoto.value) + 10;
-    });
-    botonMas100.addEventListener("click", function() {
-        if (inputVoto.value === "") { inputVoto.value = 0; }
-        inputVoto.value = parseInt(inputVoto.value) + 100;
-    });
-    botonMenos10.addEventListener("click", function() {
-        if (inputVoto.value === "") { inputVoto.value = 0; }
-        inputVoto.value = parseInt(inputVoto.value) - 10;
-        if (inputVoto.value < 0) { inputVoto.value = 0; }
-    });
-    botonMenos100.addEventListener("click", function() {
-        if (inputVoto.value === "") { inputVoto.value = 0; }
-        inputVoto.value = parseInt(inputVoto.value) - 100;
-        if (inputVoto.value < 0) { inputVoto.value = 0; }
-    });
-    botonAumentarPrecio.addEventListener("click", function() {
-        inputPrecio.value = (parseFloat(inputPrecio.value) + 0.01).toFixed(2);
-    });
-    botonDisminuirPrecio.addEventListener("click", function() {
-        inputPrecio.value = (parseFloat(inputPrecio.value) - 0.01).toFixed(2);
-    });
-
-    inputPrecio.addEventListener("input", actualizarDatosApuesta);
-    inputVoto.addEventListener("input", actualizarDatosApuesta);
-    botonMas10.addEventListener("click", actualizarDatosApuesta);
-    botonMas100.addEventListener("click", actualizarDatosApuesta);
-    botonMenos10.addEventListener("click", actualizarDatosApuesta);
-    botonMenos100.addEventListener("click", actualizarDatosApuesta);
-    botonAumentarPrecio.addEventListener("click", actualizarDatosApuesta);
-    botonDisminuirPrecio.addEventListener("click", actualizarDatosApuesta);
-
-    inputVoto.addEventListener("change", function() {
-        if (isNaN(parseInt(inputVoto.value))) {
-            document.querySelector(".info-valor").textContent = "0 voting points";
-            document.querySelector("#WIN").textContent = "0 voting points";
-        }
-    });
-    inputPrecio.addEventListener("change", function() {
-        if (isNaN(parseFloat(inputPrecio.value))) {
-            document.querySelector(".info-valor").textContent = "0 voting points";
-            document.querySelector("#WIN").textContent = "0 voting points";
-        }
-    });
-</script>
 <script src="../Js/trendingListsIndex.js"></script>
 </body>
 </html>
