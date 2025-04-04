@@ -10,7 +10,7 @@ export function crearTarjetaEvento(evento, onClick, onSi, onNo) {
                 <p>${evento.categoria}</p>
             </div>
         </div>
-        <div class="tarjeta-bottom lost">
+        <div class="tarjeta-bottom">
             <button class="btn-si">SI</button>
             <button class="btn-no">NO</button>
         </div>

@@ -13,7 +13,6 @@
     <link rel="stylesheet" href="../Css/layoutComun.css">
     <link rel="stylesheet" href="../Css/Componentes/categories.css">
     <link rel="stylesheet" href="../Css/Componentes/bettedCard.css">
-    <link rel="stylesheet" href="../Css/Componentes/historyCards.css">
 </head>
 
 <body>
@@ -82,6 +81,7 @@
 
     generateBettedCards(cardsContainer, tarjetas, cargarDetalles, manejarSi, manejarNo);
 
+
 </script>
 <!-- Inserción de Footer y Header -->
 <script src="../Js/componentes.js"></script>
@@ -107,22 +107,24 @@
     }
     setTimeout(() => {
         actualizarGrafica(67);
-    }, 1000);
+    }, 2000);
+
+    // Sombras
+    import { verticalScroll } from "../Js/verticalScroll.js";
+    const scrollContenedores = document.querySelectorAll(".scroll-vertical");
+    verticalScroll(scrollContenedores)
 
     // Inserción de datos
-    import { generateHistoryCards } from '../Js/loadHistoryCards.js';
+    import { generateBettedCards } from '../Js/loaderBettedCards.js';
     // Datos
     import { tarjetas, cargarDetalles, manejarSi, manejarNo } from '../Js/exampleData/cards.js';
 
     const cardsWinned = document.getElementById("tarjetas-ganadas");
     const cardsLost = document.getElementById("tarjetas-perdidas");
 
-    generateHistoryCards(cardsWinned, tarjetas, cargarDetalles, manejarSi, manejarNo);
-    generateHistoryCards(cardsLost, tarjetas, cargarDetalles, manejarSi, manejarNo);
+    cardsWinned
 
-    // Sombras
-    import { verticalScroll } from "../Js/verticalScroll.js";
-    const scrollContenedores = document.querySelectorAll(".scroll-vertical");
-    verticalScroll(scrollContenedores)
+    generateBettedCards(cardsWinned, tarjetas, cargarDetalles, manejarSi, manejarNo);
+    generateBettedCards(cardsLost, tarjetas, cargarDetalles, manejarSi, manejarNo);
 
 </script>

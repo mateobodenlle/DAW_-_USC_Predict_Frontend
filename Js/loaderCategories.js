@@ -64,12 +64,12 @@ function crearCategoria(cat, plantillaCategoria) {
  * Genera una categoria
  * @param {HTMLElement} contenedor - contenedor donde van a ser insertadas las categorías
  * @param {Array} categorias - lista de categorías
- * @param {Array} eventos - lista de tarjetas //TODO (por ahora serán las mismas para todas las categorías)
+ * @param {Array} tarjetas - lista de tarjetas //TODO (por ahora serán las mismas para todas las categorías)
  * @param {Function} onClick - manejo del acceso a la pestaña de detalles
  * @param {Function} manejarSi - Manejar la selección del usuario
  * @param {Function} manejarNo - Manejar la selección del usuario
  */
-export function generarCategorias(contenedor, categorias, eventos, onClick, manejarSi, manejarNo) {
+export function generarCategorias(contenedor, categorias, tarjetas, onClick, manejarSi, manejarNo) {
 
     const esMovil = window.matchMedia("(max-width: 768px)").matches;
     const plantillaCategoria = esMovil ? plantillaCategoriaMovil : plantillaCategoriaPC;

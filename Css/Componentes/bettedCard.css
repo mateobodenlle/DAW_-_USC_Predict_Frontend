@@ -1,9 +1,9 @@
 :root {
-    --verde-background-tarjetas: #7da190;
-    --verde--background-tarjetas-hover: #678E7C;
+    --verde-fondo: #7da190;
+    --verde-fondo-hover: #678E7C;
     --verde-claro: #c0d9af;
     --verde-claro-hover: #a9c083;
-    --verde-oscuro: #008D34;
+    --verde-oscuro: #006e28;
     --verde-neon: #00E253;
 
     --rojo-oscuro: #8d1818;
@@ -27,7 +27,7 @@
     gap: 12px;
     align-items: center;
 
-    background-color: var(--verde-background-tarjetas);
+    background-color: var(--verde-fondo);
     border-radius: 12px;
     box-shadow: var(--sombra-suave);
     padding: 16px;
@@ -36,7 +36,7 @@
 }
 .tarjeta-evento:hover {
     transform: translateY(-4px);
-    background-color: var(--verde--background-tarjetas-hover);
+    background-color: var(--verde-fondo-hover);
     cursor: pointer;
 }
 
@@ -102,13 +102,6 @@
     color: var(--rojo-oscuro);
     stroke: var(--rojo-oscuro);
 }
-.winning #flecha_abajo {
-    display: none;
-}
-.loosing #flecha_arriba {
-    display: none;
-}
-
 .tarjeta-evento:hover .winning {
     color: var(--verde-neon);
     text-shadow: 0 0 10px var(--verde-neon);
