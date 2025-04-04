@@ -30,7 +30,6 @@ export function crearTarjetaEvento(evento, onClick, onSi, onNo) {
 
     // Para hacer click en toda la tarjeta y redirigir
     tarjeta.addEventListener("click", () => onClick(evento));
-
     return tarjeta;
 }
 

@@ -69,7 +69,8 @@ function crearCategoria(cat, plantillaCategoria) {
  * @param {Function} manejarSi - Manejar la selección del usuario
  * @param {Function} manejarNo - Manejar la selección del usuario
  */
-export function generarCategorias(contenedor, categorias, eventos, onClick, manejarSi, manejarNo) {
+export function generarCategorias(contenedor, categorias, tarjetas, onClick, manejarSi, manejarNo) {
+
     const esMovil = window.matchMedia("(max-width: 768px)").matches;
     const plantillaCategoria = esMovil ? plantillaCategoriaMovil : plantillaCategoriaPC;
 
