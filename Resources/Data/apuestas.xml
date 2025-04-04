@@ -2,25 +2,20 @@
 <apuestas>
     <apuesta>
         <precioCompra>0.45</precioCompra>
-        <precioActual>0.50</precioActual>
-        <eventoId>1</eventoId>
+        <eventoId>10</eventoId>
         <numeroVotos>100</numeroVotos>
         <apuestaId>1</apuestaId>
         <apuesta>SI</apuesta>
-        <resultado>SI</resultado>
     </apuesta>
     <apuesta>
         <precioCompra>0.60</precioCompra>
-        <precioActual>0.65</precioActual>
         <eventoId>2</eventoId>
         <numeroVotos>150</numeroVotos>
         <apuestaId>2</apuestaId>
         <apuesta>NO</apuesta>
-        <resultado> </resultado>
     </apuesta>
     <apuesta>
         <precioCompra>0.30</precioCompra>
-        <precioActual>0.35</precioActual>
         <eventoId>3</eventoId>
         <numeroVotos>200</numeroVotos>
         <apuestaId>3</apuestaId>
@@ -28,11 +23,30 @@
     </apuesta>
     <apuesta>
         <precioCompra>0.55</precioCompra>
-        <precioActual>0.60</precioActual>
         <eventoId>4</eventoId>
         <numeroVotos>250</numeroVotos>
         <apuestaId>4</apuestaId>
         <apuesta>NO</apuesta>
-        <resultado>NO</resultado>
+    </apuesta>
+    <apuesta>
+        <precioCompra>0.70</precioCompra>
+        <eventoId>5</eventoId>
+        <numeroVotos>300</numeroVotos>
+        <apuestaId>5</apuestaId>
+        <apuesta>SI</apuesta>
+    </apuesta>
+    <apuesta>
+        <precioCompra>0.40</precioCompra>
+        <eventoId>6</eventoId>
+        <numeroVotos>350</numeroVotos>
+        <apuestaId>6</apuestaId>
+        <apuesta>NO</apuesta>
+    </apuesta>
+    <apuesta>
+        <precioCompra>0.80</precioCompra>
+        <eventoId>7</eventoId>
+        <numeroVotos>400</numeroVotos>
+        <apuestaId>7</apuestaId>
+        <apuesta>SI</apuesta>
     </apuesta>
 </apuestas>
