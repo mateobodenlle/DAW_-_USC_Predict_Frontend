@@ -29,7 +29,7 @@ export function verticalScroll (scroll_containers) {
     const esMovil = window.matchMedia("(max-width: 768px)").matches;
 
     scroll_containers.forEach((scroll_container) => {
-        // console.log(scroll_container);
+
         scroll_container.addEventListener('scroll', () => {
             setTimeout(() => gestionarSombras(scroll_container), 50);
         });
