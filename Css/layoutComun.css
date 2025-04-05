@@ -1,5 +1,19 @@
 /* Layout común, como plantilla. Navbar, footer y distribución básica de la página. */
 
+html, body {
+    height: 100%;
+    margin: 0;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    flex: 1;
+}
+
 .container {
     width: 100%;
     max-width: 1200px;
@@ -137,6 +151,9 @@ footer {
     background: linear-gradient(to top, #334658, #0c1a2b);
     padding: 30px 0;
     color: #c0d9af;
+    position: static;
+    bottom: 0;
+    width: 100%;
 }
 
 footer .footer-container {
@@ -210,6 +227,7 @@ footer .footer-column a:hover {
     footer .footer-container {
         flex-direction: column;
         align-items: center;
+
     }
 
     footer .footer-column {
