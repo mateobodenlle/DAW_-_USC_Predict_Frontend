@@ -123,6 +123,7 @@
                                     nombre: evento.nombre,
                                     categoria: evento.categoria,
                                     // Aquí pasamos los nuevos datos:
+                                    precioCompra: precioCompra,
                                     currentPrice: currentPrice,
                                     diferencia: diferencia.toFixed(2),
                                     // Si deseas, puedes pasar también "porcentaje" (puedes dejarlo vacío o usar currentPrice para ello)
@@ -135,13 +136,13 @@
                                         // Ganada
                                         card = createBettedCardEnded(betData, function(bet) {
                                             window.location.href = `Detalles.html?id=${bet.id}`;
-                                        });
+                                        }, "GANADA");
                                         cardsWinned.append(card);
                                     } else if (evento.resultado !== apuestaTipo) {
                                         // Perdida
                                         card = createBettedCardEnded(betData, function(bet) {
                                             window.location.href = `Detalles.html?id=${bet.id}`;
-                                        });
+                                        },"PERDIDA");
                                         cardsLost.append(card);
                                     }
                                 }

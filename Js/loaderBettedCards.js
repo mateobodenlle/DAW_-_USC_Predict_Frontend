@@ -33,9 +33,17 @@ export function createBettedCard(evento, onClick, onSi, onNo) {
     tarjeta.addEventListener("click", () => onClick(evento));
     return tarjeta;
 }
-export function createBettedCardEnded(evento, onClick, onSi, onNo) {
+export function createBettedCardEnded(evento, onClick, result) {
     const tarjeta = document.createElement("article");
     tarjeta.className = "tarjeta-evento";
+    if (result === 'GANADA') {
+        evento.diferencia = 1-evento.precioCompra;
+    }
+    if (result === 'PERDIDA') {
+        evento.diferencia = -evento.precioCompra;
+    }
+
+    evento.diferencia = evento.diferencia.toFixed(2);
 
     tarjeta.innerHTML = `
         <img src="${evento.img}" alt="Evento">
@@ -44,7 +52,7 @@ export function createBettedCardEnded(evento, onClick, onSi, onNo) {
             <p>${evento.categoria}</p>
         </div>
         <div class="tarjeta-porcentajes">
-                <h3 class="porcentaje">${evento.porcentaje || ''}</h3>
+                <h3 class="porcentaje"> </h3>
     <div class="variacion ${evento.diferencia > 0 ? 'winning' : 'losing'}">
         <svg id="flecha_arriba" class="${evento.diferencia > 0 ? 'winning' : 'losing'}" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">                    <path d="M12 4L12 20M12 4L8 8M12 4L16 8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                 </svg>
