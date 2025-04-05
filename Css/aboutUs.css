@@ -39,3 +39,10 @@
 
     margin-top: 0;
 }
+
+
+@media (max-width: 768px) {
+    .multicolumna {
+        column-count: 1;
+    }
+}

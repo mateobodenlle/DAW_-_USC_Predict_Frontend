@@ -30,7 +30,7 @@ h1 {
 
 .historial-grid {
     display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
     gap: 30px;
     max-width: 100%;
     align-items: center;
@@ -42,7 +42,6 @@ h1 {
 }
 
 /* Columna izquierda y derecha (ganadas y perdidas) */
-
 .historial-columna {
     display: flex;
     flex-direction: column;
@@ -50,7 +49,6 @@ h1 {
 
 
 /* Contenedores dinámicos de tarjetas */
-
 #tarjetas-ganadas,
 #tarjetas-perdidas {
 
@@ -108,7 +106,6 @@ h1 {
 }
 
 
-
 /* GRÁFICO */
 .gauge-wrapper {
     position: relative;
@@ -142,24 +139,14 @@ h1 {
 
 /* Responsive para pantallas pequeñas */
 @media (max-width: 768px) {
-    .historial-grid {
-        grid-template-columns: 1fr;
-        gap: 30px;
-    }
 
-    .historial-ratio {
-        order: -1;
-    }
-}
-@media (max-width: 768px) {
     .outer {
         width: 100%;
         height: 400px;
     }
     .outer .chart-container {
-        width: 400px;
+        width:90%;
         float: none;
         margin: 0 auto;
     }
-
 }
