@@ -62,9 +62,19 @@
 <!-- Script para la Watchlist -->
 <script type="module">
     // Importamos la función para crear tarjetas de apuesta
+    import {generateBettedCardsEnded} from "../Js/loaderBettedCards.js";
     import { createBettedCard } from '../Js/loaderBettedCards.js';
+    import { verticalScroll } from "../Js/verticalScroll.js";
+    import {createBettedCardEnded} from "../Js/loaderBettedCards.js";
 
     $(document).ready(function() {
+
+        const scrollContenedores = $(".scroll-vertical").get();
+        verticalScroll(scrollContenedores);
+
+        const cardsWinned = $("#tarjetas-ganadas");
+        const cardsLost = $("#tarjetas-perdidas");
+
         // Primero, cargamos el JSON de eventos
         $.getJSON('../Resources/Data/eventos.json')
             .done(function(eventosData) {
@@ -84,12 +94,12 @@
                             // Buscar en el JSON el evento correspondiente
                             var evento = eventosData.find(function(e) { return e.id == eventoId; });
                             if (evento) {
+
+
                                 // Filtrar: mostrar solo apuestas cuyo evento aún no se ha resuelto y sin resultado asignado
                                 var fechaResolucion = new Date(evento.fechaResolucion);
                                 var ahora = new Date();
-                                if (fechaResolucion <= ahora || evento.resultado === "SI" || evento.resultado === "NO") {
-                                    return; // Se omite esta apuesta
-                                }
+
                                 // Calcular el precio actual:
                                 // Para "SI": se toma el último valor del históricoPrecios.
                                 // Para "NO": se calcula como 1 - (último valor del históricoPrecios).
@@ -113,13 +123,34 @@
                                     porcentaje: currentPrice
                                 };
 
-                                // Creamos la tarjeta usando createBettedCard y el callback onClick (sin otros botones)
-                                var card = createBettedCard(betData, function(bet) {
-                                    window.location.href = `Detalles.html?id=${bet.id}`;
-                                });
-                                $("#tarjetas-resultado").append(card);
+                                if (fechaResolucion <= ahora || evento.resultado === "SI" || evento.resultado === "NO") {
+                                    // Cargamos la tarjeta en el historial (ganada o perdida)
+                                    if (evento.resultado === apuestaTipo) {
+                                        // Ganada
+                                        card = createBettedCardEnded(betData, function(bet) {
+                                            window.location.href = `Detalles.html?id=${bet.id}`;
+                                        });
+                                        cardsWinned.append(card);
+                                    } else if (evento.resultado !== apuestaTipo) {
+                                        // Perdida
+                                        card = createBettedCardEnded(betData, function(bet) {
+                                            window.location.href = `Detalles.html?id=${bet.id}`;
+                                        });
+                                        cardsLost.append(card);
+                                    }
+                                }
+                                else{
+                                    // Creamos la tarjeta usando createBettedCard y el callback onClick (sin otros botones)
+                                    var card = createBettedCard(betData, function(bet) {
+                                        window.location.href = `Detalles.html?id=${bet.id}`;
+                                    });
+                                    $("#tarjetas-resultado").append(card);
+                                }
+
                             }
+
                         });
+
                     },
                     error: function() {
                         $("#tarjetas-resultado").html("<p>Error al cargar las apuestas.</p>");
@@ -141,6 +172,7 @@
 <script src="https://code.highcharts.com/modules/solid-gauge.js"></script>
 <script src="../Js/graficoVelocimetro.js"></script>
 <script type="module">
+
     function actualizarAguja(valor) {
         const angulo = (valor / 100) * 180 - 90;
         $("#needle").css("transform", `translateX(-50%) rotate(${angulo}deg)`);
@@ -149,16 +181,6 @@
         actualizarAguja(valor);
         actualizarRatio(valor);
     }
+
     setTimeout(() => { actualizarGrafica(67); }, 1000);
-
-    import { verticalScroll } from "../Js/verticalScroll.js";
-    const scrollContenedores = $(".scroll-vertical").get();
-    verticalScroll(scrollContenedores);
-
-    import { generateBettedCards } from '../Js/loaderBettedCards.js';
-    import { tarjetas, cargarDetalles, manejarSi, manejarNo } from '../Js/exampleData/cards.js';
-    const cardsWinned = $("#tarjetas-ganadas");
-    const cardsLost = $("#tarjetas-perdidas");
-    generateBettedCards(cardsWinned, tarjetas, cargarDetalles, manejarSi, manejarNo);
-    generateBettedCards(cardsLost, tarjetas, cargarDetalles, manejarSi, manejarNo);
 </script>

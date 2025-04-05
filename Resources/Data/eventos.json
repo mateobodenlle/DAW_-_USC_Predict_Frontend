@@ -159,5 +159,37 @@
         "descripcion": "Un torneo de videojuegos es una competición en la que los jugadores se enfrentan en diferentes videojuegos. Los participantes pueden competir por premios y reconocimiento, y el evento puede ser presencial o en línea. Los torneos suelen atraer a jugadores de diferentes niveles y géneros de videojuegos.",
         "condicionResolucion": "Este evento se resolverá con SI en caso de que el ganador del torneo de videojuegos sea Pablo Pazos, y con NO en caso contrario. El evento se resolverá el 10 de noviembre de 2025.",
         "resultado": "SI"
+    },
+    {
+        "id": "11",
+        "img": "../Resources/ImagenEventos/Concierto.jpg",
+        "nombre": "Exposición de fotografía",
+        "categoria": "Cultura",
+        "historicoPrecios":
+        [0.75, 0.70, 0.80, 0.78, 0.85, 0.90, 0.95, 0.99, 0.98, 0.97,
+          0.96, 0.95, 0.94, 0.93, 0.92, 0.91, 0.90, 0.89, 0.88, 0.87,
+            0.86, 0.85, 0.84, 0.83, 0.82, 0.81, 0.80, 0.79, 0.78, 0.77],
+        "fechaSubida": "2025-12-01",
+        "fechaResolucion": "2025-12-10",
+        "nViews": 16000,
+        "descripcion": "Una exposición de fotografía es un evento donde se exhiben obras fotográficas de diferentes artistas y estilos. Los asistentes pueden apreciar el trabajo de los fotógrafos y comprar impresiones o libros de fotografía.",
+        "condicionResolucion": "Este evento se resolverá con SI en caso de que al menos 500 personas visiten la exposición de fotografía, y con NO en caso contrario.",
+        "resultado": ""
+    },
+    {
+        "id": "12",
+        "img": "../Resources/ImagenEventos/Ciencia.jpg",
+        "nombre": "Concurso de matemáticas",
+        "categoria": "Académico",
+        "historicoPrecios":
+        [0.60, 0.55, 0.65, 0.62, 0.70, 0.75, 0.80, 0.85, 0.90, 0.95,
+          0.99, 0.98, 0.97, 0.96, 0.95, 0.94, 0.93, 0.92, 0.91, 0.90,
+            0.89, 0.88, 0.87, 0.86, 0.85, 0.84, 0.83, 0.82, 0.81, 0.80],
+        "fechaSubida": "2025-01-15",
+        "fechaResolucion": "2025-01-25",
+        "nViews": 11000,
+        "descripcion": "Un concurso de matemáticas es un evento donde los participantes resuelven problemas matemáticos para demostrar su habilidad y conocimiento en la materia.",
+        "condicionResolucion": "Este evento se resolverá con SI en caso de que al menos el ganador del concurso obtenga una puntuación superior a un 8 en la prueba final.",
+        "resultado": "SI"
     }
 ]

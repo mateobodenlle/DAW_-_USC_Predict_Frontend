@@ -2,10 +2,10 @@
 <apuestas>
     <apuesta>
         <precioCompra>0.45</precioCompra>
-        <eventoId>10</eventoId>
+        <eventoId>1</eventoId>
         <numeroVotos>100</numeroVotos>
         <apuestaId>1</apuestaId>
-        <apuesta>SI</apuesta>
+        <apuesta>NO</apuesta>
     </apuesta>
     <apuesta>
         <precioCompra>0.60</precioCompra>
@@ -47,6 +47,62 @@
         <eventoId>7</eventoId>
         <numeroVotos>400</numeroVotos>
         <apuestaId>7</apuestaId>
+        <apuesta>SI</apuesta>
+    </apuesta>
+    <apuesta>
+        <precioCompra>0.50</precioCompra>
+        <eventoId>8</eventoId>
+        <numeroVotos>450</numeroVotos>
+        <apuestaId>8</apuestaId>
+        <apuesta>NO</apuesta>
+    </apuesta>
+    <apuesta>
+        <precioCompra>0.65</precioCompra>
+        <eventoId>9</eventoId>
+        <numeroVotos>500</numeroVotos>
+        <apuestaId>9</apuestaId>
+        <apuesta>SI</apuesta>
+    </apuesta>
+    <apuesta>
+        <precioCompra>0.75</precioCompra>
+        <eventoId>10</eventoId>
+        <numeroVotos>550</numeroVotos>
+        <apuestaId>10</apuestaId>
+        <apuesta>NO</apuesta>
+    </apuesta>
+    <apuesta>
+        <precioCompra>0.85</precioCompra>
+        <eventoId>2</eventoId>
+        <numeroVotos>600</numeroVotos>
+        <apuestaId>11</apuestaId>
+        <apuesta>SI</apuesta>
+    </apuesta>
+    <apuesta>
+        <precioCompra>0.95</precioCompra>
+        <eventoId>3</eventoId>
+        <numeroVotos>650</numeroVotos>
+        <apuestaId>12</apuestaId>
+        <apuesta>NO</apuesta>
+    </apuesta>
+    <apuesta>
+        <precioCompra>0.25</precioCompra>
+        <eventoId>4</eventoId>
+        <numeroVotos>700</numeroVotos>
+        <apuestaId>13</apuestaId>
+        <apuesta>SI</apuesta>
+    </apuesta>
+    <apuesta>
+        <precioCompra>0.35</precioCompra>
+        <eventoId>11</eventoId>
+        <numeroVotos>750</numeroVotos>
+        <apuestaId>14</apuestaId>
+        <apuesta>NO</apuesta>
+    </apuesta>
+    <apuesta>
+        <precioCompra>0.20</precioCompra>
+        <eventoId>12</eventoId>
+        <numeroVotos>800</numeroVotos>
+        <apuestaId>15</apuestaId>
         <apuesta>SI</apuesta>
     </apuesta>
 </apuestas>
