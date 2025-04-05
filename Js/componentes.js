@@ -3,8 +3,7 @@ const includeHTML = async (selector, url, callback) => {
     const contenedor = document.querySelector(selector);
     if (contenedor) {
         const respuesta = await fetch(url);
-        const html = await respuesta.text();
-        contenedor.innerHTML = html;
+        contenedor.innerHTML = await respuesta.text();
         if (typeof callback === "function") {
             callback(); // ejecuta callback cuando se ha insertado el HTML
         }

@@ -3,13 +3,13 @@ export function crearTarjetaEvento(evento, onClick, onSi, onNo) {
     tarjeta.className = "tarjeta-evento";
 
     tarjeta.innerHTML = `
-        <div class="tarjeta-top">
+        <article class="tarjeta-top">
             <img src="${evento.img}" alt="Evento">
             <div class="tarjeta-info">
                 <h3>${evento.nombre} <span class="porcentaje">${evento.porcentaje || ''}</span></h3>
                 <p>${evento.categoria}</p>
             </div>
-        </div>
+        </article>
         <div class="tarjeta-bottom lost">
             <button class="btn-si">SI</button>
             <button class="btn-no">NO</button>
