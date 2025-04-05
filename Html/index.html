@@ -40,38 +40,7 @@
             </div>
             <div class="trending-list-wrapper">
                 <ul class="trending-list">
-                    <li>
-                        <img src="../Resources/ImagenEventos/Ajedrez.jpg" alt="Evento">
-                        <div>
-                            <strong>Nombre</strong>
-                            <p>Categoría</p>
-                        </div>
-                        <span class="trending-pct">x%</span>
-                    </li>
-                    <li>
-                        <img src="../Resources/ImagenEventos/Examen.jpg" alt="Evento">
-                        <div>
-                            <strong>Nombre</strong>
-                            <p>Categoría</p>
-                        </div>
-                        <span class="trending-pct">x%</span>
-                    </li>
-                    <li>
-                        <img src="../Resources/ImagenEventos/Ajedrez.jpg" alt="Evento">
-                        <div>
-                            <strong>Nombre</strong>
-                            <p>Categoría</p>
-                        </div>
-                        <span class="trending-pct">x%</span>
-                    </li>
-                    <li>
-                        <img src="../Resources/ImagenEventos/Juez.jpg" alt="Evento">
-                        <div>
-                            <strong>Nombre</strong>
-                            <p>Categoría</p>
-                        </div>
-                        <span class="trending-pct">x%</span>
-                    </li>
+
                 </ul>
 
 
@@ -88,40 +57,7 @@
                 <h2>Actividad 🔥</h2>
             </div>
         <div class="trending-list-wrapper">
-            <ul class="trending-list">
-                <li>
-                    <img src="../Resources/ImagenEventos/Ajedrez.jpg" alt="Evento">
-                    <div>
-                        <strong>Nombre</strong>
-                        <p>Categoría</p>
-                    </div>
-                    <span class="trending-pct">x%</span>
-                </li>
-                <li>
-                    <img src="../Resources/ImagenEventos/Examen.jpg" alt="Evento">
-                    <div>
-                        <strong>Nombre</strong>
-                        <p>Categoría</p>
-                    </div>
-                    <span class="trending-pct">x%</span>
-                </li>
-                <li>
-                    <img src="../Resources/ImagenEventos/Ajedrez.jpg" alt="Evento">
-                    <div>
-                        <strong>Nombre</strong>
-                        <p>Categoría</p>
-                    </div>
-                    <span class="trending-pct">x%</span>
-                </li>
-                <li>
-                    <img src="../Resources/ImagenEventos/Juez.jpg" alt="Evento">
-                    <div>
-                        <strong>Nombre</strong>
-                        <p>Categoría</p>
-                    </div>
-                    <span class="trending-pct">x%</span>
-                </li>
-            </ul>
+            <ul class="trending-list"></ul>
 
 
             <div class="ver-mas" id="ver-mas-trending2">
@@ -170,6 +106,65 @@
             generarTarjetas(contenedor, eventosLimitados, onClick, onSi, onNo);
         })
         .catch(error => console.error('Error al cargar el JSON:', error));
+</script>
+<script type="module">
+    // Función para mezclar (shuffle) un array
+    function shuffleArray(array) {
+        for (let i = array.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [array[i], array[j]] = [array[j], array[i]];
+        }
+        return array;
+    }
+
+    // Función para crear un elemento de lista (li) para Trending/Actividad
+    function createListItem(evento) {
+        const li = document.createElement('li');
+        li.innerHTML = `
+      <img src="${evento.img}" alt="Evento">
+      <div>
+        <strong>${evento.nombre}</strong>
+        <p>${evento.categoria}</p>
+      </div>
+      <span class="trending-pct">${evento.porcentaje || 'x%'}</span>
+    `;
+        li.addEventListener('click', () => {
+            window.location.href = `Detalles.html?id=${evento.id}`;
+        });
+        return li;
+    }
+
+    // Cargar el JSON de eventos y generar dos listas aleatorias de 9 elementos cada una
+    fetch('../Resources/Data/eventos.json')
+        .then(response => response.json())
+        .then(eventos => {
+            // Asumiendo que en el HTML existen dos contenedores <ul> para Trending y para Actividad
+            // Por ejemplo, la primera <ul class="trending-list"> es para Trending y la segunda para Actividad.
+            const lists = document.querySelectorAll('.trending-list');
+            if (lists.length < 2) {
+                console.error('No se encontraron dos contenedores para las listas.');
+                return;
+            }
+            const trendingList = lists[0];
+            const activityList = lists[1];
+
+            // Seleccionar 9 eventos aleatorios para cada lista
+            const eventosAleatorios = shuffleArray([...eventos]); // clonar y mezclar
+            const trendingEvents = eventosAleatorios.slice(0, 9);
+            const eventosAleatorios2 = shuffleArray([...eventos]); // otra mezcla para la segunda lista
+            const activityEvents = eventosAleatorios2.slice(0, 9);
+
+            // Generar y añadir los elementos a la lista Trending
+            trendingEvents.forEach(evento => {
+                trendingList.appendChild(createListItem(evento));
+            });
+
+            // Generar y añadir los elementos a la lista Actividad
+            activityEvents.forEach(evento => {
+                activityList.appendChild(createListItem(evento));
+            });
+        })
+        .catch(error => console.error("Error al cargar eventos.json:", error));
 </script>
 
 <script src="../Js/trendingListsIndex.js"> </script>
