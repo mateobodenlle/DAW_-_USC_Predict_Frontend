@@ -1,34 +1,52 @@
 document.addEventListener("DOMContentLoaded", () => {
+    function shuffleArray(array) {
+        for (let i = array.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [array[i], array[j]] = [array[j], array[i]];
+        }
+        return array;
+    }
+    // Función para crear un elemento de lista (<li>) para un evento
+    function createListItem(evento) {
+        const li = document.createElement('li');
+        li.innerHTML = `
+      <img src="${evento.img}" alt="Evento">
+      <div>
+        <strong>${evento.nombre}</strong>
+        <p>${evento.categoria}</p>
+      </div>
+        <span class="trending-pct">${evento.historicoPrecios[evento.historicoPrecios.length - 1] * 100 || 'x'}%</span>        `;
+        li.addEventListener('click', () => {
+            window.location.href = `Detalles.html?id=${evento.id}`;
+        });
+        return li;
+    }
+
+    let trendingEvents = [];
+    let activityEvents = [];
+    let datosPorCaja = [];
     // Seleccionamos todas las cajas trending
     const cajasTrending = document.querySelectorAll(".trending-box");
+    // Cargar el JSON de eventos
+    fetch('../Resources/Data/eventos.json')
+        .then(response => response.json())
+        .then(eventos => {
+            // Obtenemos los contenedores de las listas (se esperan dos elementos con la clase "trending-list")
+            listas = document.querySelectorAll('.trending-list');
+            if (listas.length < 2) {
+                console.error('No se encontraron dos contenedores para las listas.');
+                return;
+            }
 
-    // Datos distintos para cada lista
-    const datosPorCaja = [
-        [ // Caja 1: Trending
-            { img: "../Resources/ImagenEventos/Examen.jpg", nombre: "Evento 1", categoria: "Debate", pct: "34%" },
-            { img: "../Resources/ImagenEventos/Juez.jpg", nombre: "Evento 2", categoria: "Competencia", pct: "21%" },
-            { img: "../Resources/ImagenEventos/Examen.jpg", nombre: "Evento 3", categoria: "Torneo", pct: "23%" },
-            { img: "../Resources/ImagenEventos/Examen.jpg", nombre: "Evento 5", categoria: "Categoría", pct: "34%" },
-            { img: "../Resources/ImagenEventos/Juez.jpg", nombre: "Evento 6", categoria: "Categoría", pct: "21%" },
-            { img: "../Resources/ImagenEventos/Examen.jpg", nombre: "Evento 7", categoria: "Categoría", pct: "23%" },
-            { img: "../Resources/ImagenEventos/Ajedrez.jpg", nombre: "Evento 8", categoria: "Categoría", pct: "29%" },
-            { img: "../Resources/ImagenEventos/Examen.jpg", nombre: "Evento 9", categoria: "Categoría", pct: "29%" },
-            { img: "../Resources/ImagenEventos/Juez.jpg", nombre: "Evento 10", categoria: "Categoría", pct: "52%" },
-            { img: "../Resources/ImagenEventos/Juez.jpg", nombre: "Evento 11", categoria: "Categoría", pct: "89%" }
-        ],
-        [ // Caja 2: Actividad
-            { img: "../Resources/ImagenEventos/Ajedrez.jpg", nombre: "Actividad A", categoria: "Ajedrez", pct: "62%" },
-            { img: "../Resources/ImagenEventos/Juez.jpg", nombre: "Actividad B", categoria: "Jurado", pct: "19%" },
-            { img: "../Resources/ImagenEventos/Examen.jpg", nombre: "Evento 5", categoria: "Categoría", pct: "34%" },
-            { img: "../Resources/ImagenEventos/Juez.jpg", nombre: "Evento 6", categoria: "Categoría", pct: "21%" },
-            { img: "../Resources/ImagenEventos/Examen.jpg", nombre: "Evento 7", categoria: "Categoría", pct: "23%" },
-            { img: "../Resources/ImagenEventos/Ajedrez.jpg", nombre: "Evento 8", categoria: "Categoría", pct: "29%" },
-            { img: "../Resources/ImagenEventos/Examen.jpg", nombre: "Evento 9", categoria: "Categoría", pct: "29%" },
-            { img: "../Resources/ImagenEventos/Juez.jpg", nombre: "Evento 10", categoria: "Categoría", pct: "52%" },
-            { img: "../Resources/ImagenEventos/Juez.jpg", nombre: "Evento 11", categoria: "Categoría", pct: "89%" },
-            { img: "../Resources/ImagenEventos/Examen.jpg", nombre: "Actividad C", categoria: "Evaluación", pct: "45%" }
-        ]
-    ];
+            // Seleccionar aleatoriamente 9 eventos para Trending
+            const eventosShuffled = shuffleArray([...eventos]); // clonamos y mezclamos
+            trendingEvents = eventosShuffled.slice(0, 9);
+
+            // Seleccionar aleatoriamente 9 eventos para Actividad (usando otra mezcla)
+            const eventosShuffled2 = shuffleArray([...eventos]);
+            activityEvents = eventosShuffled2.slice(0, 9);
+
+            datosPorCaja = [trendingEvents, activityEvents];
 
     cajasTrending.forEach((trendingBox, index) => {
         const wrapper = trendingBox.querySelector(".trending-list-wrapper");
@@ -60,36 +78,34 @@ document.addEventListener("DOMContentLoaded", () => {
         lista.addEventListener("scroll", updateShadows);
         updateShadows();
 
+        // Agregar los primeros 4 eventos a la lista incondicionalmente
+        for (let i = 0; i < 4; i++) {
+            const evento = trendingEvents[i];
+            const li = createListItem(evento);
+            lista.appendChild(li);
+        }
+
         verMas.addEventListener("click", () => {
             trendingBox.classList.toggle("expandido");
             expandido = !expandido;
 
             if (expandido) {
                 verMasTexto.textContent = "Ver menos...";
-
-                datosExtra.forEach((evento, i) => {
-                    const li = document.createElement("li");
+                // Agregar los eventos restantes a la lista
+                for (let i = 4; i < datosExtra.length; i++) {
+                    const evento = datosExtra[i];
+                    const li = createListItem(evento);
                     li.classList.add("nuevo");
-
-                    li.innerHTML = `
-                        <img src="${evento.img}" alt="Evento">
-                        <div>
-                            <strong>${evento.nombre}</strong>
-                            <p>${evento.categoria}</p>
-                        </div>
-                        <span class="trending-pct">${evento.pct}</span>
-                    `;
-
                     lista.appendChild(li);
-
                     setTimeout(() => {
                         li.classList.add("mostrar");
-                    }, 50 * i);
-                });
-
+                    }, 10);
+                }
                 setTimeout(updateShadows, 400);
 
             } else {
+
+
                 lista.scrollTop = 0;
                 verMasTexto.textContent = "Ver más...";
 
@@ -105,4 +121,5 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         });
     });
+        });
 });
