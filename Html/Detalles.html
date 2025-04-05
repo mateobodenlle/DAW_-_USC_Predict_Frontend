@@ -213,8 +213,16 @@
 
 <!-- Scripts de componentes generales -->
 <script src="../Js/componentes.js"></script>
-<script src="../Js/trendingListsIndex.js"></script>
 <script>
+    function getParameterByName(name) {
+        var url = window.location.href;
+        name = name.replace(/[\[\]]/g, '\\$&');
+        var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+            results = regex.exec(url);
+        if (!results) return null;
+        if (!results[2]) return '';
+        return decodeURIComponent(results[2].replace(/\+/g, ' '));
+    }
     // Código para la tarjeta de apuesta (Market/Limit, votos, precio, etc.)
     let precio = parseFloat(document.getElementById("precio-input").value);
     console.log(precio);
@@ -373,6 +381,5 @@
         }
     });
 </script>
-<script src="../Js/trendingListsIndex.js"></script>
 </body>
 </html>
