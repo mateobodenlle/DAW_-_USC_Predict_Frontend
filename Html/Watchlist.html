@@ -59,6 +59,12 @@
 </body>
 </html>
 
+
+<!-- Scripts para Historial y Gráfica (se mantienen igual) -->
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/highcharts-more.js"></script>
+<script src="https://code.highcharts.com/modules/solid-gauge.js"></script>
+<script src="../Js/graficoVelocimetro.js"></script>
 <!-- Script para la Watchlist -->
 <script type="module">
     // Importamos la función para crear tarjetas de apuesta
@@ -150,6 +156,26 @@
                             }
 
                         });
+                            let valor = $("#tarjetas-ganadas").children().length /($("#tarjetas-ganadas").children().length + $("#tarjetas-perdidas").children().length);
+
+                            valor*=100;
+
+                            console.log($("#tarjetas-ganadas").children().length)
+                            console.log(valor);
+
+                            function actualizarAguja(valor) {
+                                const angulo = (valor / 100) * 180 - 90;
+                                $("#needle").css("transform", `translateX(-50%) rotate(${angulo}deg)`);
+                            }
+
+                            function actualizarGrafica(valor) {
+                                actualizarAguja(valor);
+                                actualizarRatio(valor);
+                            }
+
+                            setTimeout(() => {
+                                actualizarGrafica(valor);
+                            }, 1000);
 
                     },
                     error: function() {
@@ -166,21 +192,5 @@
 <!-- Scripts generales -->
 <script src="../Js/componentes.js"></script>
 
-<!-- Scripts para Historial y Gráfica (se mantienen igual) -->
-<script src="https://code.highcharts.com/highcharts.js"></script>
-<script src="https://code.highcharts.com/highcharts-more.js"></script>
-<script src="https://code.highcharts.com/modules/solid-gauge.js"></script>
-<script src="../Js/graficoVelocimetro.js"></script>
-<script type="module">
 
-    function actualizarAguja(valor) {
-        const angulo = (valor / 100) * 180 - 90;
-        $("#needle").css("transform", `translateX(-50%) rotate(${angulo}deg)`);
-    }
-    function actualizarGrafica(valor) {
-        actualizarAguja(valor);
-        actualizarRatio(valor);
-    }
 
-    setTimeout(() => { actualizarGrafica(67); }, 1000);
-</script>

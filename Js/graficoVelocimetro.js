@@ -103,7 +103,7 @@ var chartSpeed = Highcharts.chart('container-speed', Highcharts.merge(gaugeOptio
 
 function actualizarRatio(valor) {
     chartSpeed.series[0].points[0].update(valor);
-    actualizarAguja(valor);
+    // actualizarAguja(valor);
 }
 
 
