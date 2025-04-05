@@ -27,7 +27,6 @@
     <section id="tarjetas-resultado"></section>
     <h1>Historial</h1>
     <div class="historial-container">
-        <div class="historial-grid">
             <!-- Columna Ganadas -->
             <div class="historial-columna">
                 <h2>Ganadas</h2>
@@ -51,7 +50,6 @@
                     <div id="tarjetas-perdidas" class="scroll-vertical"></div>
                 </div>
             </div>
-        </div>
     </div>
 </main>
 <!-- Pie de página -->
@@ -68,15 +66,11 @@
 <!-- Script para la Watchlist -->
 <script type="module">
     // Importamos la función para crear tarjetas de apuesta
-    import {generateBettedCardsEnded} from "../Js/loaderBettedCards.js";
     import { createBettedCard } from '../Js/loaderBettedCards.js';
     import { verticalScroll } from "../Js/verticalScroll.js";
     import {createBettedCardEnded} from "../Js/loaderBettedCards.js";
 
     $(document).ready(function() {
-
-        const scrollContenedores = $(".scroll-vertical").get();
-        verticalScroll(scrollContenedores);
 
         const cardsWinned = $("#tarjetas-ganadas");
         const cardsLost = $("#tarjetas-perdidas");
@@ -100,7 +94,6 @@
                             // Buscar en el JSON el evento correspondiente
                             var evento = eventosData.find(function(e) { return e.id == eventoId; });
                             if (evento) {
-
 
                                 // Filtrar: mostrar solo apuestas cuyo evento aún no se ha resuelto y sin resultado asignado
                                 var fechaResolucion = new Date(evento.fechaResolucion);
@@ -160,27 +153,29 @@
                             }
 
                         });
-                            let valor = $("#tarjetas-ganadas").children().length /($("#tarjetas-ganadas").children().length + $("#tarjetas-perdidas").children().length);
+                        let valor = $("#tarjetas-ganadas").children().length /($("#tarjetas-ganadas").children().length + $("#tarjetas-perdidas").children().length);
 
-                            valor*=100;
+                        valor*=100;
 
-                            console.log($("#tarjetas-ganadas").children().length)
-                            console.log(valor);
+                        // console.log($("#tarjetas-ganadas").children().length)
+                        // console.log(valor);
 
-                            function actualizarAguja(valor) {
-                                const angulo = (valor / 100) * 180 - 90;
-                                $("#needle").css("transform", `translateX(-50%) rotate(${angulo}deg)`);
-                            }
+                        function actualizarAguja(valor) {
+                            const angulo = (valor / 100) * 180 - 90;
+                            $("#needle").css("transform", `translateX(-50%) rotate(${angulo}deg)`);
+                        }
 
-                            function actualizarGrafica(valor) {
-                                actualizarAguja(valor);
-                                actualizarRatio(valor);
-                            }
+                        function actualizarGrafica(valor) {
+                            actualizarAguja(valor);
+                            actualizarRatio(valor);
+                        }
 
-                            setTimeout(() => {
-                                actualizarGrafica(valor);
-                            }, 1000);
+                        setTimeout(() => {
+                            actualizarGrafica(valor);
+                        }, 1000);
 
+                        const scrollContenedores = $(".scroll-vertical").get();
+                        verticalScroll(scrollContenedores);
                     },
                     error: function() {
                         $("#tarjetas-resultado").html("<p>Error al cargar las apuestas.</p>");
