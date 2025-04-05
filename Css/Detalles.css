@@ -541,3 +541,45 @@ input[type=number]::-webkit-inner-spin-button {
     width: 100%;
     height: auto;
 }
+
+
+
+
+/* MODAL */
+/* Fondo general del modal */
+.modal-content {
+    background-color: #0c1a2b;
+    color: #c0d9af;
+    border: 2px solid #c0d9af;
+    border-radius: 12px;
+    box-shadow: 0 0 20px #c0d9af40;
+}
+/* Cabecera */
+.modal-header {
+    border-bottom: 1px solid #c0d9af60;
+    color: #c0d9af;
+}
+/* Cuerpo del modal */
+.modal-body {
+    color: #c0d9af;
+}
+/* Footer del modal */
+.modal-footer {
+    border-top: 1px solid #c0d9af60;
+}
+/* Botón cerrar (X) */
+.modal-header .btn-close {
+    filter: invert(80%);
+}
+/* Botón de acción */
+.modal-footer .btn {
+    background-color: #0c1a2b;
+    color: #c0d9af;
+    border: 2px solid #c0d9af;
+    border-radius: 12px;
+    padding: 6px 16px;
+    transition: all 0.3s ease;
+}
+.modal-footer .btn:hover {
+    box-shadow: 0 0 15px #c0d9af66;
+}
