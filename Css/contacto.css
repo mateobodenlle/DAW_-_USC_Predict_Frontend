@@ -1,0 +1,199 @@
+
+.contacto-seccion {
+    background-color: var(--color-background);
+    border: 2px solid var(--verde-claro);
+    box-shadow: var(--sombra-suave);
+}
+
+.titulo-contacto {
+    color: var(--verde-claro);
+    font-weight: bold;
+    font-size: 24px;
+}
+
+.texto-contacto {
+    color: var(--texto-claro);
+    font-size: 15px;
+    margin-bottom: 0;
+}
+
+
+.contacto-seccion label {
+    color: var(--verde-claro);
+    font-weight: 500;
+}
+.btn-outline-light.btn-redes {
+    border-color: #c0d9af;
+    color: #c0d9af;
+    background-color: transparent;
+    text-decoration: none;
+}
+.btn-outline-light.btn-redes:hover {
+    background-color: #c0d9af;
+    color: #0c1a2b;
+    text-decoration: none;
+}
+
+.custom-input {
+    margin-bottom: 0.5rem;
+}
+
+.form-control {
+    /*margin-bottom: 1rem;*/
+    border-radius: 12px;
+    border: 2px solid #c0d9af;
+    background-color: #0c1a2b;
+    color: #c0d9af;
+    padding: 10px 14px;
+    box-shadow: none;
+    transition: all 0.3s ease;
+}
+.form-control:focus {
+    box-shadow: 0 0 10px #c0d9af88;
+    border-color: #c0d9af;
+    background-color: #0c1a2b;
+    color: #c0d9af;
+}
+.custom-input {
+    background: transparent;
+    border: 2px solid #c0d9af;
+    border-radius: 12px;
+    color: #c0d9af;
+    font-size: 16px;
+    padding: 10px 14px;
+    margin-bottom: 0;
+    width: 100%;
+    transition: all 0.3s ease;
+}
+.custom-input::placeholder {
+    color: #c0d9af88;
+}
+.custom-input:focus {
+    outline: none;
+    box-shadow: 0 0 10px #c0d9af88;
+    background-color: #0c1a2b;
+    border-color: #c0d9af;
+}
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+    box-shadow: 0 0 0 1000px #0c1a2b inset !important;
+    -webkit-text-fill-color: #c0d9af !important;
+    border: 2px solid #c0d9af;
+    transition: background-color 9999s ease-in-out 0s;
+}
+
+
+
+.btn-enviar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    background-color: #0c1a2b;
+    border: 2px solid #c0d9af;
+    border-radius: 12px;
+    padding: 8px 20px;
+    color: #c0d9af;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    min-width: 110px; /* para evitar que el botón cambie de tamaño al mostrar el spinner */
+}
+
+.btn-enviar:hover {
+    background-color: #0c1a2b; /* mantiene el fondo */
+    color: #c0d9af;            /* mantiene el texto */
+    border: 2px solid #c0d9af; /* mantiene el borde */
+    transform: scale(1.03);
+    box-shadow: 0 0 20px #c0d9af66;
+}
+
+/* MODAL */
+/* Fondo general del modal */
+.modal-content {
+    background-color: #0c1a2b;
+    color: #c0d9af;
+    border: 2px solid #c0d9af;
+    border-radius: 12px;
+    box-shadow: 0 0 20px #c0d9af40;
+}
+/* Cabecera */
+.modal-header {
+    border-bottom: 1px solid #c0d9af60;
+    color: #c0d9af;
+}
+/* Cuerpo del modal */
+.modal-body {
+    color: #c0d9af;
+}
+/* Footer del modal */
+.modal-footer {
+    border-top: 1px solid #c0d9af60;
+}
+/* Botón cerrar (X) */
+.modal-header .btn-close {
+    filter: invert(80%);
+}
+/* Botón de acción */
+.modal-footer .btn {
+    background-color: #0c1a2b;
+    color: #c0d9af;
+    border: 2px solid #c0d9af;
+    border-radius: 12px;
+    padding: 6px 16px;
+    transition: all 0.3s ease;
+}
+.modal-footer .btn:hover {
+    box-shadow: 0 0 15px #c0d9af66;
+}
+
+.was-validated .form-control:invalid {
+    border: 2px solid #e57373;
+    background-color: #1a1a2b;
+    color: #f2f2f2;
+}
+
+
+.form-control::placeholder {
+    color: #c0d9af88;
+    opacity: 1; /* Necesario en algunos navegadores */
+}
+.was-validated .form-control:invalid::placeholder {
+    color: #e57373aa;
+}
+
+.invalid-feedback {
+    display: block !important;
+    max-height: 0;
+    opacity: 0;
+    transform: translateY(-6px);
+    overflow: hidden;
+    transition:
+            max-height 0.4s ease,
+            opacity 0.4s ease,
+            transform 0.4s ease,
+            padding 0.4s ease,
+            margin-top 0.4s ease;
+
+    font-size: 13px;
+
+    color: #e57373;
+
+    background-color: #0c1a2b;
+    border: 1px solid #e57373;
+    border-radius: 8px;
+    box-shadow: 0 0 10px #e5737344;
+
+
+}
+/* Se activa cuando el input es inválido */
+.was-validated .form-control:invalid ~ .invalid-feedback,
+.form-control.is-invalid ~ .invalid-feedback {
+    max-height: 80px; /* suficiente para 1-2 líneas de texto */
+    opacity: 1;
+    transform: translateY(0);
+    padding: 6px 12px;
+    margin-top: 15px;
+}
+

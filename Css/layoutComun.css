@@ -39,8 +39,6 @@
 }
 
 /*Barra de navegación*/
-
-
 header {
     background-color: #0C1A2B;
 }
@@ -74,6 +72,12 @@ nav::after {
     display: flex;
     align-items: center;
 }
+.nav-right {
+    gap: 2px;
+}
+.nav-right button {
+    margin: 0; /* eliminamos el margen lateral que genera separación extra */
+}
 
 /* Botón USC Predict */
 .logo {
@@ -106,6 +110,9 @@ nav button {
     transition: all 0.3s ease;
     font-family: inherit;
     letter-spacing: 0.5px;
+
+    min-height: 50px; /* puedes ajustar el tamaño según tus necesidades */
+    text-align: center;
 }
 
 /*Indica cual es la página actual*/
@@ -122,7 +129,7 @@ nav button:hover {
     color: #ffffff;
     border-color: #c0d9af;
     box-shadow: 0 0 8px rgba(192, 217, 175, 0.3);
-    transform: translateY(-2px) scale(1.12);
+    transform: scale(1.05);
 }
 
 
