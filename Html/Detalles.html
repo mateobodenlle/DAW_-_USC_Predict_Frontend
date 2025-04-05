@@ -214,5 +214,165 @@
 <!-- Scripts de componentes generales -->
 <script src="../Js/componentes.js"></script>
 <script src="../Js/trendingListsIndex.js"></script>
+<script>
+    // Código para la tarjeta de apuesta (Market/Limit, votos, precio, etc.)
+    let precio = parseFloat(document.getElementById("precio-input").value);
+    console.log(precio);
+    const marketLimitBtn = document.querySelector("#marketLimitBtn");
+    let precioMercado;
+    console.log(precioMercado);
+    const precioSection = document.querySelector(".precio");
+    const contenedorApuesta = document.querySelector(".contenedor-apuesta");
+
+    document.addEventListener("DOMContentLoaded", function() {
+        precioMercado = precio;
+    });
+
+    // Modo Market/Limit: true = Market, false = Limit
+    let isMarketMode = true;
+    precioSection.style.display = "none"; // Comenzamos en modo Market
+
+
+
+    function actualizarDatosApuesta() {
+        let total = parseInt(inputVoto.value) * parseFloat(inputPrecio.value);
+        document.querySelector(".info-valor").textContent = total.toFixed(2) + " voting points";
+        let win = parseInt(inputVoto.value);
+        document.querySelector("#WIN").textContent = win.toFixed(2) + " voting points";
+    }
+
+    marketLimitBtn.addEventListener("click", () => {
+        isMarketMode = !isMarketMode;
+        if (isMarketMode) {
+            precio = precioMercado;
+            marketLimitBtn.textContent = "Market";
+            precioSection.querySelector("input").value = precio;
+            actualizarDatosApuesta();
+            precioSection.style.display = "none";
+            contenedorApuesta.style.height = "436px";
+        } else {
+            precioMercado = parseFloat(inputPrecio.value);
+            contenedorApuesta.style.height = "540px";
+            setTimeout(() => { precioSection.style.display = "block"; }, 60);
+            marketLimitBtn.textContent = "Limit";
+        }
+    });
+
+    // Variables de votación
+    let modo = "start";
+    const botonSi = document.querySelector(".boton-si");
+    const botonNo = document.querySelector(".boton-no");
+    const botonVotar = document.querySelector(".vote-button");
+    const precioInput = document.querySelector(".precio-input");
+    const inputVoto = document.querySelector("#vote-count");
+    const inputPrecio = document.querySelector("#precio-input");
+    precioInput.value = precio;
+    botonVotar.disabled = true;
+
+    // Preseleccionar opción según parámetro "voto" de la URL
+    const votoParam = getParameterByName('voto');
+    if (votoParam === 'si') {
+        modo = "si";
+        botonSi.classList.add("active");
+        botonNo.classList.remove("active");
+        precioInput.value = precio;
+        botonVotar.disabled = false;
+        botonVotar.classList.add("si");
+        botonVotar.classList.remove("no");
+    } else if (votoParam === 'no') {
+        modo = "no";
+        botonNo.classList.add("active");
+        botonSi.classList.remove("active");
+        precioInput.value = (1 - precio).toFixed(2);
+        botonVotar.disabled = false;
+        botonVotar.classList.add("no");
+        botonVotar.classList.remove("si");
+    }
+
+    botonSi.addEventListener("click", function() {
+        modo = "si";
+        botonSi.classList.add("active");
+        botonNo.classList.remove("active");
+        precioInput.value = precio;
+        botonVotar.disabled = false;
+        botonVotar.classList.add("si");
+        botonVotar.classList.remove("no");
+    });
+
+    botonNo.addEventListener("click", function() {
+        modo = "no";
+        botonNo.classList.add("active");
+        botonSi.classList.remove("active");
+        precioInput.value = (1 - precio).toFixed(2);
+        botonVotar.disabled = false;
+        botonVotar.classList.add("no");
+        botonVotar.classList.remove("si");
+    });
+
+    botonVotar.addEventListener("click", function() {
+        if (modo === "si") {
+            alert("Has votado 'Sí' con un precio de " + precioInput.value);
+        } else if (modo === "no") {
+            alert("Has votado 'No' con un precio de " + precioInput.value);
+        } else {
+            alert("Por favor, selecciona una opción antes de votar.");
+        }
+    });
+
+    const botonMas10 = document.querySelector("#boton\\+10");
+    const botonMas100 = document.querySelector("#boton\\+100");
+    const botonMenos10 = document.querySelector("#boton-10");
+    const botonMenos100 = document.querySelector("#boton-100");
+    const botonAumentarPrecio = document.querySelector(".aumentar-precio");
+    const botonDisminuirPrecio = document.querySelector(".disminuir-precio");
+
+    botonMas10.addEventListener("click", function() {
+        if (inputVoto.value === "") { inputVoto.value = 0; }
+        inputVoto.value = parseInt(inputVoto.value) + 10;
+    });
+    botonMas100.addEventListener("click", function() {
+        if (inputVoto.value === "") { inputVoto.value = 0; }
+        inputVoto.value = parseInt(inputVoto.value) + 100;
+    });
+    botonMenos10.addEventListener("click", function() {
+        if (inputVoto.value === "") { inputVoto.value = 0; }
+        inputVoto.value = parseInt(inputVoto.value) - 10;
+        if (inputVoto.value < 0) { inputVoto.value = 0; }
+    });
+    botonMenos100.addEventListener("click", function() {
+        if (inputVoto.value === "") { inputVoto.value = 0; }
+        inputVoto.value = parseInt(inputVoto.value) - 100;
+        if (inputVoto.value < 0) { inputVoto.value = 0; }
+    });
+    botonAumentarPrecio.addEventListener("click", function() {
+        inputPrecio.value = (parseFloat(inputPrecio.value) + 0.01).toFixed(2);
+    });
+    botonDisminuirPrecio.addEventListener("click", function() {
+        inputPrecio.value = (parseFloat(inputPrecio.value) - 0.01).toFixed(2);
+    });
+
+    inputPrecio.addEventListener("input", actualizarDatosApuesta);
+    inputVoto.addEventListener("input", actualizarDatosApuesta);
+    botonMas10.addEventListener("click", actualizarDatosApuesta);
+    botonMas100.addEventListener("click", actualizarDatosApuesta);
+    botonMenos10.addEventListener("click", actualizarDatosApuesta);
+    botonMenos100.addEventListener("click", actualizarDatosApuesta);
+    botonAumentarPrecio.addEventListener("click", actualizarDatosApuesta);
+    botonDisminuirPrecio.addEventListener("click", actualizarDatosApuesta);
+
+    inputVoto.addEventListener("change", function() {
+        if (isNaN(parseInt(inputVoto.value))) {
+            document.querySelector(".info-valor").textContent = "0 voting points";
+            document.querySelector("#WIN").textContent = "0 voting points";
+        }
+    });
+    inputPrecio.addEventListener("change", function() {
+        if (isNaN(parseFloat(inputPrecio.value))) {
+            document.querySelector(".info-valor").textContent = "0 voting points";
+            document.querySelector("#WIN").textContent = "0 voting points";
+        }
+    });
+</script>
+<script src="../Js/trendingListsIndex.js"></script>
 </body>
 </html>

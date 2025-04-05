@@ -21,11 +21,11 @@ export function createBettedCard(evento, onClick, onSi, onNo) {
         </div>
         
         <div class="posicion">
-            <h3>Posición</h3>
-            <p>230 votos</p>
+            <h3>Posicion</h3>
+            <p>${evento.posicion}</p>
         </div>
 
-        <p id="decision">SI</p>
+        <p id="decision">${evento.respuesta}</p>
         <button class="btn-editar">EDITAR</button>
     `;
 
@@ -65,10 +65,10 @@ export function createBettedCardEnded(evento, onClick, result) {
         
         <div class="posicion">
             <h3>Posición</h3>
-            <p>230 votos</p>
+            <p>${evento.posicion}</p>
         </div>
 
-        <p id="decision">SI</p>
+        <p id="decision">${evento.respuesta}</p>
         <button class="btn-editar">DETALLES</button>
     `;
 

@@ -122,6 +122,9 @@
                                     img: evento.img,
                                     nombre: evento.nombre,
                                     categoria: evento.categoria,
+                                    posicion: $apuesta.find("numeroVotos").text().trim(),
+                                    respuesta: $apuesta.find("apuesta").text().trim(),
+
                                     // Aquí pasamos los nuevos datos:
                                     precioCompra: precioCompra,
                                     currentPrice: currentPrice,
