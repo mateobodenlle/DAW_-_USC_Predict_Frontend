@@ -24,33 +24,33 @@
 <main class="container">
     <h1>Watchlist</h1>
     <!-- Contenedor para las tarjetas de apuestas pendientes -->
-    <section id="tarjetas-resultado"></section>
+    <section id="tarjetas-watchlist"></section>
     <h1>Historial</h1>
-    <div class="historial-container">
-            <!-- Columna Ganadas -->
-            <div class="historial-columna">
-                <h2>Ganadas</h2>
-                <div class="scroll-wrapper">
-                    <div id="tarjetas-ganadas" class="scroll-vertical"></div>
-                </div>
+    <section class="historial-container">
+        <!-- Columna Ganadas -->
+        <div class="historial-columna">
+            <h2>Ganadas</h2>
+            <div class="scroll-wrapper">
+                <div id="tarjetas-ganadas" class="scroll-vertical"></div>
             </div>
-            <!-- Medidor central -->
-            <div class="outer">
-                <div class="gauge-wrapper">
-                    <h2>Ratio de aciertos</h2>
-                    <div id="container-speed" class="chart-container"></div>
-                    <div id="container-ratio"></div>
-                    <div class="gauge-needle" id="needle"></div>
-                </div>
+        </div>
+        <!-- Medidor central -->
+        <div class="outer">
+            <h2>Ratio de aciertos</h2>
+            <div class="gauge-wrapper">
+                <div id="container-speed" class="chart-container"></div>
+                <div id="container-ratio"></div>
+                <div class="gauge-needle" id="needle"></div>
             </div>
-            <!-- Columna Perdidas -->
-            <div class="historial-columna">
-                <h2>Perdidas</h2>
-                <div class="scroll-wrapper">
-                    <div id="tarjetas-perdidas" class="scroll-vertical"></div>
-                </div>
+        </div>
+        <!-- Columna Perdidas -->
+        <div class="historial-columna">
+            <h2>Perdidas</h2>
+            <div class="scroll-wrapper">
+                <div id="tarjetas-perdidas" class="scroll-vertical"></div>
             </div>
-    </div>
+        </div>
+    </section>
 </main>
 <!-- Pie de página -->
 <footer id="footer"></footer>
@@ -83,7 +83,7 @@
                     url: '../Resources/Data/apuestas.xml',
                     dataType: 'xml',
                     success: function(xml) {
-                        $("#tarjetas-resultado").empty();
+                        $("#tarjetas-watchlist").empty();
                         $(xml).find("apuesta").each(function() {
                             var $apuesta = $(this);
                             // Extraer el eventoId y otros datos de la apuesta
@@ -147,7 +147,7 @@
                                     var card = createBettedCard(betData, function(bet) {
                                         window.location.href = `Detalles.html?id=${bet.id}`;
                                     });
-                                    $("#tarjetas-resultado").append(card);
+                                    $("#tarjetas-watchlist").append(card);
                                 }
 
                             }
@@ -178,12 +178,12 @@
                         verticalScroll(scrollContenedores);
                     },
                     error: function() {
-                        $("#tarjetas-resultado").html("<p>Error al cargar las apuestas.</p>");
+                        $("#tarjetas-watchlist").html("<p>Error al cargar las apuestas.</p>");
                     }
                 });
             })
             .fail(function() {
-                $("#tarjetas-resultado").html("<p>Error al cargar los datos de eventos.</p>");
+                $("#tarjetas-watchlist").html("<p>Error al cargar los datos de eventos.</p>");
             });
     });
 </script>
