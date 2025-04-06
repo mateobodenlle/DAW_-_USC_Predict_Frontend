@@ -318,10 +318,10 @@
             precioSection.querySelector("input").value = precio;
             actualizarDatosApuesta();
             precioSection.style.display = "none";
-            contenedorApuesta.style.height = "436px";
+            contenedorApuesta.style.height = "475px";
         } else {
             precioMercado = parseFloat(inputPrecio.value);
-            contenedorApuesta.style.height = "540px";
+            contenedorApuesta.style.height = "580px";
             setTimeout(() => { precioSection.style.display = "block"; }, 60);
             marketLimitBtn.textContent = "Limit";
         }
