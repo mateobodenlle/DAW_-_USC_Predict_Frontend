@@ -52,7 +52,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const wrapper = trendingBox.querySelector(".trending-list-wrapper");
         const lista = wrapper.querySelector(".trending-list");
         const verMas = trendingBox.querySelector(".ver-mas");
-        const verMasTexto = verMas.querySelector("a");
+        const verMasTexto = verMas.getElementsByTagName("a")[0];
         let expandido = false;
 
         const datosExtra = datosPorCaja[index];
