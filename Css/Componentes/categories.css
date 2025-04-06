@@ -285,14 +285,6 @@
         box-shadow: 0 0 20px #c0d9af40;
     }
 
-
-    /*.categoria-content.sombra-izquierda::before {
-        opacity: 0;
-    }
-    .categoria-content.sombra-derecha::after {
-        opacity: 0;
-    }*/
-
     .categoria-content.sombra-izquierda::before,
     .categoria-content.sombra-derecha::after {
         opacity: 1;
@@ -334,10 +326,6 @@
     #seeMore-button:hover {
         background-color: #1e2f44;
     }
-
-
-
-
 
 
 
