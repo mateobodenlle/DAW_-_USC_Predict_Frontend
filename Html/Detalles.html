@@ -51,7 +51,7 @@
             <div class="chart-header">
                 <!-- El título se actualizará con el precio actual en formato porcentaje -->
                 <h3 class="chart-title" id="chartTitle">--% chance</h3>
-                <span class="chart-subtitle">v-0.5</span>
+                <span class="chart-subtitle"></span>
             </div>
             <!-- Canvas para Chart.js -->
             <canvas id="myChart" width="400" height="200"></canvas>
@@ -286,11 +286,11 @@
     }
     // Código para la tarjeta de apuesta (Market/Limit, votos, precio, etc.)
     let precio = parseFloat(document.getElementById("precio-input").value);
-    console.log(precio);
+
     const marketLimitBtn = document.querySelector("#marketLimitBtn");
     let precioMercado;
     console.log(precioMercado);
-    const precioSection = document.querySelector(".precio");
+    const precioSection = document.getElementsByClassName("precio")[0];
     const contenedorApuesta = document.querySelector(".contenedor-apuesta");
 
     document.addEventListener("DOMContentLoaded", function() {
