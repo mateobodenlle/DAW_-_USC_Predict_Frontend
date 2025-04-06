@@ -6,7 +6,7 @@ h1 {
 
 /* WATCHLIST */
 /* Tarjetas */
-#tarjetas-resultado {
+#tarjetas-watchlist {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
     gap: 20px;
@@ -29,7 +29,6 @@ h1 {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
     gap: 30px;
-    max-width: 100%;
     align-items: center;
 
 }
@@ -137,7 +136,6 @@ h1 {
 
 /* Responsive para pantallas pequeñas */
 @media (max-width: 768px) {
-
     .outer {
         width: 100%;
         height: 400px;
