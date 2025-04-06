@@ -313,6 +313,8 @@
     marketLimitBtn.addEventListener("click", () => {
         isMarketMode = !isMarketMode;
         if (isMarketMode) {
+            precioMercado = parseFloat(document.querySelector(".chart-title").textContent.substring(0,2)) / 100;
+            console.log("EEEY",precioMercado);
             precio = precioMercado;
             marketLimitBtn.textContent = "Market";
             precioSection.querySelector("input").value = precio;
@@ -320,7 +322,10 @@
             precioSection.style.display = "none";
             contenedorApuesta.style.height = "475px";
         } else {
-            precioMercado = parseFloat(inputPrecio.value);
+            precioMercado = parseFloat(document.querySelector(".chart-title").textContent.substring(0,2)) / 100;
+            precio = precioMercado;
+            console.log("EEEY",precioMercado);
+            precioSection.querySelector("input").value = precio.toFixed(2);
             contenedorApuesta.style.height = "580px";
             setTimeout(() => { precioSection.style.display = "block"; }, 60);
             marketLimitBtn.textContent = "Limit";
@@ -378,23 +383,6 @@
         botonVotar.classList.add("no");
         botonVotar.classList.remove("si");
     });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
     const botonMas10 = document.querySelector("#boton\\+10");
     const botonMas100 = document.querySelector("#boton\\+100");
