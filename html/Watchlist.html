@@ -156,7 +156,7 @@
                         let valor = $("#tarjetas-ganadas").children().length /($("#tarjetas-ganadas").children().length + $("#tarjetas-perdidas").children().length);
 
                         valor*=100;
-                        valor = valor.toFixed(2);
+                        valor = parseFloat(valor.toFixed(0));
 
                         // console.log($("#tarjetas-ganadas").children().length)
                         // console.log(valor);
